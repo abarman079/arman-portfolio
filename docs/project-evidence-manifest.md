@@ -218,3 +218,14 @@ The audit did not establish the following as publishable facts:
 - Rights to republish Arctic Daze product photography or FrameSignal movie media.
 - The legacy claim of “20 GitHub repos” or any fixed repository count.
 - Legacy project summaries and live URLs unless independently listed above.
+
+## Phase 4 evidence review
+
+The flagship case-study pass rechecked the repository records at the Phase 3 source commits and added no unsupported owner narrative.
+
+- **SlateDesk:** `README.md`, `docs/architecture.md`, authentication/deadline/concurrency documentation, and the rule-focused test tree support the published system modules and correctness boundaries.
+- **FrameSignal:** `README.md`, `docs/project-case-study.md`, and the documented public/private security checkpoint support the decision model, server/public split, protected administration, and database authorization statements.
+- **Arctic Daze:** `app/collections/page.tsx`, reusable product components, and `lib/products/queries.ts` support URL-driven filters, responsive product grids, and server-side Supabase product reads.
+- **CCTV:** `README.md`, `results/tables/final_model_comparison.csv`, `results/tables/split_summary.csv`, and the retained figures support the methodology, model list, metrics, and limitations.
+
+No new Phase 4 media was added; the Phase 3 provenance record remains authoritative.

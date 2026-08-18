@@ -32,8 +32,8 @@ export function SiteHeader() {
 
   const isHome = pathname === "/";
   const isCompact = !isHome || pastHeroThreshold;
-  const activeSection =
-    pathname === "/work" ? "work" : isHome ? observedSection : null;
+  const isWorkRoute = pathname.startsWith("/work");
+  const activeSection = isWorkRoute ? "work" : isHome ? observedSection : null;
 
   useEffect(() => {
     const sentinel = document.querySelector<HTMLElement>("[data-nav-sentinel]");
@@ -151,7 +151,7 @@ export function SiteHeader() {
                   <li key={item.id}>
                     <Link
                       href={item.href}
-                      aria-current={active ? (pathname === "/work" ? "page" : "location") : undefined}
+                      aria-current={active ? (isWorkRoute ? "page" : "location") : undefined}
                     >
                       <MagneticOffset strength={3}>{item.label}</MagneticOffset>
                     </Link>
@@ -249,7 +249,7 @@ export function SiteHeader() {
                           <Link
                             href={item.href}
                             onClick={closeMenu}
-                            aria-current={active ? "location" : undefined}
+                            aria-current={active ? (isWorkRoute ? "page" : "location") : undefined}
                           >
                             <span>{item.index}</span>
                             <strong>{item.label}</strong>

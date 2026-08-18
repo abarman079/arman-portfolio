@@ -22,8 +22,7 @@ function FlagshipProject({
   }
 
   const headingId = `flagship-${project.slug}`;
-  const primaryHref = project.liveUrl ?? project.repositoryUrl;
-  const primaryLabel = project.liveUrl ? "Visit live site" : "View source";
+  const caseStudyHref = `/work/${project.slug}`;
   const metric = project.metrics?.[0];
 
   return (
@@ -87,6 +86,9 @@ function FlagshipProject({
             )}
 
             <div className={styles.actions}>
+              <ActionLink href={caseStudyHref} variant="secondary">
+                View case study
+              </ActionLink>
               {project.liveUrl ? (
                 <ActionLink
                   href={project.liveUrl}
@@ -110,8 +112,8 @@ function FlagshipProject({
 
           <div className={styles.media}>
             <ProjectMediaStage
-              actionLabel={primaryLabel}
-              href={primaryHref}
+              actionLabel="View case study"
+              href={caseStudyHref}
               items={project.media}
               projectName={project.canonicalName}
               variant={project.presentation.variant}

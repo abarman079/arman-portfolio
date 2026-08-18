@@ -63,12 +63,45 @@ const presentationSchema = z
   })
   .strict();
 
+const caseStudyFeatureSchema = z
+  .object({
+    title: nonEmptyText,
+    description: nonEmptyText,
+  })
+  .strict();
+
+const architectureNodeSchema = z
+  .object({
+    label: nonEmptyText,
+    detail: nonEmptyText,
+  })
+  .strict();
+
 const caseStudyBlockSchema = z.discriminatedUnion("type", [
   z
     .object({
       type: z.literal("prose"),
       heading: nonEmptyText,
       paragraphs: z.array(nonEmptyText).min(1),
+      evidenceIds: z.array(evidenceId).min(1),
+    })
+    .strict(),
+  z
+    .object({
+      type: z.literal("features"),
+      heading: nonEmptyText,
+      introduction: nonEmptyText.optional(),
+      items: z.array(caseStudyFeatureSchema).min(1),
+      evidenceIds: z.array(evidenceId).min(1),
+    })
+    .strict(),
+  z
+    .object({
+      type: z.literal("architecture"),
+      heading: nonEmptyText,
+      introduction: nonEmptyText,
+      nodes: z.array(architectureNodeSchema).min(2),
+      relationships: z.array(nonEmptyText).min(1),
       evidenceIds: z.array(evidenceId).min(1),
     })
     .strict(),
@@ -84,14 +117,26 @@ const caseStudyBlockSchema = z.discriminatedUnion("type", [
     .object({
       type: z.literal("metrics"),
       heading: nonEmptyText,
-      metrics: z.array(metricSchema).min(1),
+      introduction: nonEmptyText,
+      metricIndexes: z.array(z.number().int().nonnegative()).min(1),
+      evidenceIds: z.array(evidenceId).min(1),
     })
     .strict(),
   z
     .object({
       type: z.literal("media"),
-      heading: nonEmptyText.optional(),
-      items: z.array(mediaSchema).min(1),
+      heading: nonEmptyText,
+      introduction: nonEmptyText.optional(),
+      mediaIndexes: z.array(z.number().int().nonnegative()).min(1),
+      evidenceIds: z.array(evidenceId).min(1),
+    })
+    .strict(),
+  z
+    .object({
+      type: z.literal("limitations"),
+      heading: nonEmptyText,
+      items: z.array(nonEmptyText).min(1),
+      evidenceIds: z.array(evidenceId).min(1),
     })
     .strict(),
 ]);
@@ -168,6 +213,22 @@ export const projectSchema: z.ZodType<ProjectRecord> = z
       });
     }
 
+    if (project.tier === "flagship" && !project.caseStudy) {
+      context.addIssue({
+        code: "custom",
+        path: ["caseStudy"],
+        message: "Flagship projects require an evidence-backed case study.",
+      });
+    }
+
+    if (project.tier === "archive" && project.caseStudy) {
+      context.addIssue({
+        code: "custom",
+        path: ["caseStudy"],
+        message: "Archive projects cannot publish flagship case studies.",
+      });
+    }
+
     const evidenceIds = new Set(project.evidence.map((item) => item.id));
     for (const metric of project.metrics ?? []) {
       for (const id of metric.evidenceIds) {
@@ -177,6 +238,49 @@ export const projectSchema: z.ZodType<ProjectRecord> = z
             path: ["metrics"],
             message: `Metric references unknown evidence id: ${id}`,
           });
+        }
+      }
+    }
+
+    if (project.caseStudy) {
+      const referencedEvidenceIds = [
+        ...project.caseStudy.evidenceIds,
+        ...project.caseStudy.blocks.flatMap((block) => block.evidenceIds),
+      ];
+
+      for (const id of referencedEvidenceIds) {
+        if (!evidenceIds.has(id)) {
+          context.addIssue({
+            code: "custom",
+            path: ["caseStudy"],
+            message: `Case study references unknown evidence id: ${id}`,
+          });
+        }
+      }
+
+      for (const block of project.caseStudy.blocks) {
+        if (block.type === "media") {
+          for (const mediaIndex of block.mediaIndexes) {
+            if (!project.media?.[mediaIndex]) {
+              context.addIssue({
+                code: "custom",
+                path: ["caseStudy", "blocks"],
+                message: `Case study references missing media index: ${mediaIndex}`,
+              });
+            }
+          }
+        }
+
+        if (block.type === "metrics") {
+          for (const metricIndex of block.metricIndexes) {
+            if (!project.metrics?.[metricIndex]) {
+              context.addIssue({
+                code: "custom",
+                path: ["caseStudy", "blocks"],
+                message: `Case study references missing metric index: ${metricIndex}`,
+              });
+            }
+          }
         }
       }
     }

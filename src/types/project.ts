@@ -71,11 +71,36 @@ export interface ProjectPresentation {
   technologyLimit: number;
 }
 
+export interface CaseStudyFeature {
+  title: string;
+  description: string;
+}
+
+export interface CaseStudyArchitectureNode {
+  label: string;
+  detail: string;
+}
+
 export type CaseStudyBlock =
   | {
       type: "prose";
       heading: string;
       paragraphs: string[];
+      evidenceIds: string[];
+    }
+  | {
+      type: "features";
+      heading: string;
+      introduction?: string;
+      items: CaseStudyFeature[];
+      evidenceIds: string[];
+    }
+  | {
+      type: "architecture";
+      heading: string;
+      introduction: string;
+      nodes: CaseStudyArchitectureNode[];
+      relationships: string[];
       evidenceIds: string[];
     }
   | {
@@ -87,12 +112,22 @@ export type CaseStudyBlock =
   | {
       type: "metrics";
       heading: string;
-      metrics: ProjectMetric[];
+      introduction: string;
+      metricIndexes: number[];
+      evidenceIds: string[];
     }
   | {
       type: "media";
-      heading?: string;
-      items: ProjectMedia[];
+      heading: string;
+      introduction?: string;
+      mediaIndexes: number[];
+      evidenceIds: string[];
+    }
+  | {
+      type: "limitations";
+      heading: string;
+      items: string[];
+      evidenceIds: string[];
     };
 
 export interface ProjectCaseStudy {

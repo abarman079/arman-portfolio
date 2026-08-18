@@ -56,6 +56,7 @@ describe("verified project source", () => {
     for (const project of flagshipProjects) {
       expect(project.media?.length).toBeGreaterThanOrEqual(2);
       expect(project.presentation).toBeDefined();
+      expect(project.caseStudy?.blocks.length).toBeGreaterThan(0);
 
       for (const media of project.media ?? []) {
         expect(media.src).toMatch(/^\/projects\//);
@@ -63,6 +64,17 @@ describe("verified project source", () => {
         expect(media.source).toBeTruthy();
       }
     }
+  });
+
+  it("keeps case studies exclusive to the four flagship projects", () => {
+    expect(
+      projects.filter((project) => project.caseStudy).map((project) => project.slug),
+    ).toEqual([
+      "slatedesk",
+      "framesignal",
+      "arctic-daze",
+      "cctv-violence-detection",
+    ]);
   });
 
   it("rejects duplicate slugs", () => {
@@ -78,6 +90,32 @@ describe("verified project source", () => {
 
     expect(() => parseProjectRecords(invalid)).toThrow(
       /Archive projects require an archive group/,
+    );
+  });
+
+  it("rejects case-study claims tied to unknown evidence", () => {
+    const invalid = structuredClone(projects);
+    invalid[0].caseStudy?.evidenceIds.push("unsupported-claim");
+
+    expect(() => parseProjectRecords(invalid)).toThrow(
+      /Case study references unknown evidence id/,
+    );
+  });
+
+  it("rejects case-study media references that do not exist", () => {
+    const invalid = structuredClone(projects);
+    const mediaBlock = invalid[0].caseStudy?.blocks.find(
+      (block) => block.type === "media",
+    );
+
+    if (!mediaBlock || mediaBlock.type !== "media") {
+      throw new Error("SlateDesk media block is required for this test.");
+    }
+
+    mediaBlock.mediaIndexes.push(99);
+
+    expect(() => parseProjectRecords(invalid)).toThrow(
+      /Case study references missing media index/,
     );
   });
 });

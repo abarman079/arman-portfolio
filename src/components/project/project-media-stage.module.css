@@ -1,3 +1,7 @@
+.motionStage {
+  min-width: 0;
+}
+
 .stage {
   position: relative;
   display: block;

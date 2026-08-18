@@ -1,4 +1,5 @@
 import { parseProjectRecords } from "../lib/projects";
+import { flagshipCaseStudies } from "./case-studies";
 
 const checkedAt = "2026-08-18";
 
@@ -41,6 +42,7 @@ const projectSource = [
       variant: "architecture",
       technologyLimit: 5,
     },
+    caseStudy: flagshipCaseStudies.slatedesk,
     media: [
       {
         src: "/projects/slatedesk/admin-operations-overview.webp",
@@ -121,6 +123,7 @@ const projectSource = [
       variant: "editorial",
       technologyLimit: 5,
     },
+    caseStudy: flagshipCaseStudies.framesignal,
     media: [
       {
         src: "/projects/framesignal/signal-card-decision-anatomy.webp",
@@ -204,6 +207,7 @@ const projectSource = [
       variant: "commerce",
       technologyLimit: 5,
     },
+    caseStudy: flagshipCaseStudies["arctic-daze"],
     media: [
       {
         src: "/projects/arctic-daze/editorial-home-desktop.webp",
@@ -251,6 +255,15 @@ const projectSource = [
         sourceType: "deployment",
         urlOrPath: "https://arctic-daze-kappa.vercel.app/",
         supports: "Verified public deployment and public product framing",
+        checkedAt,
+      },
+      {
+        id: "arctic-collections",
+        sourceType: "source",
+        urlOrPath:
+          "https://github.com/abarman079/arctic-daze/blob/main/app/collections/page.tsx",
+        supports:
+          "URL-driven search and filters, responsive product grid, and server-side product discovery flow",
         checkedAt,
       },
     ],
@@ -315,6 +328,7 @@ const projectSource = [
       variant: "research",
       technologyLimit: 5,
     },
+    caseStudy: flagshipCaseStudies["cctv-violence-detection"],
     media: [
       {
         src: "/projects/cctv-violence-detection/research-system-architecture.webp",
