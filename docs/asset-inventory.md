@@ -107,4 +107,6 @@ No fabricated UI is needed. Prefer charts and architecture. Confirm dataset/samp
 
 - V2 has no approved favicon, wordmark asset, social image, or portrait.
 - Phase 1 may create a restrained typographic identity and favicon after the design foundation is approved; the legacy lightning mark is excluded.
-- The legacy resume is reference-only. Navigation must omit Resume until a current redacted PDF is supplied.
+- The legacy resume remains reference-only.
+- A current owner-supplied, two-page, tagged, unencrypted PDF now exists at `public/resume/md-akibul-hasan-arman-cv.pdf`. It was visually checked on 2026-08-18 and is the source of truth for the `/resume` reading experience.
+- Portfolio project data must not import claims from the PDF unless those claims also pass the evidence/owner-confirmation rules in `docs/verified-content-model.md`.

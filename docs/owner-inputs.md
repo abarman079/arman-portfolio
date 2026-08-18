@@ -4,7 +4,7 @@ None of these items blocks Phase 1 unless its related feature is being published
 
 ## Identity and contact
 
-- [ ] Supply a current redacted resume PDF. Exclude street address, private phone number, and any information not intended for public download.
+- [x] Current public resume supplied at `public/resume/md-akibul-hasan-arman-cv.pdf`. The owner designated this PDF as the resume source of truth on 2026-08-18.
 - [ ] Confirm the canonical LinkedIn URL. The public-profile candidate found during audit is `https://www.linkedin.com/in/md-akibul-hasan-arman-81857b339/`; the legacy site uses a different path.
 - [ ] Confirm the public contact email. The legacy candidate is `abarmanoffice@gmail.com`; it will not be published without confirmation.
 - [ ] Confirm whether to publish location and at what granularity (for example, Dhaka, Bangladesh).
