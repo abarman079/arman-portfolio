@@ -2,54 +2,58 @@ import Link from "next/link";
 
 import { siteConfig } from "@/lib/seo";
 
+import styles from "./site-footer.module.css";
+
 export function SiteFooter() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="site-footer">
-      <div className="site-container site-footer__grid">
-        <div>
-          <p className="site-footer__name">{siteConfig.name}</p>
-          <p className="site-footer__positioning">{siteConfig.positioning}</p>
-          <p className="site-footer__location">{siteConfig.location}</p>
+    <footer id="site-footer" className={styles.footer}>
+      <div className={`site-container ${styles.container}`}>
+        <div className={styles.topline}>
+          <p>End of transmission / Portfolio V2</p>
+          <Link href="/#main-content">Back to top ↑</Link>
         </div>
 
-        <nav aria-label="Footer navigation">
-          <ul className="site-footer__links">
-            <li>
-              <Link href="/work">Work</Link>
-            </li>
-            <li>
-              <Link href="/resume">Resume</Link>
-            </li>
-            <li>
-              <a
-                href={siteConfig.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub profile, opens in a new tab"
-              >
-                GitHub <span aria-hidden="true">↗</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href={siteConfig.linkedinUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn profile, opens in a new tab"
-              >
-                LinkedIn <span aria-hidden="true">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href={siteConfig.emailHref}>Email <span aria-hidden="true">↗</span></a>
-            </li>
-          </ul>
-        </nav>
-
-        <p className="site-footer__meta">
-          <span>Portfolio V2</span>
-          <span>© 2026</span>
+        <p className={styles.wordmark} aria-label="Arman">
+          ARMAN<span>.</span>
         </p>
+
+        <div className={styles.footerGrid}>
+          <div className={styles.identity}>
+            <p>{siteConfig.positioning}</p>
+            <p>{siteConfig.location}</p>
+          </div>
+
+          <nav className={styles.siteNavigation} aria-label="Footer site navigation">
+            <p>Navigate</p>
+            <ul>
+              <li><Link href="/#work">Selected work</Link></li>
+              <li><Link href="/#expertise">Expertise</Link></li>
+              <li><Link href="/#about">About</Link></li>
+              <li><Link href={siteConfig.resumePageUrl}>Resume</Link></li>
+            </ul>
+          </nav>
+
+          <nav className={styles.socialNavigation} aria-label="Footer profile links">
+            <p>Connect</p>
+            <ul>
+              <li>
+                <a href={siteConfig.githubUrl} target="_blank" rel="noreferrer">
+                  GitHub <span aria-hidden="true">↗</span>
+                </a>
+              </li>
+              <li>
+                <a href={siteConfig.linkedinUrl} target="_blank" rel="noreferrer">
+                  LinkedIn <span aria-hidden="true">↗</span>
+                </a>
+              </li>
+              <li><a href={siteConfig.emailHref}>Email <span aria-hidden="true">↗</span></a></li>
+            </ul>
+          </nav>
+
+          <p className={styles.copyright}>© {year} {siteConfig.shortName}</p>
+        </div>
       </div>
     </footer>
   );

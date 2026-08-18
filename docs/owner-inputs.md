@@ -35,8 +35,8 @@ Project-specific:
 ## Deployment and contact service
 
 - [ ] Confirm the final production domain and deployment target before SEO/deployment work.
-- [ ] During the Contact phase, provide Resend credentials, a verified sending domain/from address, and destination email through local/deployment secret storage—not this repository.
-- [ ] During the Contact phase, provide Cloudflare Turnstile site and secret keys plus allowed production hostnames through secret storage.
+- [ ] Configure `RESEND_API_KEY`, an owner-verified `CONTACT_FROM_EMAIL`, and `CONTACT_TO_EMAIL` in local/deployment secret storage—not this repository.
+- [ ] Configure production `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY`, restrict the widget to the final hostname, and set `SITE_URL` to that production origin.
 
 ## Archive clarifications if promoted later
 

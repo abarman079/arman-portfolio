@@ -1,0 +1,36 @@
+.button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--night-muted);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  color: var(--signal);
+}
+
+.label {
+  display: grid;
+  min-width: 7.8rem;
+  text-align: left;
+}
+
+.label > span {
+  grid-area: 1 / 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .label span {
+    transition: none;
+  }
+}

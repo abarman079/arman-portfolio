@@ -243,9 +243,7 @@ a {
   color: var(--night-ink);
 }
 
-.section-block--night :focus-visible,
-.contact-foundation :focus-visible,
-.site-footer :focus-visible {
+.section-block--night :focus-visible {
   outline-color: var(--signal);
 }
 
@@ -310,67 +308,6 @@ a {
 .section-block--night .action-link--quiet:hover,
 .section-block--night .action-link--secondary:hover {
   background: var(--night-surface);
-}
-
-/* Contact */
-
-.contact-foundation {
-  padding-block: var(--section-space);
-  background: var(--night);
-  color: var(--night-ink);
-}
-
-.contact-foundation .eyebrow {
-  color: var(--signal);
-}
-
-.contact-foundation__grid {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: clamp(1rem, 1.8vw, 2rem);
-  align-items: end;
-}
-
-.contact-foundation__grid > div:first-child {
-  grid-column: 1 / span 8;
-}
-
-.contact-foundation h2 {
-  max-width: 10ch;
-  margin-top: var(--space-6);
-  font-size: clamp(3.2rem, 7vw, 8rem);
-  font-weight: 580;
-  letter-spacing: -0.065em;
-  line-height: 0.91;
-}
-
-.contact-foundation__body {
-  grid-column: 9 / -1;
-}
-
-.contact-foundation__body p {
-  margin-bottom: var(--space-8);
-  color: var(--night-muted);
-}
-
-.contact-foundation .action-link--secondary {
-  border-color: var(--night-rule);
-  color: var(--night-ink);
-}
-
-.contact-foundation .action-link--secondary:hover {
-  background: var(--night-surface);
-}
-
-.contact-foundation .action-link--primary {
-  border-color: var(--signal);
-  background: var(--signal);
-  color: var(--ink);
-}
-
-.contact-foundation .action-link--primary:hover {
-  border-color: var(--night-ink);
-  background: var(--night-ink);
 }
 
 /* Work route */
@@ -519,83 +456,11 @@ a {
   padding: var(--space-4) var(--space-2) var(--space-2);
 }
 
-/* Footer */
-
-.site-footer {
-  padding-block: var(--space-16);
-  border-top: 1px solid var(--night-rule);
-  background: var(--night);
-  color: var(--night-ink);
-}
-
-.site-footer__grid {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: clamp(1rem, 1.8vw, 2rem);
-  align-items: end;
-}
-
-.site-footer__grid > div {
-  grid-column: 1 / span 6;
-}
-
-.site-footer__name {
-  font-size: clamp(1.5rem, 2.4vw, 2.4rem);
-  font-weight: 600;
-  letter-spacing: -0.04em;
-}
-
-.site-footer__positioning {
-  max-width: 34rem;
-  margin-top: var(--space-3);
-  color: var(--night-muted);
-}
-
-.site-footer__location {
-  margin-top: var(--space-4);
-  color: var(--signal);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.site-footer nav {
-  grid-column: 8 / span 2;
-}
-
-.site-footer__links {
-  display: grid;
-  gap: var(--space-2);
-}
-
-.site-footer__links a {
-  display: inline-flex;
-  min-height: 2.75rem;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-}
-
-.site-footer__meta {
-  display: flex;
-  grid-column: 11 / -1;
-  justify-content: space-between;
-  gap: var(--space-4);
-  color: var(--night-muted);
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  text-transform: uppercase;
-}
-
 @media (max-width: 64rem) {
   .site-grid,
   .section-heading,
-  .contact-foundation__grid,
   .page-intro__grid,
-  .resume-header,
-  .site-footer__grid {
+  .resume-header {
     grid-template-columns: repeat(8, minmax(0, 1fr));
   }
 
@@ -610,26 +475,12 @@ a {
     margin-bottom: var(--space-8);
   }
 
-  .contact-foundation__grid > div:first-child,
   .resume-header > div:first-child {
     grid-column: 1 / span 5;
   }
 
-  .contact-foundation__body,
   .resume-actions {
     grid-column: 6 / -1;
-  }
-
-  .site-footer__grid > div {
-    grid-column: 1 / span 4;
-  }
-
-  .site-footer nav {
-    grid-column: 5 / span 2;
-  }
-
-  .site-footer__meta {
-    grid-column: 7 / -1;
   }
 }
 
@@ -647,20 +498,12 @@ a {
     font-size: clamp(2.6rem, 12vw, 4.6rem);
   }
 
-  .contact-foundation__grid > div:first-child,
-  .contact-foundation__body,
   .resume-header > div:first-child,
-  .resume-actions,
-  .site-footer__grid > div,
-  .site-footer nav,
-  .site-footer__meta {
+  .resume-actions {
     grid-column: 1 / -1;
   }
 
-  .contact-foundation__body,
-  .resume-actions,
-  .site-footer nav,
-  .site-footer__meta {
+  .resume-actions {
     margin-top: var(--space-8);
   }
 
@@ -678,9 +521,6 @@ a {
     gap: var(--space-2);
   }
 
-  .site-footer__meta {
-    justify-content: flex-start;
-  }
 }
 
 @media (max-width: 38rem) {
