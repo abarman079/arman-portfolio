@@ -11,7 +11,7 @@
 }
 
 .featured .item {
-  min-height: 14rem;
+  min-height: 13rem;
   padding-block: clamp(2rem, 4vw, 3.25rem);
 }
 
@@ -40,6 +40,10 @@
   grid-column: 2 / span 6;
 }
 
+.featured .identity {
+  grid-column: 2 / span 5;
+}
+
 .type {
   color: var(--signal-text);
 }
@@ -64,6 +68,27 @@
   grid-column: 8 / span 3;
   align-self: center;
   color: var(--muted);
+}
+
+.evidence {
+  grid-column: 7 / span 4;
+  align-self: end;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.evidenceLabel {
+  margin-bottom: var(--space-3);
+  color: var(--signal-text);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.evidence .stack {
+  margin-top: var(--space-5);
 }
 
 .action {
@@ -107,6 +132,14 @@
     grid-column: 2 / span 4;
   }
 
+  .featured .identity {
+    grid-column: 2 / span 4;
+  }
+
+  .evidence {
+    grid-column: 6 / span 2;
+  }
+
   .stack {
     display: none;
   }
@@ -131,6 +164,15 @@
   .identity,
   .additional .identity {
     grid-column: 2;
+  }
+
+  .featured .identity,
+  .evidence {
+    grid-column: 2;
+  }
+
+  .evidence {
+    margin-top: var(--space-4);
   }
 
   .identity h3,

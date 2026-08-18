@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import { capabilityDefinitions } from "../content/capabilities";
 import {
   additionalArchiveProjects,
   featuredArchiveProjects,
@@ -75,6 +76,28 @@ describe("verified project source", () => {
       "arctic-daze",
       "cctv-violence-detection",
     ]);
+  });
+
+  it("keeps capability groups attached to verified project evidence", () => {
+    for (const capability of capabilityDefinitions) {
+      const relatedProjects = capability.projectSlugs.map((slug) => {
+        const project = findProjectBySlug(projects, slug);
+        expect(project).toBeDefined();
+        return project;
+      });
+
+      for (const technology of capability.technologies) {
+        expect(
+          relatedProjects.some((project) => project?.technologies.includes(technology)),
+        ).toBe(true);
+      }
+
+      if (capability.media) {
+        const mediaProject = findProjectBySlug(projects, capability.media.projectSlug);
+        expect(capability.projectSlugs).toContain(capability.media.projectSlug);
+        expect(mediaProject?.media?.[capability.media.mediaIndex]).toBeDefined();
+      }
+    }
   });
 
   it("rejects duplicate slugs", () => {

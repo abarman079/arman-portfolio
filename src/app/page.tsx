@@ -1,7 +1,7 @@
-import { AboutFoundation } from "@/components/sections/about-foundation";
+import { AboutSection } from "@/components/sections/about-section";
 import { ArchiveFoundation } from "@/components/sections/archive-foundation";
+import { CapabilityGallery } from "@/components/sections/capability-gallery";
 import { ContactFoundation } from "@/components/sections/contact-foundation";
-import { ExpertiseFoundation } from "@/components/sections/expertise-foundation";
 import { HeroFoundation } from "@/components/sections/hero-foundation";
 import { SelectedWorkFoundation } from "@/components/sections/selected-work-foundation";
 
@@ -10,9 +10,9 @@ export default function Home() {
     <main id="main-content">
       <HeroFoundation />
       <SelectedWorkFoundation />
-      <ExpertiseFoundation />
+      <CapabilityGallery />
       <ArchiveFoundation />
-      <AboutFoundation />
+      <AboutSection />
       <ContactFoundation />
     </main>
   );

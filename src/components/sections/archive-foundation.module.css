@@ -1,5 +1,5 @@
 .group + .group {
-  margin-top: clamp(4rem, 8vw, 7rem);
+  margin-top: clamp(3rem, 6vw, 5.5rem);
 }
 
 .groupHeader {

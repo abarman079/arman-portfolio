@@ -34,9 +34,17 @@ export function ProjectArchive({
                 <p className={styles.summary}>{project.shortSummary}</p>
               ) : null}
             </div>
-            <p className={styles.stack}>
-              {project.technologies.slice(0, variant === "featured" ? 4 : 2).join(" / ")}
-            </p>
+            {variant === "featured" ? (
+              <div className={styles.evidence}>
+                <p className={styles.evidenceLabel}>Verified technical focus</p>
+                <p>{project.architectureFacts?.[0] ?? project.functionality[0]}</p>
+                <p className={styles.stack}>
+                  {project.technologies.slice(0, 4).join(" / ")}
+                </p>
+              </div>
+            ) : (
+              <p className={styles.stack}>{project.technologies.slice(0, 2).join(" / ")}</p>
+            )}
             <div className={styles.action}>
               <ActionLink
                 href={project.repositoryUrl}
