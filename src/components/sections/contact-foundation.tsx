@@ -19,18 +19,22 @@ export function ContactFoundation() {
         </div>
         <div className="contact-foundation__body">
           <p>
-            The direct contact channel will be added after the public address is
-            confirmed. Until then, the verified engineering record remains
-            available on GitHub.
+            Based in {siteConfig.location}. For project conversations or
+            engineering collaboration, email is the clearest direct channel.
           </p>
-          <ActionLink
-            href={siteConfig.githubUrl}
-            external
-            variant="secondary"
-            ariaLabel="GitHub profile, opens in a new tab"
-          >
-            View GitHub
-          </ActionLink>
+          <div className="action-group">
+            <ActionLink href={siteConfig.emailHref} native variant="primary">
+              Send email
+            </ActionLink>
+            <ActionLink
+              href={siteConfig.linkedinUrl}
+              external
+              variant="secondary"
+              ariaLabel="LinkedIn profile, opens in a new tab"
+            >
+              LinkedIn
+            </ActionLink>
+          </div>
         </div>
       </div>
     </section>

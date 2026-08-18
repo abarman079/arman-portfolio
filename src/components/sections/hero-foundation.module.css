@@ -1,0 +1,372 @@
+.hero {
+  position: relative;
+  overflow: clip;
+  border-bottom: 1px solid var(--rule);
+  background: var(--canvas);
+}
+
+.navSentinel {
+  position: absolute;
+  top: clamp(7.5rem, 18svh, 11rem);
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.grid {
+  display: grid;
+  min-height: calc(100svh - 5.75rem);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1rem, 1.8vw, 2rem);
+  align-content: space-between;
+  padding-block: clamp(3.7rem, 7vh, 6.5rem) clamp(1.5rem, 3.5vh, 3rem);
+}
+
+.copy {
+  display: grid;
+  grid-column: 1 / span 8;
+  align-content: end;
+}
+
+.identity {
+  margin-bottom: clamp(1.4rem, 3vh, 2.6rem);
+}
+
+.title {
+  max-width: 11ch;
+  font-size: clamp(3.7rem, 6.65vw, 6.8rem);
+  font-weight: 620;
+  letter-spacing: -0.068em;
+  line-height: 0.88;
+}
+
+.title > span {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+}
+
+.title em {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.045em;
+}
+
+.lede {
+  max-width: 43rem;
+  margin-top: clamp(1.7rem, 3.6vh, 3rem);
+  color: var(--muted);
+  font-size: clamp(1rem, 0.93rem + 0.32vw, 1.22rem);
+  line-height: 1.58;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: clamp(1.8rem, 4vh, 3rem);
+}
+
+.actionInner {
+  justify-content: space-between;
+}
+
+.fieldColumn {
+  grid-column: 9 / -1;
+  align-self: end;
+}
+
+.field {
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.fieldHeader {
+  display: flex;
+  min-height: 3.2rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.fieldHeader p:last-child {
+  color: var(--muted);
+}
+
+.fieldHeader span {
+  color: var(--signal-text);
+}
+
+.fieldFrame {
+  position: relative;
+  min-height: clamp(22rem, 47vh, 31rem);
+  overflow: hidden;
+  background-image:
+    linear-gradient(rgba(94, 98, 105, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 98, 105, 0.08) 1px, transparent 1px);
+  background-size: 25% 20%;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.domainMap {
+  position: absolute;
+  inset: 0;
+}
+
+.domainMap li {
+  position: absolute;
+  display: grid;
+  width: min(9.8rem, 42%);
+  grid-template-columns: 1.7rem 1fr;
+  gap: 0.2rem;
+  align-items: center;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--rule);
+  background: rgba(243, 240, 232, 0.92);
+  box-shadow: 0 0 0 0.25rem rgba(243, 240, 232, 0.56);
+}
+
+.domainMap span {
+  color: var(--signal-text);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+}
+
+.domainMap strong {
+  font-size: 0.69rem;
+  font-weight: 650;
+  line-height: 1.18;
+}
+
+.domainOne {
+  top: 62%;
+  left: 1%;
+}
+
+.domainTwo {
+  top: 35%;
+  left: 28%;
+}
+
+.domainThree {
+  top: 12%;
+  right: 1%;
+}
+
+.domainFour {
+  right: 0;
+  bottom: 7%;
+}
+
+.coordinate {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.2rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+}
+
+.meta {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: 3fr 5fr 4fr;
+  gap: clamp(1rem, 1.8vw, 2rem);
+  align-items: end;
+  margin-top: clamp(2.5rem, 5vh, 4rem);
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+.meta > div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.meta span,
+.meta nav {
+  font-family: var(--font-mono);
+  font-size: 0.61rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.meta > div > span {
+  color: var(--muted);
+}
+
+.meta strong {
+  font-size: 0.79rem;
+  font-weight: 620;
+}
+
+.meta nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.25rem;
+}
+
+.meta a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+}
+
+.meta a:hover {
+  color: var(--signal-text);
+}
+
+@media (max-width: 72rem) {
+  .grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+
+  .copy {
+    grid-column: 1 / span 5;
+  }
+
+  .fieldColumn {
+    grid-column: 6 / -1;
+  }
+
+  .title {
+    font-size: clamp(3.5rem, 7.8vw, 6.2rem);
+  }
+
+  .domainMap li {
+    width: min(8.4rem, 47%);
+  }
+}
+
+@media (max-width: 56rem) {
+  .grid {
+    min-height: auto;
+    align-content: start;
+  }
+
+  .copy,
+  .fieldColumn {
+    grid-column: 1 / -1;
+  }
+
+  .fieldColumn {
+    margin-top: clamp(4rem, 10vw, 6rem);
+  }
+
+  .fieldFrame {
+    min-height: 27rem;
+  }
+
+  .meta {
+    grid-template-columns: 2fr 3fr 3fr;
+  }
+}
+
+@media (max-width: 48rem) {
+  .grid {
+    min-height: calc(100svh - 5.5rem);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding-top: clamp(3.5rem, 13vw, 5.5rem);
+  }
+
+  .title {
+    max-width: 100%;
+    font-size: clamp(3.2rem, 14.8vw, 5.6rem);
+    line-height: 0.9;
+  }
+
+  .title > span {
+    width: auto;
+  }
+
+  .lede {
+    max-width: 34rem;
+  }
+
+  .fieldFrame {
+    min-height: 24rem;
+  }
+
+  .meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .meta nav {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 38rem) {
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .fieldFrame {
+    min-height: auto;
+    background-size: 25% 25%;
+  }
+
+  .canvas {
+    min-height: 22rem;
+  }
+
+  .domainMap {
+    position: relative;
+    display: grid;
+    min-height: 22rem;
+    align-content: center;
+    gap: 0.55rem;
+    padding: 2.5rem 1rem;
+  }
+
+  .domainMap li {
+    position: static;
+    width: 100%;
+    min-height: 3.2rem;
+    grid-template-columns: 2.2rem 1fr;
+    box-shadow: none;
+  }
+
+  .domainMap strong {
+    font-size: 0.78rem;
+  }
+
+  .coordinate {
+    right: 0.7rem;
+    bottom: 0.7rem;
+    left: auto;
+  }
+
+  .meta {
+    grid-template-columns: 1fr;
+  }
+
+  .meta nav {
+    grid-column: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canvas {
+    opacity: 0.74;
+  }
+}

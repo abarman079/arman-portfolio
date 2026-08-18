@@ -8,6 +8,7 @@ interface ActionLinkProps {
   children: ReactNode;
   variant?: ActionLinkVariant;
   external?: boolean;
+  native?: boolean;
   download?: string;
   className?: string;
   ariaLabel?: string;
@@ -18,6 +19,7 @@ export function ActionLink({
   children,
   variant = "secondary",
   external = false,
+  native = false,
   download,
   className = "",
   ariaLabel,
@@ -32,7 +34,7 @@ export function ActionLink({
     </>
   );
 
-  if (external || download) {
+  if (external || download || native) {
     return (
       <a
         href={href}

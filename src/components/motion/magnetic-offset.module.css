@@ -1,0 +1,8 @@
+.inner {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: inherit;
+  gap: inherit;
+  will-change: transform;
+}
