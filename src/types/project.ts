@@ -66,6 +66,11 @@ export interface ProjectMedia {
   caption?: string;
 }
 
+export interface ProjectPresentation {
+  variant: "architecture" | "editorial" | "commerce" | "research";
+  technologyLimit: number;
+}
+
 export type CaseStudyBlock =
   | {
       type: "prose";
@@ -113,6 +118,7 @@ export interface ProjectRecord {
   role?: string;
   metrics?: ProjectMetric[];
   media?: ProjectMedia[];
+  presentation?: ProjectPresentation;
   caseStudy?: ProjectCaseStudy;
   evidence: EvidenceSource[];
 }

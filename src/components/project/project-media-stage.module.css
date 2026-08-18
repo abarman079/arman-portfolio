@@ -1,0 +1,251 @@
+.stage {
+  position: relative;
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--night-rule);
+  color: inherit;
+  text-decoration: none;
+  transform: translateZ(0);
+}
+
+.stage::after {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border: 1px solid transparent;
+  content: "";
+  pointer-events: none;
+  transition: border-color 180ms ease;
+}
+
+.stage:hover::after,
+.stage:focus-visible::after {
+  border-color: var(--signal);
+}
+
+.action {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 6;
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  gap: 0.8rem;
+  padding-inline: 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--night-ink) 38%, transparent);
+  background: color-mix(in srgb, var(--night) 88%, transparent);
+  color: var(--night-ink);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.figure {
+  position: absolute;
+  margin: 0;
+  overflow: hidden;
+  background: #f8f7f2;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0.55rem 0.7rem;
+  background: color-mix(in srgb, var(--night) 88%, transparent);
+  color: var(--night-ink);
+  font-family: var(--font-mono);
+  font-size: 0.59rem;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.architecture {
+  aspect-ratio: 16 / 9;
+  background:
+    linear-gradient(var(--night-rule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--night-rule) 1px, transparent 1px),
+    var(--night-surface);
+  background-size: 3rem 3rem;
+}
+
+.architecture .figure1 {
+  top: 8%;
+  left: 3%;
+  width: 84%;
+  box-shadow: 0 1.4rem 4rem rgb(0 0 0 / 30%);
+}
+
+.architecture .figure2 {
+  right: 3%;
+  bottom: 5%;
+  width: 42%;
+  border: 0.45rem solid var(--night);
+  box-shadow: 0 1rem 3rem rgb(0 0 0 / 42%);
+}
+
+.editorial {
+  aspect-ratio: 16 / 9;
+  background: #080808;
+}
+
+.editorial::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(circle at 78% 18%, #51421d 0, transparent 35%);
+  content: "";
+}
+
+.editorial .figure1 {
+  top: 6%;
+  left: 3%;
+  z-index: 1;
+  width: 87%;
+  box-shadow: 0 1.4rem 4rem rgb(0 0 0 / 55%);
+}
+
+.editorial .figure2 {
+  right: 2%;
+  bottom: 4%;
+  z-index: 2;
+  width: 37%;
+  border: 0.4rem solid #111;
+  box-shadow: 0 1.2rem 3.5rem rgb(0 0 0 / 65%);
+}
+
+.commerce {
+  aspect-ratio: 16 / 10;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 35%), transparent 50%),
+    #d8cbbb;
+}
+
+.commerce .figure1 {
+  top: 4%;
+  left: 7%;
+  width: 54%;
+  box-shadow: 0 1.3rem 3.2rem rgb(74 54 36 / 27%);
+}
+
+.commerce .figure2 {
+  right: 8%;
+  bottom: 3%;
+  width: 25%;
+  border: 0.38rem solid #17130f;
+  box-shadow: 0 1.4rem 3rem rgb(74 54 36 / 35%);
+}
+
+.research {
+  aspect-ratio: 16 / 10;
+  background:
+    linear-gradient(#dbe1e8 1px, transparent 1px),
+    linear-gradient(90deg, #dbe1e8 1px, transparent 1px),
+    #eef1f4;
+  background-size: 2.6rem 2.6rem;
+}
+
+.research .figure1 {
+  top: 8%;
+  left: 4%;
+  width: 87%;
+  border: 1px solid #c5ccd4;
+  box-shadow: 0 1.1rem 2.6rem rgb(23 39 58 / 16%);
+}
+
+.research .figure2 {
+  right: 4%;
+  bottom: 4%;
+  width: 31%;
+  border: 0.45rem solid var(--night);
+  box-shadow: 0 1.2rem 3rem rgb(23 39 58 / 28%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .figure {
+    transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .stage:hover .figure1 {
+    transform: translate3d(-0.25%, -0.35%, 0) scale(1.008);
+  }
+
+  .stage:hover .figure2 {
+    transform: translate3d(0.5%, -1%, 0) scale(1.012);
+  }
+}
+
+@media (max-width: 48rem) {
+  .action {
+    top: 0.65rem;
+    right: 0.65rem;
+  }
+
+  .architecture,
+  .editorial {
+    aspect-ratio: 1 / 0.72;
+  }
+
+  .architecture .figure1,
+  .editorial .figure1 {
+    top: 12%;
+    left: 4%;
+    width: 92%;
+  }
+
+  .architecture .figure2,
+  .editorial .figure2 {
+    display: none;
+  }
+
+  .commerce {
+    aspect-ratio: 1 / 0.96;
+  }
+
+  .commerce .figure1 {
+    top: 4%;
+    left: 4%;
+    width: 63%;
+  }
+
+  .commerce .figure2 {
+    right: 4%;
+    width: 34%;
+  }
+
+  .research {
+    aspect-ratio: 1 / 0.92;
+  }
+
+  .research .figure1 {
+    top: 13%;
+    width: 92%;
+  }
+
+  .research .figure2 {
+    right: 5%;
+    width: 42%;
+  }
+
+  .caption {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .figure,
+  .stage::after {
+    transition: none;
+  }
+}

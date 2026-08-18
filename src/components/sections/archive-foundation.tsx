@@ -4,14 +4,11 @@ import {
 } from "@/content/projects";
 
 import { ActionLink } from "../ui/action-link";
+import { ProjectArchive } from "../project/project-archive";
 import { SectionHeading } from "../ui/section-heading";
+import styles from "./archive-foundation.module.css";
 
 export function ArchiveFoundation() {
-  const archiveProjects = [
-    ...featuredArchiveProjects,
-    ...additionalArchiveProjects,
-  ];
-
   return (
     <section
       className="section-block section-block--surface"
@@ -24,27 +21,29 @@ export function ArchiveFoundation() {
           id="archive-title"
         />
 
-        <ol className="archive-grid">
-          {archiveProjects.map((project, index) => (
-            <li key={project.slug}>
-              <a
-                href={project.repositoryUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`${project.canonicalName} repository, opens in a new tab`}
-              >
-                <span className="archive-grid__index">
-                  {String(index + 5).padStart(2, "0")}
-                </span>
-                <span>
-                  <strong>{project.canonicalName}</strong>
-                  <small>{project.shortSummary}</small>
-                </span>
-                <span aria-hidden="true">↗</span>
-              </a>
-            </li>
-          ))}
-        </ol>
+        <div className={styles.group}>
+          <div className={styles.groupHeader}>
+            <h3>Featured archive</h3>
+            <p>Research and data systems / 03 projects</p>
+          </div>
+          <ProjectArchive
+            projects={featuredArchiveProjects}
+            startIndex={5}
+            variant="featured"
+          />
+        </div>
+
+        <div className={styles.group}>
+          <div className={styles.groupHeader}>
+            <h3>Additional archive</h3>
+            <p>Supporting application work / 05 projects</p>
+          </div>
+          <ProjectArchive
+            projects={additionalArchiveProjects}
+            startIndex={8}
+            variant="additional"
+          />
+        </div>
 
         <div className="section-action">
           <ActionLink href="/work" variant="primary">

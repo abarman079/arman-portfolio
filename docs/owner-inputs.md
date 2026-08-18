@@ -20,15 +20,15 @@ For SlateDesk, FrameSignal, Arctic Daze, and CCTV Violence Detection:
 
 Project-specific:
 
-- [ ] SlateDesk: confirm whether the recruitment-project context should be public and whether committed screenshots contain safe demo data.
-- [ ] FrameSignal: approve specific public pages for capture and decide whether any authenticated CMS imagery may be shown.
-- [ ] Arctic Daze: confirm the owner/business relationship, feature-completion boundaries, and republication rights/credits for all product photography.
+- [ ] SlateDesk: confirm whether the recruitment-project context should be public. Phase 3 crops omit the demo identities/emails visible in the source screenshots.
+- [x] FrameSignal: Phase 3 public-page capture was authorized by the implementation brief; retained captures exclude movie media and authenticated CMS content. Authenticated CMS imagery still requires separate later approval.
+- [ ] Arctic Daze: confirm the owner/business relationship, feature-completion boundaries, and republication rights/credits for all product photography. Phase 3 retained only captures with the photography cropped out or outside the viewport.
 - [ ] CCTV: confirm academic context, dataset attribution/license, and whether any sample frames are suitable for public display.
 
 ## Missing visual material
 
 - [ ] Provide higher-resolution SlateDesk images only if the committed seven screenshots do not pass later visual QA.
-- [ ] Approve fresh desktop/mobile captures of FrameSignal and Arctic Daze.
+- [x] Fresh public desktop/mobile captures of FrameSignal and Arctic Daze were authorized for Phase 3. Only the rights-safe frames documented in `docs/phase-3-media-provenance.md` were retained.
 - [ ] If archive rows later require imagery, provide or approve safe captures for TravelEase, RoleBoard, PulseFlow, EWU FUB Energy Monitor, and EduConsult Pro.
 - [ ] Confirm ownership/license for PulseFlow marks and any custom EduConsult visuals.
 

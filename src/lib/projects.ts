@@ -56,6 +56,13 @@ const mediaSchema = z
   })
   .strict();
 
+const presentationSchema = z
+  .object({
+    variant: z.enum(["architecture", "editorial", "commerce", "research"]),
+    technologyLimit: z.number().int().positive().max(8),
+  })
+  .strict();
+
 const caseStudyBlockSchema = z.discriminatedUnion("type", [
   z
     .object({
@@ -115,6 +122,7 @@ export const projectSchema: z.ZodType<ProjectRecord> = z
     role: nonEmptyText.optional(),
     metrics: z.array(metricSchema).min(1).optional(),
     media: z.array(mediaSchema).min(1).optional(),
+    presentation: presentationSchema.optional(),
     caseStudy: caseStudySchema.optional(),
     evidence: z.array(evidenceSourceSchema).min(1),
   })
@@ -141,6 +149,22 @@ export const projectSchema: z.ZodType<ProjectRecord> = z
         code: "custom",
         path: ["liveUrl"],
         message: "Live projects require a verified live URL.",
+      });
+    }
+
+    if (project.tier === "flagship" && !project.presentation) {
+      context.addIssue({
+        code: "custom",
+        path: ["presentation"],
+        message: "Flagship projects require presentation metadata.",
+      });
+    }
+
+    if (project.tier === "flagship" && !project.media) {
+      context.addIssue({
+        code: "custom",
+        path: ["media"],
+        message: "Flagship projects require verified production media.",
       });
     }
 

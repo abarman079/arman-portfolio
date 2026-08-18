@@ -37,6 +37,36 @@ const projectSource = [
       "PostgreSQL optimistic concurrency using xmin",
       "Background deadline processing and targeted automated tests",
     ],
+    presentation: {
+      variant: "architecture",
+      technologyLimit: 5,
+    },
+    media: [
+      {
+        src: "/projects/slatedesk/admin-operations-overview.webp",
+        width: 1440,
+        height: 837,
+        alt: "SlateDesk admin workspace showing academic operations, people, classes, assignments, and submissions at a glance.",
+        kind: "screenshot",
+        source:
+          "SlateDesk repository docs/screenshots/02-admin-dashboard.png at commit 296cd7a; demo identity sidebar cropped for privacy.",
+        licenseOrPermission: "owned",
+        privacyReviewed: true,
+        caption: "Admin operations overview",
+      },
+      {
+        src: "/projects/slatedesk/teacher-assignment-ledger.webp",
+        width: 1440,
+        height: 823,
+        alt: "SlateDesk teacher assignment ledger showing a published assignment, submission count, and workflow controls.",
+        kind: "screenshot",
+        source:
+          "SlateDesk repository docs/screenshots/04-teacher-assignment-ledger.png at commit 296cd7a; demo identity sidebar cropped for privacy.",
+        licenseOrPermission: "owned",
+        privacyReviewed: true,
+        caption: "Teacher assignment workflow",
+      },
+    ],
     evidence: [
       {
         id: "slatedesk-readme",
@@ -86,6 +116,36 @@ const projectSource = [
       "Separate public and administration route groups",
       "Primarily server-rendered public content with local fallback content",
       "Supabase authentication, database authorization, and managed media metadata",
+    ],
+    presentation: {
+      variant: "editorial",
+      technologyLimit: 5,
+    },
+    media: [
+      {
+        src: "/projects/framesignal/signal-card-decision-anatomy.webp",
+        width: 1425,
+        height: 900,
+        alt: "FrameSignal decision interface showing a spoiler-aware Signal Card beside its decision anatomy.",
+        kind: "screenshot",
+        source:
+          "Captured from the verified FrameSignal deployment at https://frame-signal.vercel.app/ on 2026-08-18 at a 1440 by 900 desktop viewport.",
+        licenseOrPermission: "owned",
+        privacyReviewed: true,
+        caption: "Signal Card and decision anatomy",
+      },
+      {
+        src: "/projects/framesignal/decision-first-home.webp",
+        width: 1425,
+        height: 900,
+        alt: "FrameSignal homepage introducing verdict-first movie guidance, spoiler boundaries, and legal viewing guidance.",
+        kind: "screenshot",
+        source:
+          "Captured from the verified FrameSignal deployment at https://frame-signal.vercel.app/ on 2026-08-18 at a 1440 by 900 desktop viewport.",
+        licenseOrPermission: "owned",
+        privacyReviewed: true,
+        caption: "Decision-first public experience",
+      },
     ],
     evidence: [
       {
@@ -139,6 +199,36 @@ const projectSource = [
     ],
     architectureFacts: [
       "Next.js App Router application with reusable components and Supabase integration",
+    ],
+    presentation: {
+      variant: "commerce",
+      technologyLimit: 5,
+    },
+    media: [
+      {
+        src: "/projects/arctic-daze/editorial-home-desktop.webp",
+        width: 735,
+        height: 900,
+        alt: "Arctic Daze desktop interface showing its editorial navigation, typography, and Malaysia-to-Bangladesh product positioning.",
+        kind: "screenshot",
+        source:
+          "Interface-only crop captured from the verified Arctic Daze deployment at https://arctic-daze-kappa.vercel.app/ on 2026-08-18; third-party editorial photography excluded.",
+        licenseOrPermission: "owned",
+        privacyReviewed: true,
+        caption: "Editorial desktop composition",
+      },
+      {
+        src: "/projects/arctic-daze/editorial-home-mobile.webp",
+        width: 375,
+        height: 844,
+        alt: "Arctic Daze mobile homepage showing responsive navigation, editorial type, and product actions.",
+        kind: "screenshot",
+        source:
+          "Captured from the verified Arctic Daze deployment at https://arctic-daze-kappa.vercel.app/ on 2026-08-18 at a 390 by 844 mobile viewport; no third-party photography is visible.",
+        licenseOrPermission: "owned",
+        privacyReviewed: true,
+        caption: "Responsive mobile experience",
+      },
     ],
     evidence: [
       {
@@ -219,6 +309,36 @@ const projectSource = [
         limitations:
           "Offline experiment result; it does not establish production CCTV performance or real-time deployment behavior.",
         evidenceIds: ["cctv-results", "cctv-split"],
+      },
+    ],
+    presentation: {
+      variant: "research",
+      technologyLimit: 5,
+    },
+    media: [
+      {
+        src: "/projects/cctv-violence-detection/research-system-architecture.webp",
+        width: 1430,
+        height: 782,
+        alt: "Research pipeline from CCTV frame input through preprocessing, model comparison, anomaly detection, evaluation, and offline alert output.",
+        kind: "diagram",
+        source:
+          "CCTV Violence Anomaly Detection repository results/figures/figure_14_system_architecture.png at commit b8df1af.",
+        licenseOrPermission: "owned",
+        privacyReviewed: true,
+        caption: "Offline research and evaluation pipeline",
+      },
+      {
+        src: "/projects/cctv-violence-detection/mobilenetv2-test-confusion-matrix.webp",
+        width: 1200,
+        height: 960,
+        alt: "MobileNetV2 transfer-learning confusion matrix on the documented 750-image frozen test split: 342 normal and 363 anomaly samples classified correctly, with 45 errors.",
+        kind: "chart",
+        source:
+          "CCTV Violence Anomaly Detection repository results/figures/mobilenetv2_transfer_confusion_matrix.png at commit b8df1af.",
+        licenseOrPermission: "owned",
+        privacyReviewed: true,
+        caption: "MobileNetV2 evaluation on the frozen test split",
       },
     ],
     evidence: [

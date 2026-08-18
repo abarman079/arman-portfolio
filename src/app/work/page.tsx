@@ -1,4 +1,5 @@
-import { ProjectList } from "@/components/project/project-list";
+import { FlagshipProjects } from "@/components/project/flagship-projects";
+import { ProjectArchive } from "@/components/project/project-archive";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
   additionalArchiveProjects,
@@ -42,7 +43,7 @@ export default function WorkPage() {
             id="flagship-title"
             tone="dark"
           />
-          <ProjectList projects={flagshipProjects} />
+          <FlagshipProjects projects={flagshipProjects} />
         </div>
       </section>
 
@@ -53,7 +54,11 @@ export default function WorkPage() {
             title="Research and data work with substantial supporting evidence."
             id="featured-title"
           />
-          <ProjectList projects={featuredArchiveProjects} startIndex={5} compact />
+          <ProjectArchive
+            projects={featuredArchiveProjects}
+            startIndex={5}
+            variant="featured"
+          />
         </div>
       </section>
 
@@ -67,7 +72,11 @@ export default function WorkPage() {
             title="Supporting systems, demonstrations, and local application work."
             id="additional-title"
           />
-          <ProjectList projects={additionalArchiveProjects} startIndex={8} compact />
+          <ProjectArchive
+            projects={additionalArchiveProjects}
+            startIndex={8}
+            variant="additional"
+          />
         </div>
       </section>
     </main>

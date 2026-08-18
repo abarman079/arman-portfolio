@@ -17,11 +17,20 @@ This inventory distinguishes evidence/reference material from assets approved fo
 | Unsplash URLs embedded in legacy HTML | Link evidence only | **Never** | Generic stock imagery falsely implies project screenshots. |
 | Legacy HTML/CSS/JS | Yes | **No direct reuse** | Useful for old links/content discovery only; architecture and visual patterns are obsolete. |
 
-## Current tracked public assets
+## Phase 0 starter assets
 
-`public/file.svg`, `globe.svg`, `next.svg`, `vercel.svg`, and `window.svg` are Create Next App assets. They are intentionally untouched in Phase 0 and should be removed when Phase 1 replaces the starter UI.
+`public/file.svg`, `globe.svg`, `next.svg`, `vercel.svg`, and `window.svg` were Create Next App assets. They were intentionally untouched in Phase 0 and removed when Phase 1 replaced the starter UI.
 
-`src/app/favicon.ico` is the Create Next App favicon. No approved V2 favicon, wordmark, or symbol exists yet.
+The Create Next App `src/app/favicon.ico` was removed in Phase 1. No approved V2 favicon, wordmark asset, or symbol exists yet; the current identity is typographic.
+
+## Phase 3 production media
+
+Eight optimized, locally served WebP assets now support the four flagship presentations under `public/projects/`. Exact source commits/URLs, capture dates, crops, publication decisions, and rejected assets are recorded in `docs/phase-3-media-provenance.md`.
+
+- SlateDesk uses two repository screenshots with demo identity sidebars removed.
+- FrameSignal uses two verified public-deployment captures without movie posters, stills, provider marks, or third-party editorial art.
+- Arctic Daze uses an interface-only desktop crop plus a mobile viewport in which no third-party photography appears.
+- CCTV uses a repository architecture diagram and confusion matrix; sample and alert frames remain excluded.
 
 ## Flagship project media
 

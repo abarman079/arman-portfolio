@@ -52,6 +52,19 @@ describe("verified project source", () => {
     }
   });
 
+  it("keeps verified media and presentation metadata on every flagship", () => {
+    for (const project of flagshipProjects) {
+      expect(project.media?.length).toBeGreaterThanOrEqual(2);
+      expect(project.presentation).toBeDefined();
+
+      for (const media of project.media ?? []) {
+        expect(media.src).toMatch(/^\/projects\//);
+        expect(media.privacyReviewed).toBe(true);
+        expect(media.source).toBeTruthy();
+      }
+    }
+  });
+
   it("rejects duplicate slugs", () => {
     const duplicate = structuredClone(projects);
     duplicate[1].slug = duplicate[0].slug;

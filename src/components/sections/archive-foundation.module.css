@@ -1,0 +1,29 @@
+.group + .group {
+  margin-top: clamp(4rem, 8vw, 7rem);
+}
+
+.groupHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding-block: var(--space-5);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.groupHeader h3 {
+  color: var(--ink);
+  font-size: inherit;
+}
+
+@media (max-width: 38rem) {
+  .groupHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+}
