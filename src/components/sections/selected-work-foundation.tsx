@@ -10,6 +10,7 @@ export function SelectedWorkFoundation() {
       id="work"
       className="section-block section-block--night"
       aria-labelledby="selected-work-title"
+      data-motion-section="work"
     >
       <div className="site-container">
         <SectionHeading

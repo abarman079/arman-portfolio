@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { formatProjectTypes } from "@/lib/project-labels";
 import type { CaseStudyBlock, ProjectRecord } from "@/types/project";
+import { CaseStudyMotionShell } from "@/components/motion/case-study-motion-shell";
 
 import { ActionLink } from "../../ui/action-link";
 import { ArchitectureDiagram } from "./architecture-diagram";
@@ -42,7 +43,7 @@ function BlockHeading({
   return (
     <header className={styles.blockHeading}>
       <p>{String(index).padStart(2, "0")}</p>
-      <h2>{heading}</h2>
+      <h2 data-case-heading>{heading}</h2>
     </header>
   );
 }
@@ -58,7 +59,7 @@ function CaseStudyContentBlock({
 }) {
   if (block.type === "prose") {
     return (
-      <section className={`${styles.block} ${styles.prose}`}>
+      <section className={`${styles.block} ${styles.prose}`} data-case-block>
         <BlockHeading heading={block.heading} index={index} />
         <div className={styles.proseBody}>
           {block.paragraphs.map((paragraph) => (
@@ -71,7 +72,7 @@ function CaseStudyContentBlock({
 
   if (block.type === "features") {
     return (
-      <section className={`${styles.block} ${styles.features}`}>
+      <section className={`${styles.block} ${styles.features}`} data-case-block>
         <BlockHeading heading={block.heading} index={index} />
         {block.introduction ? (
           <p className={styles.introduction}>{block.introduction}</p>
@@ -95,7 +96,7 @@ function CaseStudyContentBlock({
 
   if (block.type === "architecture") {
     return (
-      <section className={`${styles.block} ${styles.architectureBlock}`}>
+      <section className={`${styles.block} ${styles.architectureBlock}`} data-case-block>
         <BlockHeading heading={block.heading} index={index} />
         <p className={styles.introduction}>{block.introduction}</p>
         <ArchitectureDiagram
@@ -109,7 +110,7 @@ function CaseStudyContentBlock({
 
   if (block.type === "decisions") {
     return (
-      <section className={`${styles.block} ${styles.decisions}`}>
+      <section className={`${styles.block} ${styles.decisions}`} data-case-block>
         <BlockHeading heading={block.heading} index={index} />
         <ol className={styles.decisionList}>
           {block.items.map((item, itemIndex) => (
@@ -132,12 +133,12 @@ function CaseStudyContentBlock({
     });
 
     return (
-      <section className={`${styles.block} ${styles.metrics}`}>
+      <section className={`${styles.block} ${styles.metrics}`} data-case-block>
         <BlockHeading heading={block.heading} index={index} />
         <p className={styles.introduction}>{block.introduction}</p>
         <div className={styles.metricGrid}>
           {metrics.map((metric) => (
-            <article key={metric.label}>
+            <article key={metric.label} data-case-metric>
               <p className={styles.metricValue}>
                 {metric.value}
                 {metric.unit}
@@ -173,14 +174,14 @@ function CaseStudyContentBlock({
     });
 
     return (
-      <section className={`${styles.block} ${styles.mediaBlock}`}>
+      <section className={`${styles.block} ${styles.mediaBlock}`} data-case-block>
         <BlockHeading heading={block.heading} index={index} />
         {block.introduction ? (
           <p className={styles.introduction}>{block.introduction}</p>
         ) : null}
         <div className={styles.mediaGrid}>
           {mediaItems.map((media) => (
-            <figure className={styles.figure} key={media.src}>
+            <figure className={styles.figure} key={media.src} data-case-media>
               <div className={styles.figureImage}>
                 <Image
                   src={media.src}
@@ -199,7 +200,7 @@ function CaseStudyContentBlock({
   }
 
   return (
-    <section className={`${styles.block} ${styles.limitations}`}>
+    <section className={`${styles.block} ${styles.limitations}`} data-case-block>
       <BlockHeading heading={block.heading} index={index} />
       <ul>
         {block.items.map((item) => (
@@ -224,12 +225,13 @@ export function CaseStudyPage({
   const indexLabel = String(projectIndex).padStart(2, "0");
 
   return (
-    <main id="main-content" className={styles.main}>
+    <CaseStudyMotionShell className={styles.main}>
       <article
         className={`${styles.article} ${styles[presentation.variant]}`}
         aria-labelledby="case-study-title"
+        data-case-study
       >
-        <header className={styles.hero}>
+        <header className={styles.hero} data-case-hero>
           <div className="site-container">
             <Link className={styles.backLink} href="/work">
               <span aria-hidden="true">←</span> All work
@@ -240,7 +242,7 @@ export function CaseStudyPage({
               <p>{formatProjectTypes(project.projectTypes)}</p>
             </div>
 
-            <h1 id="case-study-title">
+            <h1 id="case-study-title" data-case-title>
               <DisplayProjectTitle name={project.canonicalName} />
             </h1>
 
@@ -268,7 +270,7 @@ export function CaseStudyPage({
               </div>
             </div>
 
-            <figure className={styles.heroFigure}>
+            <figure className={styles.heroFigure} data-case-hero-media>
               <Image
                 className={styles.heroImage}
                 src={heroMedia.src}
@@ -305,7 +307,7 @@ export function CaseStudyPage({
         </header>
 
         <div className="site-container">
-          <section className={styles.overview} aria-labelledby="overview-title">
+          <section className={styles.overview} aria-labelledby="overview-title" data-case-block>
             <p>Project overview</p>
             <h2 id="overview-title">{caseStudy.overview}</h2>
           </section>
@@ -319,7 +321,7 @@ export function CaseStudyPage({
             />
           ))}
 
-          <section className={`${styles.block} ${styles.stackBlock}`}>
+          <section className={`${styles.block} ${styles.stackBlock}`} data-case-block>
             <BlockHeading
               heading="Technical stack in the verified repository"
               index={caseStudy.blocks.length + 1}
@@ -360,6 +362,6 @@ export function CaseStudyPage({
           </Link>
         </nav>
       </article>
-    </main>
+    </CaseStudyMotionShell>
   );
 }

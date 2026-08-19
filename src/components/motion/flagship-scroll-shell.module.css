@@ -1,0 +1,85 @@
+.root {
+  position: relative;
+}
+
+.rail {
+  display: none;
+}
+
+@media (min-width: 80rem) and (min-height: 46rem) and (hover: hover) and (pointer: fine) {
+  .root[data-cinematic="true"] {
+    isolation: isolate;
+  }
+
+  .root[data-cinematic="true"] .rail {
+    position: absolute;
+    z-index: 8;
+    top: 0;
+    right: -0.15rem;
+    bottom: 0;
+    display: block;
+    width: 2.4rem;
+    pointer-events: none;
+  }
+
+  .railInner {
+    position: sticky;
+    top: 42vh;
+    display: grid;
+    justify-items: center;
+    gap: 0.55rem;
+  }
+
+  .railLabel {
+    color: var(--night-muted);
+    font-family: var(--font-mono);
+    font-size: 0.52rem;
+    letter-spacing: 0.08em;
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+  }
+
+  .track {
+    position: relative;
+    width: 1px;
+    height: 5.5rem;
+    overflow: hidden;
+    background: var(--night-rule);
+  }
+
+  .track i {
+    position: absolute;
+    inset: 0;
+    display: block;
+    background: var(--signal);
+    transform-origin: top center;
+  }
+
+  .rail ol {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .rail li {
+    color: var(--night-muted);
+    font-family: var(--font-mono);
+    font-size: 0.52rem;
+    transition: color 160ms ease;
+  }
+
+  .rail li[data-active] {
+    color: var(--signal);
+  }
+
+  .root[data-cinematic="true"] [data-project-stage] {
+    position: relative;
+    z-index: 1;
+    background: var(--night);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rail {
+    display: none !important;
+  }
+}

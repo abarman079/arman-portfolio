@@ -74,7 +74,12 @@ export function AboutSection() {
   ];
 
   return (
-    <section id="about" className={`section-block ${styles.section}`} aria-labelledby="about-title">
+    <section
+      id="about"
+      className={`section-block ${styles.section}`}
+      aria-labelledby="about-title"
+      data-motion-section="about"
+    >
       <div className="site-container">
         <SectionHeading
           eyebrow="04 / Approach"
@@ -84,7 +89,7 @@ export function AboutSection() {
         />
 
         <div className={styles.narrative}>
-          <div className={styles.leadBlock}>
+          <div className={styles.leadBlock} data-about-lead>
             <p className={styles.kicker}>System thinking / product clarity</p>
             <p className={styles.lead}>
               The work moves between what a person sees and the rules that make the experience dependable.
@@ -130,7 +135,11 @@ export function AboutSection() {
 
         <div className={styles.evidenceMosaic} aria-label="Selected interface evidence">
           {evidenceMedia.map(({ media, project }, index) => (
-            <figure className={styles[`evidence${index + 1}`]} key={media.src}>
+            <figure
+              className={styles[`evidence${index + 1}`]}
+              key={media.src}
+              data-about-figure
+            >
               <div className={styles.imageFrame}>
                 <Image
                   alt={media.alt}

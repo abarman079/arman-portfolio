@@ -22,11 +22,15 @@ export function HeroFoundation() {
     featuredArchiveProjects.length + additionalArchiveProjects.length;
 
   return (
-    <section className={styles.hero} aria-labelledby="hero-title">
+    <section
+      className={styles.hero}
+      aria-labelledby="hero-title"
+      data-motion-section="hero"
+    >
       <span className={styles.navSentinel} data-nav-sentinel aria-hidden="true" />
 
       <div className={`site-container ${styles.grid}`}>
-        <div className={styles.copy}>
+        <div className={styles.copy} data-hero-copy>
           <HeroReveal delay={0.02}>
             <p className={`eyebrow ${styles.identity}`}>{siteConfig.name}</p>
           </HeroReveal>
@@ -53,7 +57,12 @@ export function HeroFoundation() {
         </div>
 
         <HeroReveal className={styles.fieldColumn} delay={0.24}>
-          <aside className={styles.field} data-signal-field aria-label="Engineering domain map">
+          <aside
+            className={styles.field}
+            data-signal-field
+            data-hero-field
+            aria-label="Engineering domain map"
+          >
             <div className={styles.fieldHeader}>
               <p>Signal architecture</p>
               <p><span>04</span> connected domains</p>

@@ -5,6 +5,19 @@ export const durationStandard = 0.3;
 
 export const easeEditorial = [0.22, 1, 0.36, 1] as const;
 
+export const gsapEase = {
+  reveal: "power3.out",
+  settle: "power2.out",
+  linear: "none",
+} as const;
+
+export const scrollMotion = {
+  scrubResponsive: 0.55,
+  scrubSoft: 0.8,
+  revealDuration: 0.82,
+  revealDistance: 28,
+} as const;
+
 export const springResponsive: Transition = {
   type: "spring",
   stiffness: 430,

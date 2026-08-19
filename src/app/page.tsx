@@ -1,4 +1,5 @@
 import { AboutSection } from "@/components/sections/about-section";
+import { HomepageMotionShell } from "@/components/motion/homepage-motion-shell";
 import { ArchiveFoundation } from "@/components/sections/archive-foundation";
 import { CapabilityGallery } from "@/components/sections/capability-gallery";
 import { ContactSection } from "@/components/sections/contact-section";
@@ -7,13 +8,13 @@ import { SelectedWorkFoundation } from "@/components/sections/selected-work-foun
 
 export default function Home() {
   return (
-    <main id="main-content">
+    <HomepageMotionShell>
       <HeroFoundation />
       <SelectedWorkFoundation />
       <CapabilityGallery />
       <ArchiveFoundation />
       <AboutSection />
       <ContactSection />
-    </main>
+    </HomepageMotionShell>
   );
 }

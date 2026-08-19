@@ -14,10 +14,10 @@ export function ArchitectureDiagram({
   relationships,
 }: ArchitectureDiagramProps) {
   return (
-    <figure className={styles.figure} aria-label={label}>
+    <figure className={styles.figure} aria-label={label} data-case-diagram>
       <div className={styles.canvas}>
         {nodes.map((node, index) => (
-          <div className={styles.node} key={node.label}>
+          <div className={styles.node} key={node.label} data-diagram-node>
             <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
             <strong>{node.label}</strong>
             <p>{node.detail}</p>

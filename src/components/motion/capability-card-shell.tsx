@@ -74,6 +74,7 @@ export function CapabilityCardShell({
     <motion.article
       aria-labelledby={labelledBy}
       className={className}
+      data-capability-card={index}
       style={restingStyle}
       onPointerEnter={handlePointerEnter}
       onPointerMove={handlePointerMove}

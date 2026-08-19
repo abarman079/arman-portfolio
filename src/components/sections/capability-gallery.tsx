@@ -35,6 +35,7 @@ export function CapabilityGallery() {
       id="expertise"
       className={`section-block ${styles.section}`}
       aria-labelledby="expertise-title"
+      data-motion-section="capabilities"
     >
       <div className="site-container">
         <SectionHeading
@@ -89,7 +90,7 @@ export function CapabilityGallery() {
                   <p>{String(relatedProjects.length).padStart(2, "0")} linked projects</p>
                 </div>
 
-                <div className={styles.cardBody}>
+                <div className={styles.cardBody} data-capability-body>
                   <p className={styles.domainLabel}>Engineering domain</p>
                   <h3 id={titleId}>{capability.title}</h3>
                   <p className={styles.description}>{capability.description}</p>

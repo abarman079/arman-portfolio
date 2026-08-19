@@ -1,5 +1,6 @@
 import type { ProjectRecord } from "@/types/project";
 import { formatProjectTypes } from "@/lib/project-labels";
+import { FlagshipScrollShell } from "@/components/motion/flagship-scroll-shell";
 
 import { ActionLink } from "../ui/action-link";
 import { ProjectMediaStage } from "./project-media-stage";
@@ -8,6 +9,17 @@ import styles from "./flagship-projects.module.css";
 interface FlagshipProjectsProps {
   projects: readonly ProjectRecord[];
   startIndex?: number;
+}
+
+function DisplayProjectTitle({ name }: { name: string }) {
+  const parts = name.replace(/([a-z])([A-Z])/g, "$1|$2").split("|");
+
+  return parts.map((part, index) => (
+    <span key={`${part}-${index}`}>
+      {index > 0 ? <wbr /> : null}
+      {part}
+    </span>
+  ));
 }
 
 function FlagshipProject({
@@ -30,6 +42,8 @@ function FlagshipProject({
       <article
         className={`${styles.project} ${styles[project.presentation.variant]}`}
         aria-labelledby={headingId}
+        data-project-stage
+        data-project-variant={project.presentation.variant}
       >
         <div className={styles.topline}>
           <p className={styles.index} aria-label={`Project ${index}`}>
@@ -47,12 +61,12 @@ function FlagshipProject({
           </p>
         </div>
 
-        <h3 className={styles.title} id={headingId}>
-          {project.canonicalName}
+        <h3 className={styles.title} id={headingId} data-project-title>
+          <DisplayProjectTitle name={project.canonicalName} />
         </h3>
 
         <div className={styles.composition}>
-          <div className={styles.copy}>
+          <div className={styles.copy} data-project-copy>
             <p className={styles.summary}>{project.shortSummary}</p>
 
             <p className={styles.stack}>
@@ -110,7 +124,7 @@ function FlagshipProject({
             </div>
           </div>
 
-          <div className={styles.media}>
+          <div className={styles.media} data-project-media>
             <ProjectMediaStage
               actionLabel="View case study"
               href={caseStudyHref}
@@ -119,6 +133,12 @@ function FlagshipProject({
               variant={project.presentation.variant}
             />
           </div>
+        </div>
+
+        <div className={styles.handoff} data-project-handoff aria-hidden="true">
+          <span>Signal / {String(index).padStart(2, "0")}</span>
+          <i />
+          <span>{index < 4 ? "Continue" : "Sequence complete"}</span>
         </div>
       </article>
     </li>
@@ -130,7 +150,10 @@ export function FlagshipProjects({
   startIndex = 1,
 }: FlagshipProjectsProps) {
   return (
-    <ol className={styles.list}>
+    <FlagshipScrollShell
+      listClassName={styles.list}
+      projectCount={projects.length}
+    >
       {projects.map((project, projectIndex) => (
         <FlagshipProject
           project={project}
@@ -138,6 +161,6 @@ export function FlagshipProjects({
           key={project.slug}
         />
       ))}
-    </ol>
+    </FlagshipScrollShell>
   );
 }

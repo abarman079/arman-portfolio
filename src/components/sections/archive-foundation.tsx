@@ -13,6 +13,7 @@ export function ArchiveFoundation() {
     <section
       className="section-block section-block--surface"
       aria-labelledby="archive-title"
+      data-motion-section="archive"
     >
       <div className="site-container">
         <SectionHeading
@@ -21,7 +22,7 @@ export function ArchiveFoundation() {
           id="archive-title"
         />
 
-        <div className={styles.group}>
+        <div className={styles.group} data-archive-group>
           <div className={styles.groupHeader}>
             <h3>Featured archive</h3>
             <p>Research and data systems / 03 projects</p>
@@ -33,7 +34,7 @@ export function ArchiveFoundation() {
           />
         </div>
 
-        <div className={styles.group}>
+        <div className={styles.group} data-archive-group>
           <div className={styles.groupHeader}>
             <h3>Additional archive</h3>
             <p>Supporting application work / 05 projects</p>

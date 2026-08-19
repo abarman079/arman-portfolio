@@ -26,6 +26,7 @@ export function ContactSection() {
       id="contact"
       className={styles.section}
       aria-labelledby="contact-title"
+      data-contact-scene
     >
       <div className={styles.gridField} aria-hidden="true" />
       <div className={`site-container ${styles.container}`}>
@@ -34,7 +35,7 @@ export function ContactSection() {
           <p className={styles.coordinates} aria-hidden="true">
             Aftabnagar / Dhaka
           </p>
-          <h2 id="contact-title">
+          <h2 id="contact-title" data-contact-heading>
             Let&apos;s build something <span>worth shipping.</span>
           </h2>
           <p className={styles.introduction}>
@@ -44,7 +45,7 @@ export function ContactSection() {
         </header>
 
         <div className={styles.workspace}>
-          <div className={styles.contactRail}>
+          <div className={styles.contactRail} data-contact-rail>
             <div className={styles.directBlock}>
               <p className={styles.railLabel}>Direct channel</p>
               <a className={styles.email} href={siteConfig.emailHref}>
@@ -102,7 +103,7 @@ export function ContactSection() {
             </figure>
           </div>
 
-          <div className={styles.formColumn}>
+          <div className={styles.formColumn} data-contact-form-stage>
             <div className={styles.formHeader}>
               <p>Secure message route</p>
               <p>Form 01 / 01</p>
@@ -114,7 +115,7 @@ export function ContactSection() {
           </div>
         </div>
 
-        <div className={styles.signalRoute} aria-hidden="true">
+        <div className={styles.signalRoute} data-contact-route aria-hidden="true">
           <span>Signal in</span>
           <i />
           <span>Validate</span>

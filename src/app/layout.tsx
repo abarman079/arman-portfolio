@@ -3,8 +3,10 @@ import { Geist, Instrument_Serif } from "next/font/google";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { SmoothScrollLoader } from "@/components/motion/smooth-scroll-loader";
 import { rootMetadata } from "@/lib/seo";
 
+import "lenis/dist/lenis.css";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,6 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <SiteHeader />
+        <SmoothScrollLoader />
         {children}
         <SiteFooter />
       </body>

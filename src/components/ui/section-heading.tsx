@@ -17,7 +17,7 @@ export function SectionHeading({
     <header className={`section-heading section-heading--${tone}`}>
       <p className="eyebrow">{eyebrow}</p>
       <div className="section-heading__body">
-        <h2 id={id}>{title}</h2>
+        <h2 id={id} data-motion-heading>{title}</h2>
         {description ? <p>{description}</p> : null}
       </div>
     </header>

@@ -42,6 +42,7 @@
   font-weight: 570;
   letter-spacing: -0.07em;
   line-height: 0.86;
+  overflow-wrap: anywhere;
 }
 
 .composition {
@@ -160,6 +161,36 @@
   margin-top: var(--space-8);
 }
 
+.handoff {
+  --handoff-progress: 1;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-4);
+  align-items: center;
+  margin-top: clamp(3rem, 6vw, 6rem);
+  color: var(--night-muted);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.handoff i {
+  position: relative;
+  height: 1px;
+  overflow: hidden;
+  background: var(--night-rule);
+}
+
+.handoff i::after {
+  position: absolute;
+  inset: 0;
+  background: var(--signal);
+  content: "";
+  transform: scaleX(var(--handoff-progress));
+  transform-origin: left center;
+}
+
 @media (max-width: 64rem) {
   .topline,
   .composition {
@@ -246,5 +277,19 @@
 
   .actions :global(.action-link) {
     flex: 1 1 10rem;
+  }
+
+  .handoff {
+    grid-template-columns: auto 1fr;
+  }
+
+  .handoff span:last-child {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .handoff {
+    --handoff-progress: 1 !important;
   }
 }

@@ -123,6 +123,11 @@
   white-space: nowrap;
 }
 
+.honeypot input {
+  width: 1px;
+  min-width: 0;
+}
+
 .turnstileRegion {
   width: 100%;
   min-height: 5.1rem;
