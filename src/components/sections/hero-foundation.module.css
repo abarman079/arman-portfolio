@@ -247,7 +247,11 @@
   }
 
   .title {
-    font-size: clamp(3.5rem, 7.8vw, 6.2rem);
+    font-size: clamp(3.25rem, 6.2vw, 5.2rem);
+  }
+
+  .title > span {
+    width: auto;
   }
 
   .domainMap li {
@@ -267,11 +271,11 @@
   }
 
   .fieldColumn {
-    margin-top: clamp(4rem, 10vw, 6rem);
+    margin-top: clamp(3rem, 6vw, 4rem);
   }
 
   .fieldFrame {
-    min-height: 27rem;
+    min-height: 23rem;
   }
 
   .meta {
@@ -288,7 +292,7 @@
 
   .title {
     max-width: 100%;
-    font-size: clamp(3.2rem, 14.8vw, 5.6rem);
+    font-size: clamp(2.45rem, 10.5vw, 4.5rem);
     line-height: 0.9;
   }
 
@@ -317,7 +321,11 @@
 @media (max-width: 38rem) {
   .actions {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .actions > :first-child {
+    grid-column: 1 / -1;
   }
 
   .fieldFrame {
@@ -326,23 +334,24 @@
   }
 
   .canvas {
-    min-height: 22rem;
+    min-height: 16rem;
   }
 
   .domainMap {
     position: relative;
     display: grid;
-    min-height: 22rem;
+    min-height: 16rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-content: center;
     gap: 0.55rem;
-    padding: 2.5rem 1rem;
+    padding: 2rem 0.75rem;
   }
 
   .domainMap li {
     position: static;
     width: 100%;
-    min-height: 3.2rem;
-    grid-template-columns: 2.2rem 1fr;
+    min-height: 3.5rem;
+    grid-template-columns: 1.7rem 1fr;
     box-shadow: none;
   }
 
@@ -357,11 +366,94 @@
   }
 
   .meta {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .meta nav {
-    grid-column: auto;
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 56.01rem) and (max-height: 43rem) {
+  .grid {
+    min-height: calc(100svh - 5.75rem);
+    padding-block: 0.8rem;
+  }
+
+  .identity {
+    margin-bottom: 0.55rem;
+  }
+
+  .title {
+    max-width: 100%;
+    font-size: clamp(3.1rem, 4.1vw, 3.7rem);
+  }
+
+  .lede {
+    margin-top: 0.65rem;
+    font-size: 0.96rem;
+    line-height: 1.45;
+  }
+
+  .actions {
+    margin-top: 0.55rem;
+  }
+
+  .fieldFrame {
+    min-height: 16rem;
+  }
+
+  .meta {
+    margin-top: 0.7rem;
+    padding-top: 0.65rem;
+  }
+}
+
+@media (min-width: 48.01rem) and (max-width: 56rem) and (max-height: 32rem) and (orientation: landscape) {
+  .grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    min-height: auto;
+    padding-block: 1.25rem;
+  }
+
+  .copy {
+    grid-column: 1 / span 5;
+  }
+
+  .fieldColumn {
+    grid-column: 6 / -1;
+    margin-top: 0;
+  }
+
+  .title {
+    max-width: 100%;
+    font-size: clamp(2.7rem, 5.2vw, 3.35rem);
+  }
+
+  .lede {
+    margin-top: 0.8rem;
+    font-size: 0.88rem;
+  }
+
+  .actions {
+    margin-top: 0.75rem;
+  }
+
+  .fieldHeader {
+    min-height: 2.5rem;
+  }
+
+  .fieldFrame {
+    min-height: 15rem;
+  }
+
+  .domainMap li {
+    width: min(7rem, 49%);
+    padding: 0.35rem;
+  }
+
+  .meta {
+    margin-top: 0.9rem;
   }
 }
 

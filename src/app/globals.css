@@ -511,6 +511,13 @@ a {
     justify-content: flex-start;
   }
 
+  .resume-header h1 {
+    max-width: 13ch;
+    font-size: clamp(2.35rem, 10.5vw, 4.2rem);
+    letter-spacing: -0.052em;
+    overflow-wrap: normal;
+  }
+
   .resume-viewer {
     height: 72svh;
     min-height: 34rem;

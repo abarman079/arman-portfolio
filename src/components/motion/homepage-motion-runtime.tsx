@@ -124,6 +124,9 @@ export function HomepageMotionRuntime() {
         "[data-about-figure]",
         scope.current,
       );
+      const aboutMosaic = scope.current.querySelector<HTMLElement>(
+        "[data-about-mosaic]",
+      );
 
       if (aboutLead) {
         gsap.from(aboutLead, {
@@ -137,17 +140,17 @@ export function HomepageMotionRuntime() {
         });
       }
 
-      aboutFigures.forEach((figure, index) => {
-        gsap.from(figure, {
-          y: index === 1 ? 42 : 24,
+      if (aboutMosaic && aboutFigures.length > 0) {
+        gsap.from(aboutFigures, {
+          y: (index) => (index === 1 ? 42 : 24),
           clipPath: "inset(8% 0 0 0)",
           duration: 0.9,
-          delay: index * 0.05,
+          stagger: 0.07,
           ease: gsapEase.reveal,
           clearProps: "transform,clipPath",
-          scrollTrigger: { trigger: figure, start: "top 84%", once: true },
+          scrollTrigger: { trigger: aboutMosaic, start: "top 84%", once: true },
         });
-      });
+      }
 
       const contact = scope.current.querySelector<HTMLElement>("[data-contact-scene]");
       const contactHeading = contact?.querySelector<HTMLElement>("[data-contact-heading]");
@@ -215,12 +218,28 @@ export function HomepageMotionRuntime() {
       const refresh = () => {
         if (active) ScrollTrigger.refresh();
       };
-      window.addEventListener("load", refresh, { once: true });
-      void document.fonts.ready.then(refresh);
+      const syncInitialHash = () => {
+        refresh();
+
+        const targetId = window.location.hash.slice(1);
+        const target = targetId ? document.getElementById(targetId) : null;
+        if (!target) return;
+
+        window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(() => {
+            if (!active) return;
+            target.scrollIntoView({ block: "start" });
+            ScrollTrigger.update();
+          });
+        });
+      };
+
+      window.addEventListener("load", syncInitialHash, { once: true });
+      void document.fonts.ready.then(syncInitialHash);
 
       return () => {
         active = false;
-        window.removeEventListener("load", refresh);
+        window.removeEventListener("load", syncInitialHash);
       };
     },
     { scope },

@@ -390,6 +390,8 @@
 
   .ecosystemList li {
     gap: var(--space-3);
+    min-height: 0;
+    padding-block: var(--space-6);
   }
 
   .handoff {
@@ -418,11 +420,11 @@
 
   .evidence1,
   .evidence3 {
-    min-height: 14.5rem;
+    min-height: 13rem;
   }
 
   .evidence2 {
-    min-height: 30rem;
+    min-height: 26rem;
   }
 }
 

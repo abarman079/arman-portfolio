@@ -532,7 +532,7 @@
   .card-data {
     grid-column: 1;
     grid-row: auto;
-    min-height: 36rem;
+    min-height: 33rem;
   }
 
   .fallback {
@@ -557,7 +557,7 @@
   .card-interface,
   .card-research,
   .card-data {
-    min-height: 38rem;
+    min-height: 35rem;
   }
 
   .cardHeader {
@@ -575,6 +575,17 @@
   .technologyList,
   .projectLinks {
     gap: 0.25rem 0.75rem;
+  }
+}
+
+@media (min-width: 48.01rem) and (max-width: 64rem) {
+  .cards {
+    --row-one: 34rem;
+    --row-two: 34rem;
+  }
+
+  .fallback {
+    width: min(42%, 18rem);
   }
 }
 

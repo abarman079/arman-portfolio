@@ -373,6 +373,48 @@
   }
 }
 
+@media (max-width: 56rem) and (max-height: 32rem) and (orientation: landscape) {
+  .header {
+    height: 4rem;
+  }
+
+  .rail,
+  .compact .rail {
+    min-height: 4rem;
+  }
+
+  .menuPanel {
+    min-height: 100dvh;
+    grid-template-rows: auto auto auto;
+    padding-block: 0.35rem 0.6rem;
+  }
+
+  .menuHeader {
+    min-height: 3rem;
+  }
+
+  .mobileNav {
+    align-content: start;
+    padding-block: 0.35rem;
+  }
+
+  .mobileNav a {
+    min-height: 3rem;
+  }
+
+  .mobileNav strong {
+    font-size: 1.65rem;
+  }
+
+  .menuFooter {
+    padding-top: 0.45rem;
+  }
+
+  .menuFooter p {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .rail {
     transform: none !important;

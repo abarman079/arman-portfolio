@@ -133,7 +133,11 @@ export function AboutSection() {
           </aside>
         </div>
 
-        <div className={styles.evidenceMosaic} aria-label="Selected interface evidence">
+        <div
+          className={styles.evidenceMosaic}
+          aria-label="Selected interface evidence"
+          data-about-mosaic
+        >
           {evidenceMedia.map(({ media, project }, index) => (
             <figure
               className={styles[`evidence${index + 1}`]}

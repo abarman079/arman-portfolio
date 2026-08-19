@@ -20,7 +20,7 @@ const CapabilityCanvas = dynamic(
 );
 
 const ENHANCEMENT_QUERY =
-  "(min-width: 64.01rem) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)";
+  "(min-width: 64.01rem) and (min-height: 40rem) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)";
 
 function hasWebGlSupport() {
   try {
