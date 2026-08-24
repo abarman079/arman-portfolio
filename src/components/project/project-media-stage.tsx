@@ -28,6 +28,12 @@ export function ProjectMediaStage({
   variant,
 }: ProjectMediaStageProps) {
   const prefersReducedMotion = useReducedMotion();
+  const visibleCaptions = items
+    .flatMap((item) => (item.caption ? [item.caption] : []))
+    .join("; ");
+  const accessibleLabel = `${actionLabel} for ${projectName}${
+    visibleCaptions ? `: ${visibleCaptions}` : ""
+  }`;
 
   return (
     <motion.div
@@ -39,7 +45,7 @@ export function ProjectMediaStage({
       <Link
         className={`${styles.stage} ${styles[variant]}`}
         href={href}
-        aria-label={`${actionLabel} for ${projectName}`}
+        aria-label={accessibleLabel}
       >
         <span className={styles.action} aria-hidden="true">
           {actionLabel} <span>→</span>

@@ -57,11 +57,10 @@ export function HomepageMotionRuntime() {
       headings.forEach((heading) => {
         gsap.from(heading, {
           y: scrollMotion.revealDistance,
-          autoAlpha: 0.78,
           clipPath: "inset(0 0 10% 0)",
           duration: scrollMotion.revealDuration,
           ease: gsapEase.reveal,
-          clearProps: "transform,opacity,visibility,clipPath",
+          clearProps: "transform,clipPath",
           scrollTrigger: {
             trigger: heading,
             start: "top 86%",
@@ -81,10 +80,9 @@ export function HomepageMotionRuntime() {
 
         gsap.from(body, {
           y: 22,
-          autoAlpha: 0.82,
           duration: 0.72,
           ease: gsapEase.reveal,
-          clearProps: "transform,opacity,visibility",
+          clearProps: "transform",
           scrollTrigger: {
             trigger: card,
             start: "top 79%",
@@ -131,11 +129,10 @@ export function HomepageMotionRuntime() {
       if (aboutLead) {
         gsap.from(aboutLead, {
           y: 34,
-          autoAlpha: 0.76,
           clipPath: "inset(0 0 12% 0)",
           duration: 0.95,
           ease: gsapEase.reveal,
-          clearProps: "transform,opacity,visibility,clipPath",
+          clearProps: "transform,clipPath",
           scrollTrigger: { trigger: aboutLead, start: "top 82%", once: true },
         });
       }
@@ -172,20 +169,18 @@ export function HomepageMotionRuntime() {
           })
           .from(contactHeading, {
             y: 34,
-            autoAlpha: 0.78,
             clipPath: "inset(0 0 12% 0)",
             duration: 0.9,
             ease: gsapEase.reveal,
-            clearProps: "transform,opacity,visibility,clipPath",
+            clearProps: "transform,clipPath",
           })
           .from(
             contactRail,
             {
               x: -20,
-              autoAlpha: 0.84,
               duration: 0.7,
               ease: gsapEase.settle,
-              clearProps: "transform,opacity,visibility",
+              clearProps: "transform",
             },
             "-=0.48",
           )
@@ -193,10 +188,9 @@ export function HomepageMotionRuntime() {
             contactForm,
             {
               x: 24,
-              autoAlpha: 0.86,
               duration: 0.75,
               ease: gsapEase.settle,
-              clearProps: "transform,opacity,visibility",
+              clearProps: "transform",
             },
             "<",
           )

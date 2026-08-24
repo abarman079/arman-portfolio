@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { MagneticOffset } from "@/components/motion/magnetic-offset";
+import { siteConfig } from "@/content/site";
 import { springResponsive, springSoft } from "@/lib/motion";
-import { siteConfig } from "@/lib/seo";
 
 import styles from "./site-header.module.css";
 
@@ -136,7 +136,11 @@ export function SiteHeader() {
           animate={{ y: isCompact && !prefersReducedMotion ? 8 : 0 }}
           transition={railTransition}
         >
-          <Link href="/" className={styles.wordmark} aria-label="Arman portfolio home">
+          <Link
+            href="/"
+            className={styles.wordmark}
+            aria-label="Arman. Software Engineer — portfolio home"
+          >
             <MagneticOffset className={styles.magneticWordmark} strength={3}>
               <span className={styles.wordmarkName}>Arman<span aria-hidden="true">.</span></span>
               <span className={styles.wordmarkRole}>Software Engineer</span>

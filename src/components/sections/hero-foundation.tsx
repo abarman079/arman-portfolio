@@ -3,7 +3,7 @@ import {
   featuredArchiveProjects,
   flagshipProjects,
 } from "@/content/projects";
-import { siteConfig } from "@/lib/seo";
+import { siteConfig } from "@/content/site";
 
 import { HeroReveal } from "../motion/hero-reveal";
 import { HeroActions } from "./hero-actions";
@@ -35,14 +35,12 @@ export function HeroFoundation() {
             <p className={`eyebrow ${styles.identity}`}>{siteConfig.name}</p>
           </HeroReveal>
 
-          <HeroReveal delay={0.07}>
-            <h1 id="hero-title" className={styles.title}>
-              <span>Software Engineer</span>
-              <span>building <em>full-stack</em></span>
-              <span>products, backend systems</span>
-              <span><em>&amp; applied ML.</em></span>
-            </h1>
-          </HeroReveal>
+          <h1 id="hero-title" className={styles.title}>
+            <span>Software Engineer</span>
+            <span>building <em>full-stack</em></span>
+            <span>products, backend systems</span>
+            <span><em>&amp; applied ML.</em></span>
+          </h1>
 
           <HeroReveal delay={0.13}>
             <p className={styles.lede}>

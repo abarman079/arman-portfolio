@@ -25,10 +25,9 @@ export function CaseStudyMotionRuntime() {
           .timeline({ defaults: { ease: gsapEase.reveal } })
           .from(title, {
             y: 24,
-            autoAlpha: 0.84,
             clipPath: "inset(0 0 9% 0)",
             duration: 0.82,
-            clearProps: "transform,opacity,visibility,clipPath",
+            clearProps: "transform,clipPath",
           })
           .from(
             figure,
@@ -46,10 +45,9 @@ export function CaseStudyMotionRuntime() {
       headings.forEach((heading) => {
         gsap.from(heading, {
           y: 22,
-          autoAlpha: 0.8,
           duration: scrollMotion.revealDuration,
           ease: gsapEase.reveal,
-          clearProps: "transform,opacity,visibility",
+          clearProps: "transform",
           scrollTrigger: {
             trigger: heading,
             start: "top 86%",
@@ -63,11 +61,10 @@ export function CaseStudyMotionRuntime() {
         const nodes = gsap.utils.toArray<HTMLElement>("[data-diagram-node]", diagram);
         gsap.from(nodes, {
           y: 14,
-          autoAlpha: 0.82,
           duration: 0.58,
           stagger: 0.07,
           ease: gsapEase.settle,
-          clearProps: "transform,opacity,visibility",
+          clearProps: "transform",
           scrollTrigger: { trigger: diagram, start: "top 80%", once: true },
         });
       });
@@ -88,11 +85,10 @@ export function CaseStudyMotionRuntime() {
       metrics.forEach((metric, index) => {
         gsap.from(metric, {
           y: 16,
-          autoAlpha: 0.84,
           duration: 0.65,
           delay: index * 0.05,
           ease: gsapEase.settle,
-          clearProps: "transform,opacity,visibility",
+          clearProps: "transform",
           scrollTrigger: { trigger: metric, start: "top 84%", once: true },
         });
       });

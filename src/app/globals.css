@@ -163,7 +163,7 @@ a {
 .eyebrow {
   color: var(--signal-text);
   font-family: var(--font-mono);
-  font-size: clamp(0.72rem, 0.68rem + 0.12vw, 0.8rem);
+  font-size: clamp(0.75rem, 0.71rem + 0.12vw, 0.8rem);
   font-weight: 700;
   letter-spacing: 0.11em;
   line-height: 1.35;
@@ -357,7 +357,7 @@ a {
   min-height: 2.75rem;
   align-items: center;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -425,7 +425,7 @@ a {
 .resume-fallback-note {
   color: var(--night-muted);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   letter-spacing: 0.035em;
 }
 
@@ -437,9 +437,17 @@ a {
   background: #ffffff;
 }
 
+.resume-viewer__object {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #ffffff;
+}
+
 .resume-viewer__fallback {
   display: grid;
-  min-height: 28rem;
+  min-height: 100%;
   place-content: center;
   gap: var(--space-4);
   padding: var(--space-8);
@@ -543,6 +551,19 @@ a {
 
   .resume-viewer {
     min-height: 30rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .resume-viewer[data-inline-pdf="false"] {
+    height: auto;
+    min-height: 14rem;
+  }
+
+  .resume-viewer[data-inline-pdf="false"] .resume-viewer__fallback {
+    min-height: 14rem;
+    place-content: start;
+    text-align: left;
   }
 }
 

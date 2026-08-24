@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import { MagneticOffset } from "@/components/motion/magnetic-offset";
-import { siteConfig } from "@/lib/seo";
+import { siteConfig } from "@/content/site";
 
 import styles from "./hero-foundation.module.css";
 

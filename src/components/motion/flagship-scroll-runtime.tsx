@@ -76,14 +76,14 @@ export function FlagshipScrollRuntime() {
             })
             .fromTo(
               title,
-              { y: 24, autoAlpha: 0.78 },
-              { y: 0, autoAlpha: 1, ease: gsapEase.linear },
+              { y: 24 },
+              { y: 0, ease: gsapEase.linear },
               0,
             )
             .fromTo(
               copy,
-              { x: values.copyX, y: values.copyY, autoAlpha: 0.82 },
-              { x: 0, y: 0, autoAlpha: 1, ease: gsapEase.linear },
+              { x: values.copyX, y: values.copyY },
+              { x: 0, y: 0, ease: gsapEase.linear },
               0,
             )
             .fromTo(

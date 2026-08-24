@@ -11,6 +11,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata = createPageMetadata(
   "Work",
   "A verified index of full-stack systems, frontend products, machine-learning research, and data work by Md. Akibul Hasan Arman.",
+  { path: "/work" },
 );
 
 export default function WorkPage() {

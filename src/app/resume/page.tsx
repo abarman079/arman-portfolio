@@ -1,11 +1,14 @@
 import Link from "next/link";
 
+import { ResumeViewer } from "@/components/resume/resume-viewer";
 import { ActionLink } from "@/components/ui/action-link";
-import { createPageMetadata, siteConfig } from "@/lib/seo";
+import { siteConfig } from "@/content/site";
+import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata(
   "Resume",
   "Read or download the current public resume of Md. Akibul Hasan Arman.",
+  { path: "/resume" },
 );
 
 export default function ResumePage() {
@@ -52,24 +55,7 @@ export default function ResumePage() {
             <p>Two-page PDF · Native browser viewer</p>
           </div>
 
-          <object
-            className="resume-viewer"
-            data={`${siteConfig.resumePdfUrl}#view=FitH`}
-            type="application/pdf"
-            title="Md. Akibul Hasan Arman resume PDF"
-            aria-label="Md. Akibul Hasan Arman resume PDF"
-          >
-            <div className="resume-viewer__fallback">
-              <p>Your browser cannot display the resume inline.</p>
-              <a
-                href={siteConfig.resumePdfUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Open the resume PDF in a new tab
-              </a>
-            </div>
-          </object>
+          <ResumeViewer pdfUrl={siteConfig.resumePdfUrl} />
 
           <p className="resume-fallback-note">
             If the embedded document is unavailable on your device, use the

@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { CaseStudyPage } from "@/components/project/case-study/case-study-page";
+import { JsonLd } from "@/components/seo/json-ld";
 import { flagshipProjects } from "@/content/projects";
+import { createPageMetadata } from "@/lib/seo";
+import { createProjectStructuredData } from "@/lib/structured-data";
 
 interface FlagshipCaseStudyPageProps {
   params: Promise<{ slug: string }>;
@@ -28,20 +31,11 @@ export async function generateMetadata({
 
   const title = `${project.canonicalName} Case Study`;
 
-  return {
-    title,
-    description: project.shortSummary,
-    openGraph: {
-      type: "website",
-      title,
-      description: project.shortSummary,
-    },
-    twitter: {
-      card: "summary",
-      title,
-      description: project.shortSummary,
-    },
-  };
+  return createPageMetadata(title, project.shortSummary, {
+    path: `/work/${project.slug}`,
+    socialImagePath: `/social-card?project=${encodeURIComponent(project.slug)}`,
+    socialImageAlt: `${project.canonicalName} portfolio case study`,
+  });
 }
 
 export default async function FlagshipCaseStudyPage({
@@ -60,10 +54,13 @@ export default async function FlagshipCaseStudyPage({
   if (!project || !nextProject) notFound();
 
   return (
-    <CaseStudyPage
-      project={project}
-      projectIndex={projectIndex + 1}
-      nextProject={nextProject}
-    />
+    <>
+      <JsonLd data={createProjectStructuredData(project)} />
+      <CaseStudyPage
+        project={project}
+        projectIndex={projectIndex + 1}
+        nextProject={nextProject}
+      />
+    </>
   );
 }

@@ -117,7 +117,7 @@ function FlagshipProject({
                 href={project.repositoryUrl}
                 external
                 variant="quiet"
-                ariaLabel={`${project.canonicalName} repository, opens in a new tab`}
+                ariaLabel={`Source — ${project.canonicalName} repository, opens in a new tab`}
               >
                 Source
               </ActionLink>

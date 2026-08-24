@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { siteConfig } from "@/lib/seo";
+import { siteConfig } from "@/content/site";
 
 import styles from "./site-footer.module.css";
 

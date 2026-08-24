@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ContactForm } from "@/components/contact/contact-form";
 import { CopyEmail } from "@/components/contact/copy-email";
 import { getContactEnvironment } from "@/lib/contact/environment";
-import { siteConfig } from "@/lib/seo";
+import { siteConfig } from "@/content/site";
 
 import styles from "./contact-section.module.css";
 

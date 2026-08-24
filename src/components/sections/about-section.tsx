@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { projects } from "@/content/projects";
-import { siteConfig } from "@/lib/seo";
+import { siteConfig } from "@/content/site";
 
 import { ActionLink } from "../ui/action-link";
 import { SectionHeading } from "../ui/section-heading";
