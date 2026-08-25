@@ -13,6 +13,8 @@ const contactLinks = [
   { label: "Resume", href: siteConfig.resumePageUrl, external: false },
 ] as const;
 
+const systemSignals = ["UI", "API", "AUTH", "DATA", "ML"] as const;
+
 export function ContactSection() {
   const environment = getContactEnvironment();
   const hasContactForm = environment.mode === "configured";
@@ -28,7 +30,7 @@ export function ContactSection() {
       aria-labelledby="contact-title"
       data-contact-scene
     >
-      <div className={styles.gridField} aria-hidden="true" />
+      <div className={styles.gridField} data-contact-grid aria-hidden="true" />
       <div className={`site-container ${styles.container}`}>
         <header className={styles.opening}>
           <p className={`eyebrow ${styles.eyebrow}`}>05 / Contact</p>
@@ -114,6 +116,19 @@ export function ContactSection() {
               </a>
             </div>
           )}
+        </div>
+
+        <div
+          className={styles.signalCluster}
+          data-contact-cluster
+          aria-hidden="true"
+        >
+          {systemSignals.map((signal, index) => (
+            <span data-contact-token={index} key={signal}>
+              <i />
+              {signal}
+            </span>
+          ))}
         </div>
 
         <div className={styles.signalRoute} data-contact-route aria-hidden="true">

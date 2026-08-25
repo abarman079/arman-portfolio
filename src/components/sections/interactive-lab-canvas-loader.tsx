@@ -96,8 +96,8 @@ export function InteractiveLabCanvasLoader() {
   useEffect(() => {
     if (!eligible) return;
 
-    const lab = hostRef.current?.closest("[data-ml-lab]");
-    if (!lab) return;
+    const host = hostRef.current;
+    if (!host) return;
 
     function syncActivity() {
       setIsActive(isIntersecting.current && !document.hidden);
@@ -115,8 +115,8 @@ export function InteractiveLabCanvasLoader() {
       syncActivity();
     });
 
-    loadObserver.observe(lab);
-    activityObserver.observe(lab);
+    loadObserver.observe(host);
+    activityObserver.observe(host);
     document.addEventListener("visibilitychange", syncActivity);
 
     return () => {

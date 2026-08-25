@@ -1,0 +1,39 @@
+.section {
+  --work-arrival: 1;
+  position: relative;
+  overflow: clip;
+}
+
+.section::before,
+.section::after {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  content: "";
+  pointer-events: none;
+}
+
+.section::before {
+  right: var(--gutter);
+  left: var(--gutter);
+  height: 1px;
+  background: var(--signal);
+  transform: scaleX(var(--work-arrival));
+  transform-origin: left center;
+}
+
+.section::after {
+  right: calc(var(--gutter) + 12.5%);
+  width: 1px;
+  height: clamp(2.5rem, 6vw, 5rem);
+  background: linear-gradient(to bottom, var(--signal), transparent);
+  opacity: var(--work-arrival);
+  transform: scaleY(var(--work-arrival));
+  transform-origin: top center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    --work-arrival: 1 !important;
+  }
+}

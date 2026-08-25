@@ -37,6 +37,7 @@ export function InteractiveLabSection() {
       aria-labelledby="interactive-lab-title"
       data-ml-lab
       data-signal-phase="features"
+      data-motion-section="lab"
     >
       <div className="site-container">
         <header className={styles.intro}>

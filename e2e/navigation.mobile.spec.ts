@@ -52,9 +52,52 @@ test("touch layout keeps flagship actions visible and skips WebGL enhancement", 
   await expect(page.locator("[data-capability-gallery] canvas")).toHaveCount(0);
   await page.locator("[data-ml-lab]").scrollIntoViewIfNeeded();
   await expect(page.locator("[data-ml-lab] canvas")).toHaveCount(0);
+  await expect(page.locator("[data-ambient-signal]")).toHaveCSS(
+    "display",
+    "none",
+  );
+  await expect(page.locator("html")).not.toHaveAttribute(
+    "data-smooth-scroll",
+    "active",
+  );
   await expect(
     page.getByRole("navigation", { name: "Interactive Lab related projects" }),
   ).toBeVisible();
+
+  await page.locator("[data-contact-cluster]").scrollIntoViewIfNeeded();
+  const mobileMotionState = await page.evaluate(() => ({
+    velocity: getComputedStyle(document.documentElement).getPropertyValue(
+      "--scroll-velocity",
+    ),
+    tokenTransforms: Array.from(
+      document.querySelectorAll("[data-contact-token]"),
+      (token) => getComputedStyle(token).transform,
+    ),
+  }));
+  expect(mobileMotionState).toEqual({
+    velocity: "",
+    tokenTransforms: ["none", "none", "none", "none", "none"],
+  });
+});
+
+test("mobile project navigation uses the compact continuity fallback", async ({
+  page,
+  consoleErrors,
+}) => {
+  void consoleErrors;
+  await page.goto("/work");
+  await page
+    .locator('[data-project-transition-link="arctic-daze"]')
+    .last()
+    .click();
+
+  await expect(page).toHaveURL(/\/work\/arctic-daze$/);
+  await expect(page.locator('[aria-hidden="true"][data-project]')).toHaveCount(0);
+  await expect(page.locator("body")).not.toHaveAttribute(
+    "data-project-transition",
+    "active",
+  );
+  await assertNoHorizontalOverflow(page);
 });
 
 test("mobile resume uses the explicit PDF fallback without loading an inline plugin", async ({

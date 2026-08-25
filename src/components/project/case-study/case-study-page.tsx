@@ -4,6 +4,7 @@ import Link from "next/link";
 import { formatProjectTypes } from "@/lib/project-labels";
 import type { CaseStudyBlock, ProjectRecord } from "@/types/project";
 import { CaseStudyMotionShell } from "@/components/motion/case-study-motion-shell";
+import { ProjectTransitionLink } from "@/components/motion/project-transition-provider";
 
 import { ActionLink } from "../../ui/action-link";
 import { ArchitectureDiagram } from "./architecture-diagram";
@@ -237,7 +238,7 @@ export function CaseStudyPage({
               <span aria-hidden="true">←</span> All work
             </Link>
 
-            <div className={styles.heroMeta}>
+            <div className={styles.heroMeta} data-case-hero-meta>
               <p>{indexLabel} / Flagship case study</p>
               <p>{formatProjectTypes(project.projectTypes)}</p>
             </div>
@@ -246,7 +247,7 @@ export function CaseStudyPage({
               <DisplayProjectTitle name={project.canonicalName} />
             </h1>
 
-            <div className={styles.heroLead}>
+            <div className={styles.heroLead} data-case-hero-lead>
               <p>{project.shortSummary}</p>
               <div className={styles.heroActions}>
                 {project.liveUrl ? (
@@ -279,6 +280,7 @@ export function CaseStudyPage({
                 alt={heroMedia.alt}
                 sizes="(max-width: 48rem) 92vw, (max-width: 96rem) 92vw, 88rem"
                 preload
+                data-project-transition-target={project.slug}
               />
               {heroMedia.caption ? (
                 <figcaption>{heroMedia.caption}</figcaption>
@@ -354,12 +356,32 @@ export function CaseStudyPage({
           </section>
         </div>
 
-        <nav className={styles.nextProject} aria-label="Case study navigation">
-          <Link href={`/work/${nextProject.slug}`}>
+        <nav
+          className={styles.nextProject}
+          aria-label="Case study navigation"
+          data-next-project
+        >
+          <ProjectTransitionLink
+            href={`/work/${nextProject.slug}`}
+            projectSlug={nextProject.slug}
+            variant={nextProject.presentation?.variant ?? "architecture"}
+          >
             <span>Next flagship project</span>
             <strong>{nextProject.canonicalName}</strong>
+            {nextProject.media?.[0] ? (
+              <span className={styles.nextProjectMedia} aria-hidden="true">
+                <Image
+                  src={nextProject.media[0].src}
+                  width={nextProject.media[0].width}
+                  height={nextProject.media[0].height}
+                  alt=""
+                  sizes="(max-width: 48rem) 86vw, 28vw"
+                  data-project-transition-source={nextProject.slug}
+                />
+              </span>
+            ) : null}
             <span aria-hidden="true">→</span>
-          </Link>
+          </ProjectTransitionLink>
         </nav>
       </article>
     </CaseStudyMotionShell>

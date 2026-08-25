@@ -29,6 +29,9 @@ export function FlagshipScrollRuntime() {
       const stages = gsap.utils.toArray<HTMLElement>("[data-project-stage]", root);
       const markers = gsap.utils.toArray<HTMLElement>("[data-flagship-marker]", root);
       const progress = root.querySelector<HTMLElement>("[data-flagship-progress]");
+      const capabilityScene = root
+        .closest<HTMLElement>("[data-home-motion-root]")
+        ?.querySelector<HTMLElement>("[data-capabilities-scene]");
 
       function setActiveMarker(activeIndex: number) {
         markers.forEach((marker, markerIndex) => {
@@ -116,20 +119,29 @@ export function FlagshipScrollRuntime() {
         });
 
         if (handoff) {
-          gsap.fromTo(
-            handoff,
-            { "--handoff-progress": 0 },
-            {
-              "--handoff-progress": 1,
-              ease: gsapEase.linear,
-              scrollTrigger: {
+          const handoffTimeline = gsap.timeline({
+            scrollTrigger: {
                 trigger: handoff,
                 start: "top 92%",
                 end: "top 58%",
                 scrub: scrollMotion.scrubResponsive,
               },
-            },
+          });
+
+          handoffTimeline.fromTo(
+            handoff,
+            { "--handoff-progress": 0 },
+            { "--handoff-progress": 1, ease: gsapEase.linear },
           );
+
+          if (index === stages.length - 1 && capabilityScene) {
+            handoffTimeline.fromTo(
+              capabilityScene,
+              { "--work-resolve": 0 },
+              { "--work-resolve": 1, ease: gsapEase.linear },
+              0,
+            );
+          }
         }
       });
 

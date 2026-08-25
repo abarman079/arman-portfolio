@@ -79,6 +79,7 @@ export function AboutSection() {
       className={`section-block ${styles.section}`}
       aria-labelledby="about-title"
       data-motion-section="about"
+      data-about-scene
     >
       <div className="site-container">
         <SectionHeading

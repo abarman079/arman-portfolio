@@ -1,0 +1,82 @@
+:global(body[data-project-transition="active"]) {
+  overflow: hidden;
+}
+
+:global(body[data-project-transition="active"] [data-case-hero-meta]),
+:global(body[data-project-transition="active"] [data-case-title]),
+:global(body[data-project-transition="active"] [data-case-hero-lead]) {
+  opacity: 0;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 190;
+  opacity: 0;
+  background:
+    linear-gradient(90deg, transparent 0 5%, rgb(255 90 54 / 14%) 5% 5.08%, transparent 5.08%),
+    color-mix(in srgb, var(--night) 88%, transparent);
+  pointer-events: none;
+}
+
+.overlay {
+  position: fixed;
+  z-index: 191;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--signal) 58%, var(--night-rule));
+  background: var(--night-surface);
+  box-shadow: 0 1.5rem 5rem rgb(0 0 0 / 38%);
+  pointer-events: none;
+  transform-origin: center;
+  will-change: transform, opacity, clip-path;
+}
+
+.overlay img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.rule {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  background: var(--signal);
+  pointer-events: none;
+}
+
+.overlay[data-variant="architecture"] .rule {
+  top: 0;
+  left: 11%;
+  width: 1px;
+  height: 100%;
+}
+
+.overlay[data-variant="editorial"] .rule {
+  top: 12%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.overlay[data-variant="commerce"] .rule {
+  right: 8%;
+  bottom: 0;
+  width: 1px;
+  height: 38%;
+}
+
+.overlay[data-variant="research"] .rule {
+  right: 0;
+  bottom: 13%;
+  width: 34%;
+  height: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .overlay {
+    display: none;
+  }
+}

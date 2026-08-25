@@ -20,7 +20,10 @@ export function CaseStudyMotionRuntime() {
       const title = hero?.querySelector<HTMLElement>("[data-case-title]");
       const figure = hero?.querySelector<HTMLElement>("[data-case-hero-media]");
 
-      if (hero && title && figure) {
+      const arrivingFromProject =
+        document.body.dataset.projectTransition === "active";
+
+      if (hero && title && figure && !arrivingFromProject) {
         gsap
           .timeline({ defaults: { ease: gsapEase.reveal } })
           .from(title, {

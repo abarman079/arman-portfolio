@@ -103,6 +103,14 @@ export function HeroFoundation() {
           </nav>
         </HeroReveal>
       </div>
+
+      <div className={styles.transfer} data-hero-transfer aria-hidden="true">
+        <span>Signal field</span>
+        <i />
+        <i />
+        <i />
+        <span>Selected work</span>
+      </div>
     </section>
   );
 }

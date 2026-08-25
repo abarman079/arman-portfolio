@@ -21,7 +21,11 @@ function findProject(slug: string) {
 
 function CapabilityFallback({ variant }: { variant: string }) {
   return (
-    <div className={`${styles.fallback} ${styles[`fallback-${variant}`]}`} aria-hidden="true">
+    <div
+      className={`${styles.fallback} ${styles[`fallback-${variant}`]}`}
+      data-capability-visual
+      aria-hidden="true"
+    >
       {Array.from({ length: 9 }, (_, index) => (
         <span key={index} />
       ))}
@@ -36,6 +40,7 @@ export function CapabilityGallery() {
       className={`section-block ${styles.section}`}
       aria-labelledby="expertise-title"
       data-motion-section="capabilities"
+      data-capabilities-scene
     >
       <div className="site-container">
         <SectionHeading
@@ -69,7 +74,11 @@ export function CapabilityGallery() {
                 className={`${styles.card} ${styles[`card-${capability.variant}`]}`}
               >
                 {media ? (
-                  <div className={styles.media} aria-hidden="true">
+                  <div
+                    className={styles.media}
+                    data-capability-visual
+                    aria-hidden="true"
+                  >
                     <Image
                       alt=""
                       fill
@@ -126,6 +135,16 @@ export function CapabilityGallery() {
           })}
 
           <CapabilityCanvasLoader />
+        </div>
+
+        <div
+          className={styles.transfer}
+          data-capability-transfer
+          aria-hidden="true"
+        >
+          <span>Spatial system / 04 fields</span>
+          <i />
+          <span>Pixel signal / 01 field</span>
         </div>
       </div>
     </section>

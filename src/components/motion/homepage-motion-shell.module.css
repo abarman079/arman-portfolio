@@ -1,0 +1,147 @@
+.root {
+  --ambient-color: var(--muted);
+  --ambient-node: var(--signal-text);
+  --ambient-horizontal: 0.52;
+  --ambient-vertical: 0.72;
+  --ambient-opacity: 0;
+  position: relative;
+}
+
+.signalLayer {
+  display: none;
+}
+
+@media
+  (min-width: 64.01rem)
+  and (min-height: 40rem)
+  and (hover: hover)
+  and (pointer: fine)
+  and (prefers-reduced-motion: no-preference) {
+  .root {
+    --ambient-opacity: 0.2;
+  }
+
+  .signalLayer {
+    position: fixed;
+    z-index: 7;
+    top: 47%;
+    right: max(1.1rem, calc(var(--gutter) * 0.42));
+    display: block;
+    width: clamp(3.75rem, 4.8vw, 5.75rem);
+    height: clamp(6.5rem, 9vw, 9rem);
+    color: var(--ambient-color);
+    opacity: var(--ambient-opacity);
+    pointer-events: none;
+    transition: color 360ms ease, opacity 360ms ease;
+  }
+
+  .horizontal,
+  .vertical {
+    position: absolute;
+    display: block;
+    background: currentColor;
+    transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .horizontal {
+    top: 50%;
+    right: 0;
+    left: 0;
+    height: 1px;
+    transform: scaleX(var(--ambient-horizontal));
+    transform-origin: right center;
+  }
+
+  .vertical {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    transform: scaleY(var(--ambient-vertical));
+    transform-origin: center bottom;
+  }
+
+  .node {
+    position: absolute;
+    top: calc(50% - 0.2rem);
+    left: calc(50% - 0.2rem);
+    width: 0.4rem;
+    height: 0.4rem;
+    border: 1px solid color-mix(in srgb, var(--ambient-node) 62%, transparent);
+    background: var(--ambient-node);
+    box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--ambient-node) 9%, transparent);
+    transition:
+      background-color 360ms ease,
+      border-color 360ms ease,
+      transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .coordinate {
+    position: absolute;
+    right: 0;
+    bottom: -1.15rem;
+    color: currentColor;
+    font-family: var(--font-mono);
+    font-size: 0.48rem;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .coordinate::after {
+    content: attr(data-coordinate);
+  }
+
+  .root[data-signal-chapter="work"] {
+    --ambient-color: var(--night-muted);
+    --ambient-node: var(--signal);
+    --ambient-horizontal: 0.9;
+    --ambient-vertical: 0.35;
+    --ambient-opacity: 0.25;
+  }
+
+  .root[data-signal-chapter="capabilities"] {
+    --ambient-horizontal: 0.7;
+    --ambient-vertical: 0.92;
+    --ambient-opacity: 0.19;
+  }
+
+  .root[data-signal-chapter="lab"] {
+    --ambient-color: var(--night-muted);
+    --ambient-node: var(--signal);
+    --ambient-horizontal: 1;
+    --ambient-vertical: 0.12;
+    --ambient-opacity: 0.24;
+  }
+
+  .root[data-signal-chapter="lab"] .node {
+    transform: translateX(1.1rem);
+  }
+
+  .root[data-signal-chapter="archive"] {
+    --ambient-horizontal: 0.36;
+    --ambient-vertical: 0.48;
+    --ambient-opacity: 0.13;
+  }
+
+  .root[data-signal-chapter="about"] {
+    --ambient-horizontal: 0.58;
+    --ambient-vertical: 0.74;
+    --ambient-opacity: 0.17;
+  }
+
+  .root[data-signal-chapter="contact"] {
+    --ambient-color: var(--night-muted);
+    --ambient-node: var(--signal);
+    --ambient-horizontal: 0.18;
+    --ambient-vertical: 1;
+    --ambient-opacity: 0.22;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signalLayer {
+    display: none;
+  }
+}

@@ -1,5 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import type { ProjectPresentation } from "@/types/project";
+
+import { ProjectTransitionLink } from "../motion/project-transition-provider";
 
 type ActionLinkVariant = "primary" | "secondary" | "quiet";
 
@@ -12,6 +15,10 @@ interface ActionLinkProps {
   download?: string;
   className?: string;
   ariaLabel?: string;
+  projectTransition?: {
+    slug: string;
+    variant: ProjectPresentation["variant"];
+  };
 }
 
 export function ActionLink({
@@ -23,6 +30,7 @@ export function ActionLink({
   download,
   className = "",
   ariaLabel,
+  projectTransition,
 }: ActionLinkProps) {
   const classes = `action-link action-link--${variant} ${className}`.trim();
   const content = (
@@ -46,6 +54,20 @@ export function ActionLink({
       >
         {content}
       </a>
+    );
+  }
+
+  if (projectTransition) {
+    return (
+      <ProjectTransitionLink
+        href={href}
+        className={classes}
+        ariaLabel={ariaLabel}
+        projectSlug={projectTransition.slug}
+        variant={projectTransition.variant}
+      >
+        {content}
+      </ProjectTransitionLink>
     );
   }
 

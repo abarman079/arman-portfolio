@@ -3,6 +3,8 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState, type ReactNode } from "react";
 
+import styles from "./homepage-motion-shell.module.css";
+
 const HomepageMotionRuntime = dynamic(
   () =>
     import("./homepage-motion-runtime").then(
@@ -27,7 +29,22 @@ export function HomepageMotionShell({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <main id="main-content" tabIndex={-1} data-home-motion-root>
+    <main
+      id="main-content"
+      className={styles.root}
+      tabIndex={-1}
+      data-home-motion-root
+      data-signal-chapter="hero"
+    >
+      <div className={styles.signalLayer} data-ambient-signal aria-hidden="true">
+        <i className={styles.horizontal} />
+        <i className={styles.vertical} />
+        <i className={styles.node} />
+        <span
+          className={styles.coordinate}
+          data-coordinate="H—00 / 07"
+        />
+      </div>
       {children}
       {enabled ? <HomepageMotionRuntime /> : null}
     </main>

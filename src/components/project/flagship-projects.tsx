@@ -100,7 +100,14 @@ function FlagshipProject({
             )}
 
             <div className={styles.actions}>
-              <ActionLink href={caseStudyHref} variant="secondary">
+              <ActionLink
+                href={caseStudyHref}
+                variant="secondary"
+                projectTransition={{
+                  slug: project.slug,
+                  variant: project.presentation.variant,
+                }}
+              >
                 View case study
               </ActionLink>
               {project.liveUrl ? (
@@ -130,6 +137,7 @@ function FlagshipProject({
               href={caseStudyHref}
               items={project.media}
               projectName={project.canonicalName}
+              projectSlug={project.slug}
               variant={project.presentation.variant}
             />
           </div>

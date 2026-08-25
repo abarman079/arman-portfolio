@@ -447,7 +447,7 @@
 
 .nextProject a {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: var(--space-5);
   width: min(100%, calc(var(--container-max) + 2 * var(--gutter)));
   min-height: clamp(19rem, 34vw, 34rem);
@@ -468,6 +468,7 @@
 }
 
 .nextProject strong {
+  grid-column: 1 / span 7;
   max-width: 13ch;
   align-self: end;
   font-size: clamp(3.1rem, 7.5vw, 8rem);
@@ -477,10 +478,27 @@
 }
 
 .nextProject a > span:last-child {
+  grid-column: 12;
   align-self: end;
   color: var(--case-accent);
   font-size: clamp(2.5rem, 6vw, 6rem);
   line-height: 1;
+}
+
+.nextProjectMedia {
+  display: grid;
+  grid-column: 8 / span 4;
+  grid-row: 2;
+  align-self: end;
+  overflow: hidden;
+  border: 1px solid var(--night-rule);
+  background: var(--case-stage);
+}
+
+.nextProjectMedia img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -495,6 +513,14 @@
 
   .nextProject a:hover > span:last-child {
     transform: translateX(0.75rem);
+  }
+
+  .nextProjectMedia img {
+    transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .nextProject a:hover .nextProjectMedia img {
+    transform: scale(1.012);
   }
 }
 
@@ -647,13 +673,34 @@
   }
 
   .nextProject a {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     min-height: 21rem;
+  }
+
+  .nextProject strong {
+    grid-column: 1 / -1;
+  }
+
+  .nextProjectMedia {
+    grid-column: 1 / span 3;
+    grid-row: 3;
+    margin-top: var(--space-5);
+  }
+
+  .nextProject a > span:last-child {
+    grid-column: 4;
+    grid-row: 3;
+    justify-self: end;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .nextProject a strong,
   .nextProject a > span:last-child {
+    transition: none;
+  }
+
+  .nextProjectMedia img {
     transition: none;
   }
 }

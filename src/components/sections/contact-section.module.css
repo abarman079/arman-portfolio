@@ -104,6 +104,46 @@
   text-transform: uppercase;
 }
 
+.signalCluster {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: clamp(4rem, 7vw, 7rem);
+  border: 1px solid var(--night-rule);
+  background: var(--night-rule);
+}
+
+.signalCluster span {
+  display: flex;
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-inline: var(--space-4);
+  background: color-mix(in srgb, var(--night-surface) 86%, var(--night));
+  color: var(--night-muted);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.signalCluster i {
+  width: 0.38rem;
+  height: 0.38rem;
+  border: 1px solid var(--night-muted);
+}
+
+.signalCluster span:nth-child(3) {
+  color: var(--night-ink);
+}
+
+.signalCluster span:nth-child(3) i,
+.signalCluster span:nth-child(5) i {
+  border-color: var(--signal);
+  background: var(--signal);
+}
+
 .railLabel,
 .metadata dt {
   color: var(--night-muted);
@@ -371,6 +411,21 @@
   .signalRoute span {
     font-size: 0.57rem;
   }
+
+  .signalCluster {
+    grid-template-columns: repeat(5, minmax(3.25rem, 1fr));
+    overflow: hidden;
+  }
+
+  .signalCluster span {
+    min-height: 3rem;
+    justify-content: center;
+    padding-inline: var(--space-2);
+  }
+
+  .signalCluster i {
+    display: none;
+  }
 }
 
 @media (max-width: 30rem) {
@@ -398,6 +453,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .signalCluster span {
+    transform: none !important;
+  }
+
   .signalRoute i::after {
     transform: none;
   }

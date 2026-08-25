@@ -36,6 +36,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .section {
+    --archive-arrival: 1 !important;
+  }
+
   .group {
     --scan-progress: 1 !important;
   }
@@ -69,4 +73,23 @@
     flex-direction: column;
     gap: var(--space-2);
   }
+}
+.section {
+  --archive-arrival: 1;
+  position: relative;
+  overflow: clip;
+}
+
+.section::before {
+  position: absolute;
+  top: 0;
+  right: var(--gutter);
+  left: var(--gutter);
+  height: 1px;
+  background: var(--signal-text);
+  content: "";
+  opacity: var(--archive-arrival);
+  transform: scaleX(var(--archive-arrival));
+  transform-origin: left center;
+  pointer-events: none;
 }

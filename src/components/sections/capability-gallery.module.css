@@ -1,6 +1,22 @@
 .section {
+  --capability-transfer: 1;
+  --work-resolve: 1;
   position: relative;
   overflow: clip;
+}
+
+.section::after {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: var(--gutter);
+  left: var(--gutter);
+  height: 1px;
+  background: var(--signal-text);
+  content: "";
+  transform: scaleX(var(--work-resolve));
+  transform-origin: right center;
+  pointer-events: none;
 }
 
 .section::before {
@@ -28,6 +44,38 @@
   font-size: 0.65rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
+}
+
+.transfer {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-4);
+  align-items: center;
+  padding-top: clamp(2.5rem, 5vw, 5rem);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.transfer i {
+  position: relative;
+  height: 1px;
+  background: var(--rule);
+  transform: scaleX(var(--capability-transfer));
+  transform-origin: left center;
+}
+
+.transfer i::after {
+  position: absolute;
+  top: -0.18rem;
+  right: 0;
+  width: 0.38rem;
+  height: 0.38rem;
+  background: var(--signal-text);
+  content: "";
+  transform: scale(var(--capability-transfer));
 }
 
 .cards {
@@ -509,6 +557,15 @@
 }
 
 @media (max-width: 48rem) {
+  .transfer {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .transfer i {
+    width: 100%;
+  }
+
   .systemHeader {
     align-items: flex-start;
     flex-direction: column;
@@ -590,6 +647,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .section {
+    --capability-transfer: 1 !important;
+    --work-resolve: 1 !important;
+  }
+
   .canvasHost {
     display: none;
   }

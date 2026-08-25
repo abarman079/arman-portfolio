@@ -1,9 +1,25 @@
 .section {
+  --lab-calm: 0;
   --lab-progress: 0.5;
   position: relative;
   overflow: clip;
   border-block: 1px solid var(--night-rule);
   isolation: isolate;
+}
+
+.section::after {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: clamp(5rem, 9vw, 9rem);
+  background: linear-gradient(to bottom, transparent, var(--surface));
+  content: "";
+  opacity: var(--lab-calm);
+  pointer-events: none;
+  transform: scaleY(var(--lab-calm));
+  transform-origin: bottom center;
 }
 
 .section::before {
@@ -483,6 +499,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .section {
+    --lab-calm: 1 !important;
     --lab-progress: 0.5 !important;
   }
 

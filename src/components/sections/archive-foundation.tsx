@@ -11,9 +11,10 @@ import styles from "./archive-foundation.module.css";
 export function ArchiveFoundation() {
   return (
     <section
-      className="section-block section-block--surface"
+      className={`section-block section-block--surface ${styles.section}`}
       aria-labelledby="archive-title"
       data-motion-section="archive"
+      data-archive-scene
     >
       <div className="site-container">
         <div className={styles.intro}>
