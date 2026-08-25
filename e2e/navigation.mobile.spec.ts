@@ -50,6 +50,11 @@ test("touch layout keeps flagship actions visible and skips WebGL enhancement", 
   await expect(page.getByRole("link", { name: /view case study/i }).first()).toBeVisible();
   await page.locator("#expertise").scrollIntoViewIfNeeded();
   await expect(page.locator("[data-capability-gallery] canvas")).toHaveCount(0);
+  await page.locator("[data-ml-lab]").scrollIntoViewIfNeeded();
+  await expect(page.locator("[data-ml-lab] canvas")).toHaveCount(0);
+  await expect(
+    page.getByRole("navigation", { name: "Interactive Lab related projects" }),
+  ).toBeVisible();
 });
 
 test("mobile resume uses the explicit PDF fallback without loading an inline plugin", async ({

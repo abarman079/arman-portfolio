@@ -7,12 +7,14 @@ test("reduced motion keeps content visible and disables enhanced scroll systems"
   void consoleErrors;
   await page.goto("/");
 
-  for (const section of ["#work", "#expertise", "#about", "#contact"]) {
+  for (const section of ["#work", "#expertise", "[data-ml-lab]", "#about", "#contact"]) {
     await expect(page.locator(section)).toBeVisible();
   }
 
   await page.locator("#expertise").scrollIntoViewIfNeeded();
   await expect(page.locator("[data-capability-gallery] canvas")).toHaveCount(0);
+  await page.locator("[data-ml-lab]").scrollIntoViewIfNeeded();
+  await expect(page.locator("[data-ml-lab] canvas")).toHaveCount(0);
   await expect(page.locator("[data-flagship-scroll-root]"))
     .not.toHaveAttribute("data-cinematic", "true");
 

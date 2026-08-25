@@ -2,6 +2,8 @@
 
 A production portfolio for Md. Akibul Hasan Arman, a software engineer building full-stack products, backend systems, and applied ML. The site pairs evidence-backed engineering case studies with a responsive editorial interface and progressively enhanced motion.
 
+V1.1 adds an Interactive Lab built with custom GLSL: a progressive GPU visualization inspired by computer-vision processing concepts, with static mobile and reduced-motion fallbacks. It does not run the project models.
+
 ## Live portfolio
 
 [abarmandev-bay.vercel.app](https://abarmandev-bay.vercel.app/)
@@ -12,7 +14,7 @@ A production portfolio for Md. Akibul Hasan Arman, a software engineer building 
 - Strict TypeScript and a centralized, validated project-content model
 - Responsive “Signal & Structure” visual system built with Tailwind CSS v4 and CSS Modules
 - Motion for local interaction, GSAP for selected scroll choreography, and Lenis for eligible desktop scrolling
-- Progressive React Three Fiber capability visualization with CSS/media and reduced-motion fallbacks
+- Progressive React Three Fiber capability visualization and custom GLSL Interactive Lab with CSS/media fallbacks
 - Evidence-backed flagship case studies with verified project media and contextualized research results
 - Environment-gated Contact Server Action using Zod, Cloudflare Turnstile Siteverify, and Resend
 - Metadata, JSON-LD, sitemap, robots, social-card, custom icon, and branded not-found foundations
@@ -20,7 +22,7 @@ A production portfolio for Md. Akibul Hasan Arman, a software engineer building 
 
 ## Architecture
 
-The application keeps content and routing server-rendered wherever possible. Narrow Client Component islands own browser-only behavior such as navigation state, local motion, smooth scrolling, the capability canvas, and Contact form interaction.
+The application keeps content and routing server-rendered wherever possible. Narrow Client Component islands own browser-only behavior such as navigation state, local motion, smooth scrolling, the capability and Interactive Lab canvases, and Contact form interaction.
 
 Animation responsibilities remain separated: CSS handles state and accessibility fallbacks, Motion handles component interaction, GSAP owns coordinated project storytelling, and Lenis supplies the single optional smooth-scroll clock. WebGL is loaded only for capable desktop contexts and is never required to understand the content.
 

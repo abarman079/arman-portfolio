@@ -95,6 +95,40 @@ export function HomepageMotionRuntime() {
         });
       });
 
+      const lab = scope.current.querySelector<HTMLElement>("[data-ml-lab]");
+
+      if (lab) {
+        const labState = { progress: 0 };
+        let activePhase = "";
+
+        const publishLabProgress = () => {
+          const progress = Math.min(1, Math.max(0, labState.progress));
+          const phase = progress < 0.34 ? "input" : progress < 0.68 ? "features" : "signal";
+
+          lab.style.setProperty("--lab-progress", progress.toFixed(4));
+          if (phase !== activePhase) {
+            activePhase = phase;
+            lab.dataset.signalPhase = phase;
+          }
+
+          window.dispatchEvent(
+            new CustomEvent("lab:progress", { detail: { progress } }),
+          );
+        };
+
+        gsap.to(labState, {
+          progress: 1,
+          ease: gsapEase.linear,
+          onUpdate: publishLabProgress,
+          scrollTrigger: {
+            trigger: lab,
+            start: "top 82%",
+            end: "bottom 28%",
+            scrub: scrollMotion.scrubResponsive,
+          },
+        });
+      }
+
       const archiveGroups = gsap.utils.toArray<HTMLElement>(
         "[data-archive-group]",
         scope.current,
