@@ -36,6 +36,14 @@ export function getSiteUrl(): URL | undefined {
   return new URL(parsedUrl.origin);
 }
 
+export function isIndexableProduction(): boolean {
+  if (!getSiteUrl()) return false;
+
+  const vercelEnvironment = process.env.VERCEL_ENV?.trim();
+
+  return !vercelEnvironment || vercelEnvironment === "production";
+}
+
 function absoluteUrl(path: string, siteUrl = getSiteUrl()) {
   return siteUrl ? new URL(path, siteUrl) : undefined;
 }
@@ -49,6 +57,7 @@ function socialImage(path: string, alt: string, siteUrl = getSiteUrl()) {
 }
 
 const siteUrl = getSiteUrl();
+const isIndexable = isIndexableProduction();
 const rootSocialImages = socialImage(
   "/social-card",
   `${siteConfig.name} — Software Engineer`,
@@ -67,7 +76,7 @@ export const rootMetadata: Metadata = {
   creator: siteConfig.name,
   category: "technology",
   alternates: siteUrl ? { canonical: "/" } : undefined,
-  robots: siteUrl
+  robots: isIndexable
     ? { index: true, follow: true }
     : { index: false, follow: false, noarchive: true },
   openGraph: {

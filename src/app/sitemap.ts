@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next";
 
 import { flagshipProjects } from "@/content/projects";
-import { getSiteUrl } from "@/lib/seo";
+import { getSiteUrl, isIndexableProduction } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = getSiteUrl();
 
-  if (!siteUrl) return [];
+  if (!siteUrl || !isIndexableProduction()) return [];
 
   const route = (path: string) => new URL(path, siteUrl).toString();
 

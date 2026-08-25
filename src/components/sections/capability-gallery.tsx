@@ -41,7 +41,7 @@ export function CapabilityGallery() {
         <SectionHeading
           eyebrow="02 / Engineering range"
           title="Four fields of engineering, connected."
-          description="Each capability is anchored to verified project evidence. The dimensional layer is an enhancement; the projects, systems, and technical context remain complete without it."
+          description="Interfaces connect to backend rules, model evaluation, and analytical systems. Each field links directly to the projects that demonstrate it."
           id="expertise-title"
         />
 
@@ -101,7 +101,7 @@ export function CapabilityGallery() {
                     ))}
                   </ul>
 
-                  <nav className={styles.projectLinks} aria-label={`${capability.title} project evidence`}>
+                  <nav className={styles.projectLinks} aria-label={`${capability.title} projects`}>
                     {relatedProjects.map((project) =>
                       project.tier === "flagship" ? (
                         <Link href={`/work/${project.slug}`} key={project.slug}>

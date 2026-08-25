@@ -16,7 +16,7 @@ export function SelectedWorkFoundation() {
         <SectionHeading
           eyebrow="01 / Selected work"
           title="Four systems. Four engineering problems."
-          description="Full-stack architecture, editorial product thinking, responsive commerce UI, and applied computer-vision research—presented with verified project material."
+          description="Full-stack architecture, editorial product thinking, responsive commerce UI, and applied computer-vision research."
           id="selected-work-title"
           tone="dark"
         />

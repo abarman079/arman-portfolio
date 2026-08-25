@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import type { ProjectRecord } from "@/types/project";
 import { formatProjectTypes } from "@/lib/project-labels";
 
@@ -19,32 +21,80 @@ export function ProjectArchive({
     <ol className={`${styles.list} ${styles[variant]}`}>
       {projects.map((project, projectIndex) => {
         const index = String(startIndex + projectIndex).padStart(2, "0");
+        const media = project.media?.[0];
+
+        if (!media) {
+          throw new Error(`Archive project is missing media: ${project.slug}`);
+        }
+
+        if (variant === "featured") {
+          return (
+            <li className={styles.item} key={project.slug}>
+              <figure className={styles.featuredMedia}>
+                <div className={styles.featuredFrame}>
+                  <Image
+                    alt={media.alt}
+                    fill
+                    sizes="(min-width: 64rem) 48vw, (min-width: 48rem) 46vw, 100vw"
+                    src={media.src}
+                  />
+                </div>
+                <figcaption>
+                  <span aria-label={`Project ${index}`}>{index}</span>
+                  <span>{media.caption}</span>
+                </figcaption>
+              </figure>
+
+              <div className={styles.featuredCopy}>
+                <p className={styles.type}>
+                  {formatProjectTypes(project.projectTypes)}
+                </p>
+                <h3>{project.canonicalName}</h3>
+                <p className={styles.summary}>{project.shortSummary}</p>
+                <p className={styles.focus}>
+                  {project.architectureFacts?.[0] ?? project.functionality[0]}
+                </p>
+                <p className={styles.stack}>
+                  {project.technologies.slice(0, 4).join(" / ")}
+                </p>
+                <div className={styles.action}>
+                  <ActionLink
+                    href={project.repositoryUrl}
+                    external
+                    variant="quiet"
+                    ariaLabel={`Source — ${project.canonicalName} repository, opens in a new tab`}
+                  >
+                    Source
+                  </ActionLink>
+                </div>
+              </div>
+            </li>
+          );
+        }
 
         return (
           <li className={styles.item} key={project.slug}>
             <p className={styles.index} aria-label={`Project ${index}`}>
               {index}
             </p>
+            <figure className={styles.thumbnail}>
+              <Image
+                alt={media.alt}
+                fill
+                sizes="(min-width: 48rem) 140px, 34vw"
+                src={media.src}
+              />
+            </figure>
             <div className={styles.identity}>
               <p className={styles.type}>
                 {formatProjectTypes(project.projectTypes)}
               </p>
               <h3>{project.canonicalName}</h3>
-              {variant === "featured" ? (
-                <p className={styles.summary}>{project.shortSummary}</p>
-              ) : null}
+              <p className={styles.summary}>{project.shortSummary}</p>
+              <p className={styles.stack}>
+                {project.technologies.slice(0, 3).join(" / ")}
+              </p>
             </div>
-            {variant === "featured" ? (
-              <div className={styles.evidence}>
-                <p className={styles.evidenceLabel}>Verified technical focus</p>
-                <p>{project.architectureFacts?.[0] ?? project.functionality[0]}</p>
-                <p className={styles.stack}>
-                  {project.technologies.slice(0, 4).join(" / ")}
-                </p>
-              </div>
-            ) : (
-              <p className={styles.stack}>{project.technologies.slice(0, 2).join(" / ")}</p>
-            )}
             <div className={styles.action}>
               <ActionLink
                 href={project.repositoryUrl}

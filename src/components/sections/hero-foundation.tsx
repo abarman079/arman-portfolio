@@ -44,8 +44,8 @@ export function HeroFoundation() {
 
           <HeroReveal delay={0.13}>
             <p className={styles.lede}>
-              A verified body of product, systems, research, and data work—organized
-              around what was built, how it works, and the evidence behind it.
+              I work across product interfaces, APIs, data systems, and model
+              evaluation. The projects below show the implementation in context.
             </p>
           </HeroReveal>
 

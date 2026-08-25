@@ -10,12 +10,16 @@ test("core navigation and form labels work across browser engines", async ({
     "Software Engineer",
   );
 
-  await page.goto("/work");
+  await page
+    .getByRole("link", { name: "View the complete work index" })
+    .click();
+  await expect(page).toHaveURL(/\/work$/);
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   await page.getByRole("link", { name: /view case study for slatedesk/i }).click();
   await expect(page).toHaveURL(/\/work\/slatedesk$/);
 
-  await page.goto("/#contact");
+  await page.getByRole("link", { name: "Contact", exact: true }).first().click();
+  await expect(page).toHaveURL(/\/#contact$/);
   await expect(page.getByLabel("Name")).toBeVisible();
   await expect(page.getByLabel("Email")).toBeVisible();
   await expect(page.getByLabel("Reason")).toBeVisible();

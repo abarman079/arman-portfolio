@@ -16,7 +16,7 @@ interface CaseStudyPageProps {
 }
 
 function getStatusLabel(status: ProjectRecord["status"]) {
-  if (status === "live") return "Verified deployment";
+  if (status === "live") return "Live project";
   if (status === "research") return "Offline research";
   if (status === "local") return "Local application";
   return "Repository project";
@@ -299,7 +299,7 @@ export function CaseStudyPage({
                 <dd>{project.technologies.slice(0, 5).join(" / ")}</dd>
               </div>
               <div>
-                <dt>Primary record</dt>
+                <dt>Repository</dt>
                 <dd>Public repository</dd>
               </div>
             </dl>
@@ -323,7 +323,7 @@ export function CaseStudyPage({
 
           <section className={`${styles.block} ${styles.stackBlock}`} data-case-block>
             <BlockHeading
-              heading="Technical stack in the verified repository"
+              heading="Technical stack in the repository"
               index={caseStudy.blocks.length + 1}
             />
             <ul>

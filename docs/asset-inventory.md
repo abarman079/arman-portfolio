@@ -94,14 +94,14 @@ No fabricated UI is needed. Prefer charts and architecture. Confirm dataset/samp
 
 | Project | Existing usable evidence | Missing or restricted |
 | --- | --- | --- |
-| Face-Based Anomaly Detection | 28+ figures for data, embeddings, thresholds, training, reconstruction, comparisons, and architecture; tables and report | Confirm LFW/face-sample display terms; prefer charts and anonymized/low-risk examples. |
-| Retail Data Warehouse & BI | ERD/snowflake diagrams, Power Query steps, Power BI model and dashboard screenshots, PBIX, report | Attribute dataset; review screenshots for legibility and accidental personal data. |
-| Wall Crack Detection | 70+ EDA, overlay, training, comparison, threshold, resolution, and diagnostic figures | Confirm source-dataset licenses and exact final figure/metric pairing. |
-| TravelEase | Favicon-like image only | Needs safe live/local screenshots if it receives imagery; never substitute travel stock. |
-| RoleBoard RBAC | Only starter SVGs | Needs safe local screenshots if it receives imagery. |
-| PulseFlow | Project logos and hospital icons | Needs safe UI screenshots; confirm logo/icon ownership and remove any patient-like demo data. |
-| EWU FUB Energy Monitor | No committed image assets | Needs live/local captures if it receives imagery; label simulated telemetry. |
-| EduConsult Pro | Large vendored Astra asset tree | Needs owner-approved screenshots of custom work; do not use vendored theme assets as evidence of custom design. |
+| Face-Based Anomaly Detection | Final four-model comparison chart retained for the archive; 28+ other research figures remain available | Face samples remain excluded pending dataset-display confirmation. |
+| Retail Data Warehouse & BI | Power BI sales-performance dashboard retained at readable resolution; ERD and model screenshots remain available | Dataset attribution remains a documentation concern; no personal data was found in the retained frame. |
+| Wall Crack Detection | Model trade-off chart retained for the archive; 70+ research figures remain available | Source-dataset imagery remains excluded pending license confirmation. |
+| TravelEase | Safe public deployment capture retained | Do not substitute travel stock or imply production commerce. |
+| RoleBoard RBAC | Repository application run locally with repository-provided seed data; permission dashboard retained | No external visual assets required. |
+| PulseFlow | Safe public landing-page capture retained | Logo/icon ownership still needs confirmation before they become primary brand assets; no patient records are shown. |
+| EWU FUB Energy Monitor | Repository application run locally with simulated telemetry; building dashboard retained | Keep simulated telemetry explicit; the PythonAnywhere public URL is not a working app deployment. |
+| EduConsult Pro | Custom plugin source view retained | No publication-safe custom UI exists; vendored Astra assets remain prohibited as evidence of custom work. |
 
 ## Capture policy for later phases
 

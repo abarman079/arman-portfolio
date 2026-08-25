@@ -1,3 +1,17 @@
+.intro :global(.section-heading) {
+  padding-bottom: clamp(2.5rem, 4vw, 4rem);
+}
+
+.intro :global(.section-heading h2) {
+  max-width: 14ch;
+  font-size: clamp(2.4rem, 4.2vw, 4.7rem);
+}
+
+.intro :global(.section-heading__body > p) {
+  max-width: 36rem;
+  margin-top: var(--space-5);
+}
+
 .group {
   --scan-progress: 1;
   position: relative;
@@ -18,7 +32,7 @@
 }
 
 .group + .group {
-  margin-top: clamp(3rem, 6vw, 5.5rem);
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -46,6 +60,10 @@
 }
 
 @media (max-width: 38rem) {
+  .intro :global(.section-heading h2) {
+    font-size: clamp(2.25rem, 11vw, 3.35rem);
+  }
+
   .groupHeader {
     align-items: flex-start;
     flex-direction: column;

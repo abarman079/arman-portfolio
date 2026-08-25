@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export default function WorkNotFound() {
   return (
-    <main id="main-content" className="page-intro">
+    <main id="main-content" className="page-intro" tabIndex={-1}>
       <div className="site-container page-intro__grid">
         <p className="eyebrow">404 / Case study not found</p>
         <div>
           <h1>This case study is not published.</h1>
           <p>
             The work index includes the broader project archive, while detailed
-            case studies are currently limited to the four verified flagships.
+            case studies are currently limited to the four flagship projects.
           </p>
           <div className="section-action">
             <Link className="action-link action-link--primary" href="/work">

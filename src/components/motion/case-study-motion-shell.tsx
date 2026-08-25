@@ -33,7 +33,12 @@ export function CaseStudyMotionShell({
   }, []);
 
   return (
-    <main id="main-content" className={className} data-case-motion-root>
+    <main
+      id="main-content"
+      className={className}
+      tabIndex={-1}
+      data-case-motion-root
+    >
       {children}
       {enabled ? <CaseStudyMotionRuntime /> : null}
     </main>

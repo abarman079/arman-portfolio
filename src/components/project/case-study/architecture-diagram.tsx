@@ -26,7 +26,7 @@ export function ArchitectureDiagram({
       </div>
 
       <figcaption className={styles.caption}>
-        <p>Verified relationships</p>
+        <p>System relationships</p>
         <ol>
           {relationships.map((relationship, index) => (
             <li key={relationship}>

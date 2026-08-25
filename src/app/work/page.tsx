@@ -10,24 +10,21 @@ import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata(
   "Work",
-  "A verified index of full-stack systems, frontend products, machine-learning research, and data work by Md. Akibul Hasan Arman.",
+  "A curated index of full-stack systems, frontend products, machine-learning research, and data work by Md. Akibul Hasan Arman.",
   { path: "/work" },
 );
 
 export default function WorkPage() {
   return (
-    <main id="main-content" className="work-page">
+    <main id="main-content" className="work-page" tabIndex={-1}>
       <section className="page-intro" aria-labelledby="work-page-title">
         <div className="site-container page-intro__grid">
           <p className="eyebrow">Work index / 12 projects</p>
           <div>
-            <h1 id="work-page-title">
-              Projects with evidence behind the interface.
-            </h1>
+            <h1 id="work-page-title">Projects across product, backend, research, and data.</h1>
             <p>
-              The hierarchy reflects the strength and completeness of the source
-              material. Unknown dates, roles, outcomes, and unverified deployments
-              remain intentionally absent.
+              Four flagship case studies lead the collection. Research and
+              supporting application work follow in a compact index.
             </p>
           </div>
         </div>
@@ -40,7 +37,7 @@ export default function WorkPage() {
         <div className="site-container">
           <SectionHeading
             eyebrow="01 / Flagship"
-            title="The primary engineering record."
+            title="Flagship case studies."
             id="flagship-title"
             tone="dark"
           />
@@ -52,7 +49,7 @@ export default function WorkPage() {
         <div className="site-container">
           <SectionHeading
             eyebrow="02 / Featured archive"
-            title="Research and data work with substantial supporting evidence."
+            title="Research and data projects."
             id="featured-title"
           />
           <ProjectArchive
@@ -70,7 +67,7 @@ export default function WorkPage() {
         <div className="site-container">
           <SectionHeading
             eyebrow="03 / Additional archive"
-            title="Supporting systems, demonstrations, and local application work."
+            title="Supporting web applications and demonstrations."
             id="additional-title"
           />
           <ProjectArchive

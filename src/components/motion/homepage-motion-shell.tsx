@@ -27,7 +27,7 @@ export function HomepageMotionShell({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <main id="main-content" data-home-motion-root>
+    <main id="main-content" tabIndex={-1} data-home-motion-root>
       {children}
       {enabled ? <HomepageMotionRuntime /> : null}
     </main>

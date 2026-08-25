@@ -39,7 +39,7 @@ const technologyGroups = [
   },
   {
     index: "05",
-    title: "Testing and delivery evidence",
+    title: "Testing and delivery",
     technologies: ["xUnit", "Vercel", "Jupyter Notebook", "Supabase Storage"],
     projectSlugs: ["slatedesk", "framesignal", "cctv-violence-detection"],
   },
@@ -84,7 +84,7 @@ export function AboutSection() {
         <SectionHeading
           eyebrow="04 / Approach"
           title="The connecting layer between interface and infrastructure."
-          description="A cross-section of verified project evidence: product surfaces, backend rules, model evaluation, and analytical structure."
+          description="The projects span product interfaces, backend rules, model evaluation, and analytical systems."
           id="about-title"
         />
 
@@ -92,19 +92,18 @@ export function AboutSection() {
           <div className={styles.leadBlock} data-about-lead>
             <p className={styles.kicker}>System thinking / product clarity</p>
             <p className={styles.lead}>
-              The work moves between what a person sees and the rules that make the experience dependable.
+              I work across what a person sees and the rules that make the experience dependable.
             </p>
           </div>
 
           <div className={styles.body}>
             <p>
-              The project record covers role-aware application workflows, editorial product systems,
+              The selected work covers role-aware application workflows, editorial product systems,
               responsive commerce interfaces, applied computer vision, and dimensional reporting.
             </p>
             <p>
-              Each public claim stays attached to repository documentation, verified deployments,
-              or reproducible research output. Personal role, timeline, and impact remain absent until
-              they are explicitly confirmed.
+              The common thread is practical engineering: clear interfaces, explicit system rules,
+              and results that can be inspected in the source.
             </p>
           </div>
 
@@ -115,8 +114,8 @@ export function AboutSection() {
                 <dd>{siteConfig.location}</dd>
               </div>
               <div>
-                <dt>Project record</dt>
-                <dd>{projects.length} source-backed projects</dd>
+                <dt>Selected work</dt>
+                <dd>{projects.length} projects</dd>
               </div>
             </dl>
             <div className={styles.profileLinks}>
@@ -135,7 +134,7 @@ export function AboutSection() {
 
         <div
           className={styles.evidenceMosaic}
-          aria-label="Selected interface evidence"
+          aria-label="Selected project interfaces"
           data-about-mosaic
         >
           {evidenceMedia.map(({ media, project }, index) => (
@@ -170,8 +169,8 @@ export function AboutSection() {
             <p className="eyebrow">Technology ecosystem</p>
             <h3 id="ecosystem-title">Tools in context, not a badge wall.</h3>
             <p>
-              Technologies are grouped by the kind of project evidence they support. The project links
-              lead to case studies or source repositories.
+              Technologies are grouped by the work they support. Each project link leads to a case
+              study or source repository.
             </p>
           </header>
 
@@ -208,7 +207,7 @@ export function AboutSection() {
         </section>
 
         <div className={styles.handoff}>
-          <p>Four engineering domains. One evidence-led project record.</p>
+          <p>Four engineering domains, shown through working projects.</p>
           <ActionLink href="#contact" variant="primary">
             Start a conversation
           </ActionLink>

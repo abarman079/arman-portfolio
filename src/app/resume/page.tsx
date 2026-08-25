@@ -13,7 +13,7 @@ export const metadata = createPageMetadata(
 
 export default function ResumePage() {
   return (
-    <main id="main-content" className="resume-page">
+    <main id="main-content" className="resume-page" tabIndex={-1}>
       <div className="site-container">
         <div className="resume-page__back">
           <Link href="/">← Back to portfolio</Link>

@@ -1,6 +1,8 @@
 import { defineConfig } from "@playwright/test";
 
-const baseURL = "http://127.0.0.1:4173";
+const localBaseURL = "http://127.0.0.1:4173";
+const externalBaseURL = process.env.PLAYWRIGHT_BASE_URL?.trim();
+const baseURL = externalBaseURL || localBaseURL;
 
 export default defineConfig({
   testDir: "./e2e",
@@ -27,21 +29,25 @@ export default defineConfig({
     trace: "retain-on-failure",
     video: "retain-on-failure",
   },
-  webServer: {
-    command:
-      "npm run build && node node_modules/next/dist/bin/next start -p 4173",
-    url: baseURL,
-    reuseExistingServer: false,
-    timeout: 300_000,
-    env: {
-      SITE_URL: baseURL,
-      NEXT_PUBLIC_TURNSTILE_SITE_KEY: "1x00000000000000000000AA",
-      TURNSTILE_SECRET_KEY: "1x0000000000000000000000000000000AA",
-      RESEND_API_KEY: "browser-test-placeholder",
-      CONTACT_FROM_EMAIL: "Portfolio QA <qa@example.com>",
-      CONTACT_TO_EMAIL: "qa@example.com",
-    },
-  },
+  webServer: externalBaseURL
+    ? undefined
+    : {
+        command:
+          "npm run build && node node_modules/next/dist/bin/next start -p 4173",
+        url: localBaseURL,
+        reuseExistingServer: false,
+        timeout: 300_000,
+        env: {
+          SITE_URL: localBaseURL,
+          VERCEL_ENV: "production",
+          NEXT_PUBLIC_TURNSTILE_SITE_KEY: "1x00000000000000000000AA",
+          TURNSTILE_SECRET_KEY:
+            "1x0000000000000000000000000000000AA",
+          RESEND_API_KEY: "browser-test-placeholder",
+          CONTACT_FROM_EMAIL: "Portfolio QA <qa@example.com>",
+          CONTACT_TO_EMAIL: "qa@example.com",
+        },
+      },
   projects: [
     {
       name: "chromium-desktop",

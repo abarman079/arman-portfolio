@@ -54,7 +54,7 @@ function FlagshipProject({
           </p>
           <p className={styles.status}>
             {project.status === "live"
-              ? "Verified deployment"
+              ? "Live site"
               : project.status === "research"
                 ? "Offline research"
                 : "Repository project"}
@@ -90,7 +90,7 @@ function FlagshipProject({
                 </p>
               </div>
             ) : (
-              <ul className={styles.facts} aria-label="Verified project details">
+              <ul className={styles.facts} aria-label="Project details">
                 {(project.architectureFacts ?? project.functionality)
                   .slice(0, 3)
                   .map((fact) => (

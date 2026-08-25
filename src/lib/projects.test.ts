@@ -67,6 +67,18 @@ describe("verified project source", () => {
     }
   });
 
+  it("keeps one publication-reviewed visual on every archive project", () => {
+    for (const project of [...featuredArchiveProjects, ...additionalArchiveProjects]) {
+      expect(project.media?.length).toBeGreaterThanOrEqual(1);
+
+      for (const media of project.media ?? []) {
+        expect(media.src).toMatch(/^\/projects\//);
+        expect(media.privacyReviewed).toBe(true);
+        expect(media.source).toBeTruthy();
+      }
+    }
+  });
+
   it("keeps case studies exclusive to the four flagship projects", () => {
     expect(
       projects.filter((project) => project.caseStudy).map((project) => project.slug),

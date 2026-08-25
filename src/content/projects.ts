@@ -411,6 +411,21 @@ const projectSource = [
     architectureFacts: [
       "Uses 512-dimensional FaceNet embeddings in the documented research pipeline",
     ],
+    media: [
+      {
+        src: "/projects/face-based-anomaly-detection/model-comparison.webp",
+        width: 1600,
+        height: 678,
+        alt: "Grouped bar chart comparing four anomaly-detection models across accuracy, anomaly precision and recall, F1, false-positive rate, ROC-AUC, and average precision.",
+        kind: "chart",
+        source:
+          "Face-Based Anomaly Detection repository results/figures/figures/23_final_four_model_performance_comparison.png at commit 9bb3b6a.",
+        licenseOrPermission: "owned",
+        privacyReviewed: true,
+        caption:
+          "Four-model comparison on the repository's documented LFW experiment",
+      },
+    ],
     evidence: [
       {
         id: "face-readme",
@@ -448,6 +463,20 @@ const projectSource = [
     ],
     architectureFacts: [
       "Sales fact with date, time, customer, product, category, invoice, and country dimensions",
+    ],
+    media: [
+      {
+        src: "/projects/retail-data-warehouse-bi/sales-dashboard.webp",
+        width: 1091,
+        height: 782,
+        alt: "Power BI retail sales dashboard showing year and country filters, sales, invoice and customer indicators, a monthly trend, and product and country charts.",
+        kind: "screenshot",
+        source:
+          "Data-Warehousing repository reports/screenshots/Power BI Report Screenshots/SMP Retail Sales Performance Dashboard.png at commit d19b9b4.",
+        licenseOrPermission: "owned",
+        privacyReviewed: true,
+        caption: "Power BI dashboard over the Online Retail II warehouse",
+      },
     ],
     evidence: [
       {
@@ -492,6 +521,21 @@ const projectSource = [
     architectureFacts: [
       "Compares U-Net, DeepLabV3+, and U-Net++ with EfficientNet-B3 encoders",
       "Uses frozen-split evaluation and resolution/threshold sensitivity analysis",
+    ],
+    media: [
+      {
+        src: "/projects/wall-crack-detection/model-tradeoff.webp",
+        width: 1200,
+        height: 867,
+        alt: "Scatter plot comparing three wall-crack segmentation models by crack-only mean IoU and no-crack false-positive rate.",
+        kind: "chart",
+        source:
+          "wallCrackWith2datasets repository Phase-5 comapre/phase5_tradeoff_scatter.png at commit ece41b1.",
+        licenseOrPermission: "owned",
+        privacyReviewed: true,
+        caption:
+          "Model trade-off between crack-only IoU and false-positive rate",
+      },
     ],
     evidence: [
       {
@@ -538,6 +582,20 @@ const projectSource = [
     architectureFacts: [
       "Traditional PHP server-rendered application with session authentication and role-specific areas",
     ],
+    media: [
+      {
+        src: "/projects/travelease/public-home.webp",
+        width: 960,
+        height: 600,
+        alt: "TravelEase public homepage with navigation, a curated England journeys introduction, and actions to explore trips or learn about the platform.",
+        kind: "screenshot",
+        source:
+          "Public capture of https://travelease.infinityfree.me/index.php on 2026-08-25 at a 1440 by 900 desktop viewport; repository commit e6f3da2 inspected alongside the deployment.",
+        licenseOrPermission: "owned",
+        privacyReviewed: true,
+        caption: "Public TravelEase booking and itinerary interface",
+      },
+    ],
     evidence: [
       {
         id: "travelease-readme",
@@ -575,6 +633,20 @@ const projectSource = [
     architectureFacts: [
       "The role switcher is a demonstration and not a real authentication system",
     ],
+    media: [
+      {
+        src: "/projects/roleboard-rbac/permission-dashboard.webp",
+        width: 960,
+        height: 600,
+        alt: "RoleBoard dashboard with five demonstration user roles, role permission cards, and a post-management table.",
+        kind: "screenshot",
+        source:
+          "Locally rendered from the roleboard-rbac-task repository at commit d15358f on 2026-08-25 at a 1440 by 900 desktop viewport using the repository migration and seed data.",
+        licenseOrPermission: "owned",
+        privacyReviewed: true,
+        caption: "Role-aware post and comment management dashboard",
+      },
+    ],
     evidence: [
       {
         id: "roleboard-readme",
@@ -601,6 +673,20 @@ const projectSource = [
     functionality: [
       "Patient, nurse, doctor, and administration modules",
       "Authentication, dashboards, database, and AJAX areas in the repository",
+    ],
+    media: [
+      {
+        src: "/projects/pulseflow/public-home.webp",
+        width: 960,
+        height: 600,
+        alt: "PulseFlow public homepage with an emergency workflow introduction and a command-centre interface preview.",
+        kind: "screenshot",
+        source:
+          "Public capture of https://pulseflow.great-site.net/index.php on 2026-08-25 at a 1440 by 900 desktop viewport; repository commit d430a17 inspected alongside the deployment.",
+        licenseOrPermission: "owned",
+        privacyReviewed: true,
+        caption: "Public emergency-hospital workflow interface",
+      },
     ],
     evidence: [
       {
@@ -642,6 +728,20 @@ const projectSource = [
     architectureFacts: [
       "Uses simulated telemetry and is not verified as a physical IoT deployment",
     ],
+    media: [
+      {
+        src: "/projects/ewu-fub-energy-monitor/building-dashboard.webp",
+        width: 960,
+        height: 600,
+        alt: "FUB Energy Monitor dashboard showing floor and status filters, active monitoring state, and simulated building-energy metrics.",
+        kind: "screenshot",
+        source:
+          "Locally rendered from the EWU_FUB_EnergyMonitor repository at commit f4e38cf on 2026-08-25 at a 1440 by 900 desktop viewport; the repository's public PythonAnywhere URL showed only a hosting placeholder.",
+        licenseOrPermission: "owned",
+        privacyReviewed: true,
+        caption: "Dashboard rendered with simulated room telemetry",
+      },
+    ],
     evidence: [
       {
         id: "energy-readme",
@@ -669,6 +769,20 @@ const projectSource = [
     ],
     architectureFacts: [
       "The repository contains both custom work and vendored Astra material; vendor capabilities are not attributed as custom features",
+    ],
+    media: [
+      {
+        src: "/projects/educonsult-pro/custom-plugin-source.webp",
+        width: 960,
+        height: 600,
+        alt: "GitHub source view of the EduConsult Pro custom WordPress plugin registering service content types.",
+        kind: "screenshot",
+        source:
+          "Public GitHub source capture of plugin/educonsult-portal/educonsult-portal.php in the EduConsult-Pro repository at commit bc1523a on 2026-08-25; vendored Astra media excluded.",
+        licenseOrPermission: "owned",
+        privacyReviewed: true,
+        caption: "Custom WordPress post-type implementation",
+      },
     ],
     evidence: [
       {

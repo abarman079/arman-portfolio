@@ -15,6 +15,8 @@
 /playwright-report/
 /test-results/
 /blob-report/
+/.lighthouseci/
+/lighthouse-report.*
 
 # next.js
 /.next/
@@ -25,6 +27,7 @@
 
 # misc
 .DS_Store
+Thumbs.db
 *.pem
 
 # debug

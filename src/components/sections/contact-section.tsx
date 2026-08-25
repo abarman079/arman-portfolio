@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { ContactForm } from "@/components/contact/contact-form";
@@ -16,8 +15,9 @@ const contactLinks = [
 
 export function ContactSection() {
   const environment = getContactEnvironment();
+  const hasContactForm = environment.mode === "configured";
   const turnstileSiteKey =
-    environment.mode === "configured"
+    hasContactForm
       ? environment.values.NEXT_PUBLIC_TURNSTILE_SITE_KEY
       : undefined;
 
@@ -36,18 +36,18 @@ export function ContactSection() {
             Aftabnagar / Dhaka
           </p>
           <h2 id="contact-title" data-contact-heading>
-            Let&apos;s build something <span>worth shipping.</span>
+            Let&apos;s talk about <span>the work.</span>
           </h2>
           <p className={styles.introduction}>
-            For engineering roles, collaboration, or a focused project conversation,
-            send a note with enough context to start well.
+            Share the role, project, or problem you have in mind. Include enough
+            context for a useful reply.
           </p>
         </header>
 
         <div className={styles.workspace}>
           <div className={styles.contactRail} data-contact-rail>
             <div className={styles.directBlock}>
-              <p className={styles.railLabel}>Direct channel</p>
+              <p className={styles.railLabel}>Email</p>
               <a className={styles.email} href={siteConfig.emailHref}>
                 {siteConfig.email}
               </a>
@@ -61,7 +61,7 @@ export function ContactSection() {
               </div>
               <div>
                 <dt>Response path</dt>
-                <dd>Email / reply-to</dd>
+                <dd>Direct email</dd>
               </div>
             </dl>
 
@@ -87,40 +87,41 @@ export function ContactSection() {
               )}
             </nav>
 
-            <figure className={styles.evidenceStrip}>
-              <div className={styles.evidenceImage}>
-                <Image
-                  alt=""
-                  fill
-                  sizes="(min-width: 64rem) 32vw, (min-width: 48rem) 44vw, 100vw"
-                  src="/projects/slatedesk/admin-operations-overview.webp"
-                />
-              </div>
-              <figcaption>
-                <span>Verified interface field</span>
-                <Link href="/work/slatedesk">SlateDesk / case study →</Link>
-              </figcaption>
-            </figure>
           </div>
 
-          <div className={styles.formColumn} data-contact-form-stage>
-            <div className={styles.formHeader}>
-              <p>Secure message route</p>
-              <p>Form 01 / 01</p>
+          {hasContactForm ? (
+            <div className={styles.formColumn} data-contact-form-stage>
+              <div className={styles.formHeader}>
+                <p>Message form</p>
+                <p>Four fields</p>
+              </div>
+              <ContactForm
+                deliveryMode={environment.mode}
+                turnstileSiteKey={turnstileSiteKey}
+              />
             </div>
-            <ContactForm
-              deliveryMode={environment.mode}
-              turnstileSiteKey={turnstileSiteKey}
-            />
-          </div>
+          ) : (
+            <div className={styles.directPanel} data-contact-form-stage>
+              <p className={styles.panelIndex}>Direct contact / 01</p>
+              <h3>Email Arman directly.</h3>
+              <p>
+                Tell me what you are hiring for or building, and include any useful
+                links or constraints.
+              </p>
+              <a className={styles.emailAction} href={siteConfig.emailHref}>
+                <span>Write an email</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          )}
         </div>
 
         <div className={styles.signalRoute} data-contact-route aria-hidden="true">
-          <span>Signal in</span>
+          <span>{hasContactForm ? "Message" : "Email"}</span>
           <i />
-          <span>Validate</span>
+          <span>{hasContactForm ? "Verify" : "Direct"}</span>
           <i />
-          <span>Deliver</span>
+          <span>Reply</span>
         </div>
       </div>
     </section>
