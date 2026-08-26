@@ -1,12 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 
-import { CapabilityCardShell } from "@/components/motion/capability-card-shell";
 import { capabilityDefinitions } from "@/content/capabilities";
 import { projects } from "@/content/projects";
 
-import { SectionHeading } from "../ui/section-heading";
-import { CapabilityCanvasLoader } from "./capability-canvas-loader";
 import styles from "./capability-gallery.module.css";
 
 function findProject(slug: string) {
@@ -19,20 +15,6 @@ function findProject(slug: string) {
   return project;
 }
 
-function CapabilityFallback({ variant }: { variant: string }) {
-  return (
-    <div
-      className={`${styles.fallback} ${styles[`fallback-${variant}`]}`}
-      data-capability-visual
-      aria-hidden="true"
-    >
-      {Array.from({ length: 9 }, (_, index) => (
-        <span key={index} />
-      ))}
-    </div>
-  );
-}
-
 export function CapabilityGallery() {
   return (
     <section
@@ -42,110 +24,53 @@ export function CapabilityGallery() {
       data-motion-section="capabilities"
       data-capabilities-scene
     >
-      <div className="site-container">
-        <SectionHeading
-          eyebrow="02 / Engineering range"
-          title="Four fields of engineering, connected."
-          description="Interfaces connect to backend rules, model evaluation, and analytical systems. Each field links directly to the projects that demonstrate it."
-          id="expertise-title"
-        />
+      <div className={`site-container ${styles.container}`}>
+        <header className={styles.intro} data-capability-intro>
+          <p className="eyebrow">Capabilities / Evidence</p>
+          <h2 id="expertise-title">What the work proves.</h2>
+          <p>
+            Each area below points to a project that can be inspected in detail.
+          </p>
+        </header>
 
-        <div className={styles.systemHeader} aria-hidden="true">
-          <span>Capability gallery / CG—04</span>
-          <span>Interface · system · model · data</span>
-        </div>
-
-        <div className={styles.cards} data-capability-gallery>
-          {capabilityDefinitions.map((capability, capabilityIndex) => {
+        <ol className={styles.register} aria-label="Engineering capability evidence">
+          {capabilityDefinitions.map((capability) => {
             const relatedProjects = capability.projectSlugs.map(findProject);
-            const mediaProject = capability.media
-              ? findProject(capability.media.projectSlug)
-              : undefined;
-            const media = capability.media
-              ? mediaProject?.media?.[capability.media.mediaIndex]
-              : undefined;
-            const titleId = `capability-${capability.index}-title`;
 
             return (
-              <CapabilityCardShell
-                key={capability.index}
-                index={capabilityIndex}
-                labelledBy={titleId}
-                className={`${styles.card} ${styles[`card-${capability.variant}`]}`}
-              >
-                {media ? (
-                  <div
-                    className={styles.media}
-                    data-capability-visual
-                    aria-hidden="true"
-                  >
-                    <Image
-                      alt=""
-                      fill
-                      sizes={
-                        capability.variant === "systems" || capability.variant === "data"
-                          ? "(min-width: 64rem) 52vw, 100vw"
-                          : "(min-width: 64rem) 38vw, 100vw"
-                      }
-                      src={media.src}
-                    />
-                  </div>
-                ) : null}
-
-                <CapabilityFallback variant={capability.variant} />
-
-                <div className={styles.cardHeader}>
-                  <p>{capability.index}</p>
-                  <p>{String(relatedProjects.length).padStart(2, "0")} linked projects</p>
+              <li key={capability.index} data-capability-row>
+                <p className={styles.index}>{capability.index}</p>
+                <div className={styles.capability}>
+                  <h3>{capability.title}</h3>
+                  <p>{capability.description}</p>
                 </div>
-
-                <div className={styles.cardBody} data-capability-body>
-                  <p className={styles.domainLabel}>Engineering domain</p>
-                  <h3 id={titleId}>{capability.title}</h3>
-                  <p className={styles.description}>{capability.description}</p>
-
-                  <ul className={styles.technologyList} aria-label="Relevant technologies">
-                    {capability.technologies.map((technology) => (
-                      <li key={technology}>{technology}</li>
-                    ))}
-                  </ul>
-
-                  <nav className={styles.projectLinks} aria-label={`${capability.title} projects`}>
-                    {relatedProjects.map((project) =>
-                      project.tier === "flagship" ? (
-                        <Link href={`/work/${project.slug}`} key={project.slug}>
-                          {project.canonicalName} <span aria-hidden="true">→</span>
-                        </Link>
-                      ) : (
-                        <a
-                          href={project.repositoryUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          aria-label={`${project.canonicalName} repository, opens in a new tab`}
-                          key={project.slug}
-                        >
-                          {project.canonicalName} <span aria-hidden="true">↗</span>
-                        </a>
-                      ),
-                    )}
-                  </nav>
-                </div>
-              </CapabilityCardShell>
+                <nav
+                  className={styles.evidence}
+                  aria-label={`${capability.title} evidence`}
+                >
+                  <span>Evidence</span>
+                  {relatedProjects.slice(0, 2).map((project) =>
+                    project.tier === "flagship" ? (
+                      <Link href={`/work/${project.slug}`} key={project.slug}>
+                        {project.canonicalName} <span aria-hidden="true">→</span>
+                      </Link>
+                    ) : (
+                      <a
+                        href={project.repositoryUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${project.canonicalName} repository, opens in a new tab`}
+                        key={project.slug}
+                      >
+                        {project.canonicalName} <span aria-hidden="true">↗</span>
+                      </a>
+                    ),
+                  )}
+                </nav>
+              </li>
             );
           })}
-
-          <CapabilityCanvasLoader />
-        </div>
-
-        <div
-          className={styles.transfer}
-          data-capability-transfer
-          aria-hidden="true"
-        >
-          <span>Spatial system / 04 fields</span>
-          <i />
-          <span>Pixel signal / 01 field</span>
-        </div>
+        </ol>
       </div>
     </section>
   );

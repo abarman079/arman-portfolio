@@ -1,5 +1,4 @@
 .section {
-  --lab-calm: 0;
   --lab-progress: 0.5;
   position: relative;
   overflow: clip;
@@ -7,38 +6,12 @@
   isolation: isolate;
 }
 
-.section::after {
-  position: absolute;
-  z-index: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: clamp(5rem, 9vw, 9rem);
-  background: linear-gradient(to bottom, transparent, var(--surface));
-  content: "";
-  opacity: var(--lab-calm);
-  pointer-events: none;
-  transform: scaleY(var(--lab-calm));
-  transform-origin: bottom center;
-}
-
-.section::before {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, color-mix(in srgb, var(--night-rule) 42%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in srgb, var(--night-rule) 30%, transparent) 1px, transparent 1px);
-  background-position: var(--gutter) 0;
-  background-size: calc((100vw - 2 * var(--gutter)) / 12) 100%, 100% 8rem;
-  content: "";
-  mask-image: linear-gradient(to bottom, transparent, black 14%, black 88%, transparent);
-  opacity: 0.34;
-  pointer-events: none;
+.container {
+  position: relative;
+  z-index: 1;
 }
 
 .intro {
-  position: relative;
-  z-index: 1;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: var(--grid-gap);
@@ -46,31 +19,23 @@
   border-bottom: 1px solid var(--night-rule);
 }
 
-.eyebrow {
+.section .eyebrow {
   grid-column: 1 / span 3;
-  color: var(--signal);
+  align-self: start;
+  color: color-mix(in srgb, var(--signal) 72%, var(--night-ink));
 }
 
 .introBody {
   grid-column: 5 / -1;
 }
 
-.kicker {
-  margin-bottom: var(--space-6);
-  color: var(--night-muted);
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .intro h2 {
-  max-width: 11ch;
+  max-width: 12ch;
   color: var(--night-ink);
-  font-size: clamp(3.5rem, 8.4vw, 9rem);
+  font-size: clamp(3.4rem, 7.2vw, 8rem);
   font-weight: 610;
   letter-spacing: -0.075em;
-  line-height: 0.86;
+  line-height: 0.88;
   text-wrap: balance;
 }
 
@@ -82,7 +47,7 @@
 }
 
 .description {
-  max-width: 38rem;
+  max-width: 41rem;
   margin-top: clamp(2rem, 4vw, 3.5rem);
   color: var(--night-muted);
   font-size: clamp(1rem, 0.93rem + 0.3vw, 1.2rem);
@@ -90,134 +55,113 @@
 }
 
 .labStage {
-  position: relative;
-  z-index: 1;
   padding-top: clamp(2rem, 4vw, 3.5rem);
 }
 
-.stageHeader,
-.visualLegend {
+.stageHeader {
   display: flex;
   justify-content: space-between;
   gap: var(--space-6);
+  padding-bottom: var(--space-4);
   color: var(--night-muted);
   font-family: var(--font-mono);
-  font-size: 0.63rem;
+  font-size: 0.7rem;
   letter-spacing: 0.075em;
   text-transform: uppercase;
 }
 
-.stageHeader {
-  padding-bottom: var(--space-4);
-}
-
 .visual {
   position: relative;
-  min-height: 36rem;
+  min-height: 34rem;
   overflow: hidden;
   border: 1px solid var(--night-rule);
   background: #090d12;
 }
 
-.visual::before,
-.visual::after {
+.visual::before {
   position: absolute;
   z-index: 4;
+  inset: 1rem;
+  border: 1px solid color-mix(in srgb, var(--night-rule) 75%, transparent);
   content: "";
   pointer-events: none;
 }
 
-.visual::before {
-  inset: 0;
-  border: 1rem solid #090d12;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--night-rule) 75%, transparent);
-}
-
-.visual::after {
-  top: 1rem;
-  bottom: 1rem;
-  left: calc(12% + var(--lab-progress) * 68%);
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--signal) 18%, var(--signal) 82%, transparent);
-  box-shadow: 0 0 22px color-mix(in srgb, var(--signal) 46%, transparent);
-  opacity: 0.68;
-}
-
-.fallbackMedia {
+.visual figcaption {
   position: absolute;
-  z-index: 0;
-  inset: 1rem;
-  overflow: hidden;
-  background: var(--night-surface);
-}
-
-.fallbackMedia::after {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, color-mix(in srgb, #090d12 96%, transparent) 0%, color-mix(in srgb, #090d12 55%, transparent) 45%, color-mix(in srgb, #090d12 72%, transparent) 100%),
-    repeating-linear-gradient(to bottom, transparent 0 7px, color-mix(in srgb, var(--night-ink) 6%, transparent) 8px);
-  content: "";
-}
-
-.fallbackMedia img {
-  object-fit: cover;
-  object-position: center;
-  filter: grayscale(1) contrast(1.18) brightness(0.7);
-  opacity: 0.55;
-}
-
-.staticSignal {
-  position: absolute;
-  z-index: 2;
-  inset: 1rem;
-  background-image:
-    linear-gradient(to right, color-mix(in srgb, var(--night-ink) 9%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in srgb, var(--night-ink) 7%, transparent) 1px, transparent 1px);
-  background-size: 4rem 4rem;
-  pointer-events: none;
-}
-
-.scanLine {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 47%;
-  width: 18%;
-  border-inline: 1px solid color-mix(in srgb, var(--signal) 58%, transparent);
-  background: color-mix(in srgb, var(--signal) 8%, transparent);
-}
-
-.focusArea {
-  position: absolute;
-  top: 24%;
-  left: 57%;
-  width: 20%;
-  aspect-ratio: 1.35;
-  border: 1px solid var(--signal);
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--signal) 24%, transparent), transparent 65%);
-  clip-path: polygon(0 0, 100% 0, 100% 76%, 86% 100%, 0 100%);
-}
-
-.coordinate {
-  position: absolute;
-  right: 1.25rem;
-  bottom: 1rem;
-  color: var(--signal);
+  z-index: 5;
+  right: 2rem;
+  bottom: 1.75rem;
+  left: 2rem;
+  max-width: 42rem;
+  color: color-mix(in srgb, var(--night-ink) 66%, transparent);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.07em;
+  font-size: 0.68rem;
+  letter-spacing: 0.045em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  pointer-events: none;
 }
 
+.staticSignal,
 .canvasHost,
 .canvasFrame {
   position: absolute;
-  z-index: 3;
   inset: 1rem;
 }
 
+.staticSignal {
+  z-index: 1;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 67% 43%, color-mix(in srgb, var(--signal) 20%, transparent), transparent 18%),
+    repeating-linear-gradient(122deg, transparent 0 1.2rem, color-mix(in srgb, var(--night-ink) 7%, transparent) 1.25rem 1.3rem),
+    #0d1117;
+}
+
+.staticSignal::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--night-ink) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--night-ink) 6%, transparent) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  content: "";
+}
+
+.staticSource,
+.staticEdge,
+.staticThreshold {
+  position: absolute;
+  top: 10%;
+  bottom: 14%;
+  width: 29%;
+  border: 1px solid var(--night-rule);
+}
+
+.staticSource {
+  left: 3%;
+  background: repeating-radial-gradient(circle at 55% 45%, #292f37 0 0.35rem, #11161d 0.42rem 0.9rem);
+  filter: grayscale(1);
+}
+
+.staticEdge {
+  left: 35.5%;
+  background:
+    repeating-linear-gradient(145deg, transparent 0 1.1rem, color-mix(in srgb, var(--night-ink) 32%, transparent) 1.15rem 1.2rem),
+    #0c1117;
+}
+
+.staticThreshold {
+  right: 3%;
+  background:
+    radial-gradient(circle at 38% 58%, color-mix(in srgb, var(--signal) 82%, transparent) 0 13%, transparent 13.5%),
+    radial-gradient(circle at 68% 31%, color-mix(in srgb, var(--signal) 54%, transparent) 0 9%, transparent 9.5%),
+    #111820;
+}
+
 .canvasHost {
+  z-index: 3;
   opacity: 0;
   transition: opacity 320ms ease;
 }
@@ -234,16 +178,6 @@
   cursor: crosshair;
 }
 
-.visualLegend {
-  position: absolute;
-  z-index: 5;
-  right: 2rem;
-  bottom: 1.85rem;
-  left: 2rem;
-  color: color-mix(in srgb, var(--night-ink) 74%, transparent);
-  pointer-events: none;
-}
-
 .signalSteps {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -254,7 +188,7 @@
   display: grid;
   grid-template-columns: auto 1fr;
   gap: var(--space-4);
-  min-height: 8.5rem;
+  min-height: 8rem;
   padding: var(--space-5);
   border-bottom: 1px solid var(--night-rule);
   color: var(--night-muted);
@@ -278,7 +212,7 @@
 }
 
 .signalSteps p {
-  max-width: 21rem;
+  max-width: 22rem;
   margin-top: var(--space-3);
   font-size: 0.86rem;
   line-height: 1.55;
@@ -291,86 +225,31 @@
   color: var(--night-ink);
 }
 
-.related {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: var(--grid-gap);
-  padding-top: clamp(4rem, 7vw, 7rem);
-}
-
-.relatedIntro {
-  grid-column: 1 / span 3;
-}
-
-.relatedIntro .eyebrow,
-.relatedIntro > p:first-child {
-  color: var(--signal);
-}
-
-.relatedIntro > p:last-child {
-  max-width: 21rem;
-  margin-top: var(--space-5);
-  color: var(--night-muted);
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.projectLinks {
-  grid-column: 5 / -1;
+.researchNote {
+  max-width: 46rem;
+  margin: clamp(3rem, 6vw, 5rem) 0 0 auto;
+  padding-top: var(--space-5);
   border-top: 1px solid var(--night-rule);
-}
-
-.projectLinks a {
-  display: grid;
-  grid-template-columns: 3.5rem minmax(0, 1fr) auto;
-  gap: var(--space-4);
-  align-items: center;
-  min-height: 5rem;
-  padding-inline: var(--space-3);
-  border-bottom: 1px solid var(--night-rule);
-  color: var(--night-ink);
-  text-decoration: none;
-}
-
-.projectLinks a:hover {
-  background: var(--night-surface);
-}
-
-.projectIndex,
-.projectAction {
   color: var(--night-muted);
-  font-family: var(--font-mono);
-  font-size: 0.64rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
+  line-height: 1.65;
 }
 
-.projectName {
-  font-size: clamp(1.05rem, 1rem + 0.25vw, 1.25rem);
-  font-weight: 570;
-  letter-spacing: -0.025em;
+.researchNote a {
+  color: var(--night-ink);
+  text-underline-offset: 0.25em;
 }
 
-.projectAction {
+.researchNote a:hover {
   color: var(--signal);
 }
 
 @media (max-width: 64rem) {
-  .section::before {
-    background-size: calc((100vw - 2 * var(--gutter)) / 8) 100%, 100% 7rem;
-  }
-
-  .intro,
-  .related {
+  .intro {
     grid-template-columns: repeat(8, minmax(0, 1fr));
   }
 
   .eyebrow,
-  .introBody,
-  .relatedIntro,
-  .projectLinks {
+  .introBody {
     grid-column: 1 / -1;
   }
 
@@ -378,62 +257,55 @@
     margin-top: var(--space-8);
   }
 
-  .intro h2 {
-    font-size: clamp(3.8rem, 11vw, 7.2rem);
-  }
-
   .visual {
-    min-height: 30rem;
-  }
-
-  .relatedIntro {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: var(--space-6);
-    margin-bottom: var(--space-8);
-  }
-
-  .relatedIntro > p:last-child {
-    margin-top: 0;
+    min-height: 29rem;
   }
 }
 
 @media (max-width: 48rem) {
-  .section::before {
-    background-size: calc((100vw - 2 * var(--gutter)) / 4) 100%, 100% 6rem;
-  }
-
-  .stageHeader,
-  .visualLegend {
+  .stageHeader {
     align-items: flex-start;
     flex-direction: column;
     gap: var(--space-2);
   }
 
-  .stageHeader span:last-child,
-  .visualLegend span:last-child {
+  .stageHeader span:last-child {
     display: none;
   }
 
   .visual {
-    min-height: 25rem;
+    min-height: 23rem;
   }
 
   .canvasHost {
     display: none;
   }
 
-  .visual::after {
-    left: 63%;
+  .staticSignal,
+  .canvasHost {
+    inset: 0.65rem;
   }
 
-  .fallbackMedia img {
-    object-fit: contain;
-    padding: 1.5rem;
-  }
-
-  .staticSignal {
+  .staticSignal::before {
     background-size: 2.5rem 2.5rem;
+  }
+
+  .staticSource,
+  .staticEdge,
+  .staticThreshold {
+    top: 9%;
+    bottom: 19%;
+  }
+
+  .visual::before {
+    inset: 0.65rem;
+  }
+
+  .visual figcaption {
+    right: 1.3rem;
+    bottom: 1.15rem;
+    left: 1.3rem;
+    font-size: 0.68rem;
   }
 
   .signalSteps {
@@ -447,59 +319,24 @@
   .signalSteps li + li {
     border-left: 0;
   }
-
-  .relatedIntro {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 30rem) {
   .intro h2 {
-    font-size: clamp(3.35rem, 16vw, 5rem);
+    font-size: clamp(3.2rem, 15vw, 4.8rem);
   }
 
   .visual {
-    min-height: 21rem;
+    min-height: 20rem;
   }
 
-  .visual::before {
-    border-width: 0.65rem;
-  }
-
-  .fallbackMedia,
-  .staticSignal {
-    inset: 0.65rem;
-  }
-
-  .focusArea {
-    top: 27%;
-    left: 52%;
-    width: 30%;
-  }
-
-  .coordinate {
-    display: none;
-  }
-
-  .visualLegend {
-    right: 1.35rem;
-    bottom: 1.25rem;
-    left: 1.35rem;
-  }
-
-  .projectLinks a {
-    grid-template-columns: 2.25rem minmax(0, 1fr);
-    padding-block: var(--space-4);
-  }
-
-  .projectAction {
-    grid-column: 2;
+  .visual figcaption {
+    max-width: 28ch;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .section {
-    --lab-calm: 1 !important;
     --lab-progress: 0.5 !important;
   }
 

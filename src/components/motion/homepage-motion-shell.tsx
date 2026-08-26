@@ -34,17 +34,7 @@ export function HomepageMotionShell({ children }: { children: ReactNode }) {
       className={styles.root}
       tabIndex={-1}
       data-home-motion-root
-      data-signal-chapter="hero"
     >
-      <div className={styles.signalLayer} data-ambient-signal aria-hidden="true">
-        <i className={styles.horizontal} />
-        <i className={styles.vertical} />
-        <i className={styles.node} />
-        <span
-          className={styles.coordinate}
-          data-coordinate="H—00 / 07"
-        />
-      </div>
       {children}
       {enabled ? <HomepageMotionRuntime /> : null}
     </main>

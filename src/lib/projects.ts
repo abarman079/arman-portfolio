@@ -56,10 +56,24 @@ const mediaSchema = z
   })
   .strict();
 
+const homepageStoryStepSchema = z
+  .object({
+    label: nonEmptyText,
+    detail: nonEmptyText,
+  })
+  .strict();
+
 const presentationSchema = z
   .object({
     variant: z.enum(["architecture", "editorial", "commerce", "research"]),
     technologyLimit: z.number().int().positive().max(8),
+    homepageStory: z
+      .object({
+        label: nonEmptyText,
+        thesis: nonEmptyText,
+        steps: z.array(homepageStoryStepSchema).min(3).max(6),
+      })
+      .strict(),
   })
   .strict();
 

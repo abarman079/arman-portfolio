@@ -1,60 +1,41 @@
-export type CapabilityVariant = "systems" | "interface" | "research" | "data";
-
 export interface CapabilityDefinition {
   index: string;
   title: string;
   description: string;
   projectSlugs: readonly string[];
-  technologies: readonly string[];
-  variant: CapabilityVariant;
-  media?: {
-    projectSlug: string;
-    mediaIndex: number;
-  };
 }
 
 export const capabilityDefinitions: readonly CapabilityDefinition[] = [
   {
     index: "01",
-    title: "Full-stack systems",
+    title: "Application systems",
     description:
-      "Role-aware workflows, server-rendered products, API boundaries, authorization, and relational persistence across complete application systems.",
+      "Applications that connect role-aware interfaces to API rules, authorization, and stored data.",
     projectSlugs: ["slatedesk", "framesignal", "travelease"],
-    technologies: ["Next.js", "ASP.NET Core", "PostgreSQL", "Supabase"],
-    variant: "systems",
-    media: { projectSlug: "slatedesk", mediaIndex: 0 },
   },
   {
     index: "02",
-    title: "Frontend and product UI",
+    title: "Product interfaces",
     description:
-      "Responsive discovery, editorial information architecture, reusable product surfaces, and accessible interaction foundations.",
+      "Responsive interfaces that help people browse, compare, and complete an action across screen sizes.",
     projectSlugs: ["framesignal", "arctic-daze"],
-    technologies: ["Next.js", "TypeScript", "Motion", "Supabase"],
-    variant: "interface",
-    media: { projectSlug: "arctic-daze", mediaIndex: 0 },
   },
   {
     index: "03",
-    title: "Machine learning and computer vision",
+    title: "Applied ML and computer vision",
     description:
-      "Model comparison, reproducible evaluation, classification, anomaly detection, segmentation, and diagnostic analysis.",
+      "Research that compares models and reports evaluation context for classification, anomaly detection, and segmentation.",
     projectSlugs: [
       "cctv-violence-detection",
       "face-based-anomaly-detection",
       "wall-crack-detection",
     ],
-    technologies: ["Python", "TensorFlow", "scikit-learn", "U-Net++"],
-    variant: "research",
-    media: { projectSlug: "cctv-violence-detection", mediaIndex: 0 },
   },
   {
     index: "04",
-    title: "Data and business intelligence",
+    title: "Data and reporting",
     description:
-      "Data cleaning, dimensional warehouse structure, analytical measures, and decision-oriented Power BI reporting.",
+      "Warehouse design and Power BI reporting that turn cleaned retail data into an inspectable analytical model.",
     projectSlugs: ["retail-data-warehouse-bi"],
-    technologies: ["SQL Server", "Power BI", "Power Query", "DAX"],
-    variant: "data",
   },
 ] as const;

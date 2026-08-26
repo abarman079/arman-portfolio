@@ -5,7 +5,6 @@ import {
 
 import { ActionLink } from "../ui/action-link";
 import { ProjectArchive } from "../project/project-archive";
-import { SectionHeading } from "../ui/section-heading";
 import styles from "./archive-foundation.module.css";
 
 export function ArchiveFoundation() {
@@ -18,15 +17,17 @@ export function ArchiveFoundation() {
     >
       <div className="site-container">
         <div className={styles.intro}>
-          <SectionHeading
-            eyebrow="03 / More work"
-            title="Research, systems, and working software."
-            description="Three research and data projects lead into five supporting applications."
-            id="archive-title"
-          />
+          <div>
+            <p className="eyebrow">More work / 08</p>
+            <h2 id="archive-title">More work.</h2>
+          </div>
+          <p>
+            Supporting research, data, and application work—kept secondary to
+            the four case studies above.
+          </p>
         </div>
 
-        <div className={styles.group} data-archive-group>
+        <div className={styles.group}>
           <div className={styles.groupHeader}>
             <h3>Featured studies</h3>
             <p>Research and data systems / 03 projects</p>
@@ -38,7 +39,7 @@ export function ArchiveFoundation() {
           />
         </div>
 
-        <div className={styles.group} data-archive-group>
+        <div className={styles.group}>
           <div className={styles.groupHeader}>
             <h3>Additional systems</h3>
             <p>Web applications / 05 projects</p>

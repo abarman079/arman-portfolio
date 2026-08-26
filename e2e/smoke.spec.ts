@@ -6,9 +6,10 @@ test("core navigation and form labels work across browser engines", async ({
 }) => {
   void consoleErrors;
   await page.goto("/");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Software Engineer",
+  await expect(page.getByRole("heading", { level: 1 })).toHaveAccessibleName(
+    "Md. Akibul Hasan Arman.",
   );
+  await expect(page.getByText("Software Engineer", { exact: true })).toBeVisible();
 
   await page
     .getByRole("link", { name: "View the complete work index" })

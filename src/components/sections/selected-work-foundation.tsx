@@ -1,31 +1,27 @@
 import { flagshipProjects } from "@/content/projects";
 
-import { FlagshipProjects } from "../project/flagship-projects";
+import { HomepageFlagshipStories } from "../project/homepage-flagship-stories";
 import { ActionLink } from "../ui/action-link";
-import { SectionHeading } from "../ui/section-heading";
 import styles from "./selected-work-foundation.module.css";
 
 export function SelectedWorkFoundation() {
   return (
     <section
       id="work"
-      className={`section-block section-block--night ${styles.section}`}
+      className={styles.section}
       aria-labelledby="selected-work-title"
       data-motion-section="work"
       data-work-scene
     >
-      <div className="site-container">
-        <SectionHeading
-          eyebrow="01 / Selected work"
-          title="Four systems. Four engineering problems."
-          description="Full-stack architecture, editorial product thinking, responsive commerce UI, and applied computer-vision research."
-          id="selected-work-title"
-          tone="dark"
-        />
+      <div className={`site-container ${styles.intro}`}>
+        <h2 id="selected-work-title">Selected work</h2>
+        <span aria-hidden="true">01—04</span>
+      </div>
 
-        <FlagshipProjects projects={flagshipProjects} />
+      <HomepageFlagshipStories projects={flagshipProjects} />
 
-        <div className="section-action">
+      <div className={styles.outro}>
+        <div className="site-container">
           <ActionLink href="/work" variant="secondary">
             View the complete work index
           </ActionLink>

@@ -1,26 +1,31 @@
-import {
-  additionalArchiveProjects,
-  featuredArchiveProjects,
-  flagshipProjects,
-} from "@/content/projects";
+import Image from "next/image";
+import Link from "next/link";
+
+import { flagshipProjects } from "@/content/projects";
 import { siteConfig } from "@/content/site";
 
 import { HeroReveal } from "../motion/hero-reveal";
 import { HeroActions } from "./hero-actions";
 import styles from "./hero-foundation.module.css";
-import { SignalFieldLoader } from "./signal-field-loader";
 
-const engineeringDomains = [
-  { index: "01", label: "Product interfaces", className: styles.domainOne },
-  { index: "02", label: "Backend systems", className: styles.domainTwo },
-  { index: "03", label: "Applied ML / CV", className: styles.domainThree },
-  { index: "04", label: "Data and BI", className: styles.domainFour },
+const evidenceSpecs = [
+  { slug: "framesignal", discipline: "Product", mediaIndex: 0 },
+  { slug: "slatedesk", discipline: "Systems", mediaIndex: 0 },
+  {
+    slug: "cctv-violence-detection",
+    discipline: "Applied ML",
+    mediaIndex: 1,
+  },
 ] as const;
 
-export function HeroFoundation() {
-  const archiveCount =
-    featuredArchiveProjects.length + additionalArchiveProjects.length;
+const heroEvidence = evidenceSpecs.flatMap((spec) => {
+  const project = flagshipProjects.find((item) => item.slug === spec.slug);
+  const media = project?.media?.[spec.mediaIndex];
 
+  return project && media ? [{ ...spec, project, media }] : [];
+});
+
+export function HeroFoundation() {
   return (
     <section
       className={styles.hero}
@@ -32,21 +37,23 @@ export function HeroFoundation() {
       <div className={`site-container ${styles.grid}`}>
         <div className={styles.copy} data-hero-copy>
           <HeroReveal delay={0.02}>
-            <p className={`eyebrow ${styles.identity}`}>{siteConfig.name}</p>
+            <p className={`eyebrow ${styles.location}`}>
+              Portfolio / {siteConfig.location}
+            </p>
           </HeroReveal>
 
           <h1 id="hero-title" className={styles.title}>
-            <span>Software Engineer</span>
-            <span>building <em>full-stack</em></span>
-            <span>products, backend systems</span>
-            <span><em>&amp; applied ML.</em></span>
+            <span>Md. Akibul</span>
+            <span>Hasan Arman.</span>
           </h1>
 
-          <HeroReveal delay={0.13}>
-            <p className={styles.lede}>
-              I work across product interfaces, APIs, data systems, and model
-              evaluation. The projects below show the implementation in context.
-            </p>
+          <HeroReveal className={styles.identity} delay={0.13}>
+            <p className={styles.role}>Software Engineer</p>
+            <ul className={styles.scope} aria-label="Engineering focus">
+              <li>Product &amp; full-stack applications</li>
+              <li>Backend systems</li>
+              <li>Applied machine learning</li>
+            </ul>
           </HeroReveal>
 
           <HeroReveal delay={0.19}>
@@ -54,62 +61,35 @@ export function HeroFoundation() {
           </HeroReveal>
         </div>
 
-        <HeroReveal className={styles.fieldColumn} delay={0.24}>
-          <aside
-            className={styles.field}
-            data-signal-field
-            data-hero-field
-            aria-label="Engineering domain map"
-          >
-            <div className={styles.fieldHeader}>
-              <p>Signal architecture</p>
-              <p><span>04</span> connected domains</p>
-            </div>
-
-            <div className={styles.fieldFrame}>
-              <SignalFieldLoader />
-              <ol className={styles.domainMap}>
-                {engineeringDomains.map((domain) => (
-                  <li className={domain.className} key={domain.index}>
-                    <span>{domain.index}</span>
-                    <strong>{domain.label}</strong>
-                  </li>
-                ))}
-              </ol>
-              <p className={styles.coordinate} aria-hidden="true">SYS / 04—12</p>
-            </div>
-          </aside>
-        </HeroReveal>
-
-        <HeroReveal className={styles.meta} delay={0.29}>
-          <div>
-            <span>Based in</span>
-            <strong>{siteConfig.location}</strong>
+        <HeroReveal className={styles.evidence} delay={0.22}>
+          <div className={styles.evidenceHeader}>
+            <p>Work in view</p>
+            <p>Real project evidence</p>
           </div>
-          <div>
-            <span>Portfolio index</span>
-            <strong>{String(flagshipProjects.length).padStart(2, "0")} flagship / {String(archiveCount).padStart(2, "0")} archive</strong>
-          </div>
-          <nav aria-label="Hero profile links">
-            <a
-              href={siteConfig.linkedinUrl}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn profile, opens in a new tab"
-            >
-              LinkedIn <span aria-hidden="true">↗</span>
-            </a>
-            <a href={siteConfig.emailHref}>Email <span aria-hidden="true">↗</span></a>
-          </nav>
+          <ol className={styles.evidenceList} data-hero-evidence>
+            {heroEvidence.map(({ discipline, media, project }) => (
+              <li key={project.slug}>
+                <Link
+                  href={`/#project-${project.slug}`}
+                  aria-label={`Jump to ${project.canonicalName} in selected work`}
+                >
+                  <figure>
+                    <Image
+                      src={media.src}
+                      alt=""
+                      fill
+                      sizes="(max-width: 48rem) 44vw, (max-width: 72rem) 28vw, 13vw"
+                    />
+                    <figcaption>
+                      <span>{discipline}</span>
+                      <strong>{project.canonicalName}</strong>
+                    </figcaption>
+                  </figure>
+                </Link>
+              </li>
+            ))}
+          </ol>
         </HeroReveal>
-      </div>
-
-      <div className={styles.transfer} data-hero-transfer aria-hidden="true">
-        <span>Signal field</span>
-        <i />
-        <i />
-        <i />
-        <span>Selected work</span>
       </div>
     </section>
   );

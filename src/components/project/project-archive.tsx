@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import type { ProjectRecord } from "@/types/project";
-import { formatProjectTypes } from "@/lib/project-labels";
 
 import { ActionLink } from "../ui/action-link";
 import styles from "./project-archive.module.css";
@@ -41,22 +40,12 @@ export function ProjectArchive({
                 </div>
                 <figcaption>
                   <span aria-label={`Project ${index}`}>{index}</span>
-                  <span>{media.caption}</span>
                 </figcaption>
               </figure>
 
               <div className={styles.featuredCopy}>
-                <p className={styles.type}>
-                  {formatProjectTypes(project.projectTypes)}
-                </p>
                 <h3>{project.canonicalName}</h3>
                 <p className={styles.summary}>{project.shortSummary}</p>
-                <p className={styles.focus}>
-                  {project.architectureFacts?.[0] ?? project.functionality[0]}
-                </p>
-                <p className={styles.stack}>
-                  {project.technologies.slice(0, 4).join(" / ")}
-                </p>
                 <div className={styles.action}>
                   <ActionLink
                     href={project.repositoryUrl}
@@ -86,14 +75,8 @@ export function ProjectArchive({
               />
             </figure>
             <div className={styles.identity}>
-              <p className={styles.type}>
-                {formatProjectTypes(project.projectTypes)}
-              </p>
               <h3>{project.canonicalName}</h3>
               <p className={styles.summary}>{project.shortSummary}</p>
-              <p className={styles.stack}>
-                {project.technologies.slice(0, 3).join(" / ")}
-              </p>
             </div>
             <div className={styles.action}>
               <ActionLink

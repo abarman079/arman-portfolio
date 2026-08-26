@@ -12,16 +12,16 @@ test("reduced motion keeps content visible and disables enhanced scroll systems"
   }
 
   await page.locator("#expertise").scrollIntoViewIfNeeded();
-  await expect(page.locator("[data-capability-gallery] canvas")).toHaveCount(0);
+  await expect(page.locator("#expertise canvas")).toHaveCount(0);
   await page.locator("[data-ml-lab]").scrollIntoViewIfNeeded();
   await expect(page.locator("[data-ml-lab] canvas")).toHaveCount(0);
   await expect(page.locator("[data-flagship-scroll-root]"))
     .not.toHaveAttribute("data-cinematic", "true");
-  await expect(page.locator("[data-ambient-signal]")).toHaveCSS(
-    "display",
-    "none",
-  );
-  await page.locator("[data-contact-cluster]").scrollIntoViewIfNeeded();
+  await expect(page.locator('[data-flagship-mode="story"] article')).toHaveCount(4);
+  await expect(page.getByText("One request through the system")).toBeAttached();
+  await expect(page.getByText("Balanced 5,000-image working subset", { exact: true }))
+    .toBeAttached();
+  await page.locator("#contact").scrollIntoViewIfNeeded();
 
   const runtimeState = await page.evaluate(() => ({
     smoothScroll: document.documentElement.dataset.smoothScroll,
@@ -30,10 +30,6 @@ test("reduced motion keeps content visible and disables enhanced scroll systems"
     velocity: getComputedStyle(document.documentElement).getPropertyValue(
       "--scroll-velocity",
     ),
-    contactTokenTransforms: Array.from(
-      document.querySelectorAll("[data-contact-token]"),
-      (token) => getComputedStyle(token).transform,
-    ),
   }));
 
   expect(runtimeState).toEqual({
@@ -41,7 +37,6 @@ test("reduced motion keeps content visible and disables enhanced scroll systems"
     pinSpacers: 0,
     scrollBehavior: "auto",
     velocity: "",
-    contactTokenTransforms: ["none", "none", "none", "none", "none"],
   });
 });
 

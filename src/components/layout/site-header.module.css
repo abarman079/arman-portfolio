@@ -31,6 +31,15 @@
   backdrop-filter: blur(12px);
 }
 
+.compact::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 0.5rem;
+  background: color-mix(in srgb, var(--canvas) 96%, transparent);
+  content: "";
+  pointer-events: none;
+}
+
 .wordmark {
   display: inline-flex;
   grid-column: 1 / span 3;
@@ -42,7 +51,6 @@
 
 .magneticWordmark {
   justify-content: flex-start;
-  gap: 0.75rem;
 }
 
 .wordmarkName {
@@ -55,14 +63,6 @@
 
 .wordmarkName > span {
   color: var(--signal-text);
-}
-
-.wordmarkRole {
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.61rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
 }
 
 .primaryNav {
@@ -281,10 +281,6 @@
 @media (max-width: 68rem) {
   .wordmark {
     grid-column: 1 / span 2;
-  }
-
-  .wordmarkRole {
-    display: none;
   }
 
   .primaryNav {

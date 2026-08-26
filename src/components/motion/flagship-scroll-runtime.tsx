@@ -14,7 +14,11 @@ const variantMotion = {
 
 type ProjectVariant = keyof typeof variantMotion;
 
-export function FlagshipScrollRuntime() {
+export function FlagshipScrollRuntime({
+  mode = "index",
+}: {
+  mode?: "index" | "story";
+}) {
   const scope = useRef<HTMLElement | null>(null);
   const setMarker = useCallback((node: HTMLSpanElement | null) => {
     scope.current = node?.closest<HTMLElement>("[data-flagship-scroll-root]") ?? null;
@@ -27,6 +31,77 @@ export function FlagshipScrollRuntime() {
 
       root.dataset.cinematic = "true";
       const stages = gsap.utils.toArray<HTMLElement>("[data-project-stage]", root);
+
+      if (mode === "story") {
+        stages.forEach((stage) => {
+          const copy = stage.querySelector<HTMLElement>(
+            "[data-project-story-copy]",
+          );
+          const media = stage.querySelector<HTMLElement>(
+            "[data-project-story-media]",
+          );
+          const evidence = stage.querySelector<HTMLElement>(
+            "[data-project-story-evidence]",
+          );
+          const variant = stage.dataset.projectVariant as ProjectVariant | undefined;
+          const values = variant ? variantMotion[variant] : variantMotion.architecture;
+
+          const timeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: stage,
+              start: "top 84%",
+              end: "top 24%",
+              scrub: scrollMotion.scrubSoft,
+            },
+          });
+
+          if (copy) {
+            timeline.fromTo(
+              copy,
+              { x: values.copyX * 0.55, y: Math.max(12, values.copyY) },
+              { x: 0, y: 0, ease: gsapEase.linear },
+              0,
+            );
+          }
+
+          if (media) {
+            timeline.fromTo(
+              media,
+              {
+                x: values.mediaX * 0.45,
+                y: Math.max(14, values.mediaY * 0.6),
+                clipPath:
+                  variant === "editorial"
+                    ? "inset(0 4% 0 0)"
+                    : variant === "commerce"
+                      ? "inset(3% 0 0 0)"
+                      : "inset(4% 0 0 0)",
+              },
+              {
+                x: 0,
+                y: 0,
+                clipPath: "inset(0 0 0 0)",
+                ease: gsapEase.linear,
+              },
+              0,
+            );
+          }
+
+          if (evidence) {
+            timeline.fromTo(
+              evidence,
+              { y: 14, opacity: 0.74 },
+              { y: 0, opacity: 1, ease: gsapEase.linear },
+              0.18,
+            );
+          }
+        });
+
+        return () => {
+          delete root.dataset.cinematic;
+        };
+      }
+
       const markers = gsap.utils.toArray<HTMLElement>("[data-flagship-marker]", root);
       const progress = root.querySelector<HTMLElement>("[data-flagship-progress]");
       const capabilityScene = root
@@ -152,7 +227,7 @@ export function FlagshipScrollRuntime() {
         markers.forEach((marker) => marker.removeAttribute("data-active"));
       };
     },
-    { scope },
+    { scope, dependencies: [mode] },
   );
 
   return <span hidden aria-hidden="true" ref={setMarker} />;

@@ -19,12 +19,14 @@ const CINEMATIC_QUERY =
 interface FlagshipScrollShellProps {
   children: ReactNode;
   listClassName: string;
+  mode?: "index" | "story";
   projectCount: number;
 }
 
 export function FlagshipScrollShell({
   children,
   listClassName,
+  mode = "index",
   projectCount,
 }: FlagshipScrollShellProps) {
   const [enabled, setEnabled] = useState(false);
@@ -39,25 +41,31 @@ export function FlagshipScrollShell({
   }, []);
 
   return (
-    <div className={styles.root} data-flagship-scroll-root>
-      <div className={styles.rail} aria-hidden="true">
-        <div className={styles.railInner}>
-          <span className={styles.railLabel}>Sequence</span>
-          <span className={styles.track}>
-            <i data-flagship-progress />
-          </span>
-          <ol>
-            {Array.from({ length: projectCount }, (_, index) => (
-              <li data-flagship-marker={index} key={index}>
-                {String(index + 1).padStart(2, "0")}
-              </li>
-            ))}
-          </ol>
+    <div
+      className={styles.root}
+      data-flagship-scroll-root
+      data-flagship-mode={mode}
+    >
+      {mode === "index" ? (
+        <div className={styles.rail} aria-hidden="true">
+          <div className={styles.railInner}>
+            <span className={styles.railLabel}>Sequence</span>
+            <span className={styles.track}>
+              <i data-flagship-progress />
+            </span>
+            <ol>
+              {Array.from({ length: projectCount }, (_, index) => (
+                <li data-flagship-marker={index} key={index}>
+                  {String(index + 1).padStart(2, "0")}
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
-      </div>
+      ) : null}
 
       <ol className={listClassName}>{children}</ol>
-      {enabled ? <FlagshipScrollRuntime /> : null}
+      {enabled ? <FlagshipScrollRuntime mode={mode} /> : null}
     </div>
   );
 }

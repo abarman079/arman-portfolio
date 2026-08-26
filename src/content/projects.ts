@@ -41,6 +41,33 @@ const projectSource = [
     presentation: {
       variant: "architecture",
       technologyLimit: 5,
+      homepageStory: {
+        label: "Academic workflow platform",
+        thesis:
+          "Role-specific workspaces connect to an ASP.NET Core backend where authorization, concurrency, and deadlines remain authoritative.",
+        steps: [
+          {
+            label: "Interface",
+            detail: "Admin, Teacher, and Student workspaces",
+          },
+          {
+            label: "Authenticated request",
+            detail: "Short-lived access with refresh-token rotation",
+          },
+          {
+            label: "API authorization",
+            detail: "Role and ownership rules enforced by the backend",
+          },
+          {
+            label: "Persistence",
+            detail: "PostgreSQL with optimistic concurrency",
+          },
+          {
+            label: "Deadline worker",
+            detail: "Background processing for overdue academic work",
+          },
+        ],
+      },
     },
     caseStudy: flagshipCaseStudies.slatedesk,
     media: [
@@ -122,6 +149,25 @@ const projectSource = [
     presentation: {
       variant: "editorial",
       technologyLimit: 5,
+      homepageStory: {
+        label: "Movie guidance product",
+        thesis:
+          "A practical decision layer comes before deeper editorial reading, while spoiler boundaries remain explicit.",
+        steps: [
+          {
+            label: "Decide first",
+            detail: "Signal score, final decision, mood, and viewing context",
+          },
+          {
+            label: "Set the boundary",
+            detail: "Spoiler risk is visible before the deeper read",
+          },
+          {
+            label: "Go deeper",
+            detail: "Reviews, endings, theories, and mood-led discovery",
+          },
+        ],
+      },
     },
     caseStudy: flagshipCaseStudies.framesignal,
     media: [
@@ -206,6 +252,25 @@ const projectSource = [
     presentation: {
       variant: "commerce",
       technologyLimit: 5,
+      homepageStory: {
+        label: "Editorial commerce interface",
+        thesis:
+          "Responsive product discovery for men’s fashion and lifestyle sourcing from Malaysia to Bangladesh.",
+        steps: [
+          {
+            label: "Browse",
+            detail: "Category-led discovery with search and filters",
+          },
+          {
+            label: "Keep",
+            detail: "Account and saved-product surfaces",
+          },
+          {
+            label: "Order",
+            detail: "A guided Facebook ordering path",
+          },
+        ],
+      },
     },
     caseStudy: flagshipCaseStudies["arctic-daze"],
     media: [
@@ -298,8 +363,8 @@ const projectSource = [
     ],
     metrics: [
       {
-        label: "F1 score",
-        value: 94.97,
+        label: "Accuracy",
+        value: 94.93,
         unit: "%",
         modelOrSubject: "Multilayer perceptron",
         datasetContext:
@@ -327,6 +392,33 @@ const projectSource = [
     presentation: {
       variant: "research",
       technologyLimit: 5,
+      homepageStory: {
+        label: "Computer-vision research",
+        thesis:
+          "An offline comparison of classical and deep-learning approaches for binary violence classification.",
+        steps: [
+          {
+            label: "Input",
+            detail: "Balanced 5,000-image working subset",
+          },
+          {
+            label: "Process",
+            detail: "Images prepared at 160 × 160 pixels",
+          },
+          {
+            label: "Compare",
+            detail: "Eight classical and deep-learning approaches",
+          },
+          {
+            label: "Output",
+            detail: "Normal or anomaly prediction with offline alert artifacts",
+          },
+          {
+            label: "Evaluate",
+            detail: "Frozen 750-image test split",
+          },
+        ],
+      },
     },
     caseStudy: flagshipCaseStudies["cctv-violence-detection"],
     media: [

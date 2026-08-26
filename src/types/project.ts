@@ -66,9 +66,21 @@ export interface ProjectMedia {
   caption?: string;
 }
 
+export interface HomepageStoryStep {
+  label: string;
+  detail: string;
+}
+
+export interface HomepageProjectStory {
+  label: string;
+  thesis: string;
+  steps: HomepageStoryStep[];
+}
+
 export interface ProjectPresentation {
   variant: "architecture" | "editorial" | "commerce" | "research";
   technologyLimit: number;
+  homepageStory: HomepageProjectStory;
 }
 
 export interface CaseStudyFeature {

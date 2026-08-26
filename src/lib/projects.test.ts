@@ -46,6 +46,10 @@ describe("verified project source", () => {
     const cctv = findProjectBySlug(projects, "cctv-violence-detection");
 
     expect(cctv?.metrics).toHaveLength(2);
+    expect(cctv?.metrics?.map((metric) => metric.label)).toEqual([
+      "Accuracy",
+      "ROC-AUC",
+    ]);
     for (const metric of cctv?.metrics ?? []) {
       expect(metric.datasetContext).toContain("5,000-image");
       expect(metric.splitOrEvaluationContext).toContain("750-image");
@@ -57,6 +61,7 @@ describe("verified project source", () => {
     for (const project of flagshipProjects) {
       expect(project.media?.length).toBeGreaterThanOrEqual(2);
       expect(project.presentation).toBeDefined();
+      expect(project.presentation?.homepageStory.steps.length).toBeGreaterThanOrEqual(3);
       expect(project.caseStudy?.blocks.length).toBeGreaterThan(0);
 
       for (const media of project.media ?? []) {
@@ -92,23 +97,10 @@ describe("verified project source", () => {
 
   it("keeps capability groups attached to verified project evidence", () => {
     for (const capability of capabilityDefinitions) {
-      const relatedProjects = capability.projectSlugs.map((slug) => {
+      capability.projectSlugs.forEach((slug) => {
         const project = findProjectBySlug(projects, slug);
         expect(project).toBeDefined();
-        return project;
       });
-
-      for (const technology of capability.technologies) {
-        expect(
-          relatedProjects.some((project) => project?.technologies.includes(technology)),
-        ).toBe(true);
-      }
-
-      if (capability.media) {
-        const mediaProject = findProjectBySlug(projects, capability.media.projectSlug);
-        expect(capability.projectSlugs).toContain(capability.media.projectSlug);
-        expect(mediaProject?.media?.[capability.media.mediaIndex]).toBeDefined();
-      }
     }
   });
 

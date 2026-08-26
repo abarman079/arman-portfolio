@@ -43,7 +43,9 @@ test("primary navigation reaches sections and preserves route-aware links", asyn
   await expect(page).toHaveURL(/\/#expertise$/);
   await expect(page.locator("#expertise")).toBeVisible();
 
-  await page.locator("#about").scrollIntoViewIfNeeded();
+  await primary.getByRole("link", { name: "About" }).click();
+  await expect(page).toHaveURL(/\/#about$/);
+  await expect(page.locator("#about")).toBeVisible();
   await expect(primary.getByRole("link", { name: "About" })).toHaveAttribute(
     "aria-current",
     "location",

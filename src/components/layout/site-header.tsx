@@ -139,11 +139,10 @@ export function SiteHeader() {
           <Link
             href="/"
             className={styles.wordmark}
-            aria-label="Arman. Software Engineer — portfolio home"
+            aria-label="Arman — portfolio home"
           >
             <MagneticOffset className={styles.magneticWordmark} strength={3}>
               <span className={styles.wordmarkName}>Arman<span aria-hidden="true">.</span></span>
-              <span className={styles.wordmarkRole}>Software Engineer</span>
             </MagneticOffset>
           </Link>
 
