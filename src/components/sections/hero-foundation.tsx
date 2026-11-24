@@ -3,6 +3,7 @@ import Link from "next/link";
 import { siteConfig } from "@/content/site";
 
 import { SignatureScene } from "./signature-scene";
+import { SignatureEnhancement } from "./signature-enhancement";
 import styles from "./hero-foundation.module.css";
 import "@/app/cinematic-tokens.css";
 
@@ -40,7 +41,9 @@ export function HeroFoundation() {
         </div>
         <div className={styles.stage}>
           <div className={styles.stageHeader}><span>Systems in motion</span><span aria-hidden="true">01 — 03</span></div>
-          <SignatureScene />
+          <SignatureEnhancement>
+            <SignatureScene />
+          </SignatureEnhancement>
           <div className={styles.stageFooter}><span>Interface / Logic / Data</span><span>System study 01</span></div>
         </div>
         <div className={styles.workStrip}>

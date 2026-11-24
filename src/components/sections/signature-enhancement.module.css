@@ -1,0 +1,18 @@
+.scene { min-width: 0; }
+.viewport { position: relative; overflow: hidden; isolation: isolate; aspect-ratio: 640 / 540; background: #e0dbcf; }
+.still, .webgl { position: absolute; inset: 0; }
+.still { transition: opacity 240ms ease; }
+.webgl { opacity: 0; transition: opacity 240ms ease; pointer-events: none; }
+.webgl canvas { display: block; width: 100%; height: 100%; }
+.scene[data-signature-status="ready"] .still { opacity: 0; }
+.scene[data-signature-status="ready"] .webgl { opacity: 1; }
+.controls { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .55rem .8rem; background: #e9e4d8; border-top: 1px solid #c9c3b7; color: #303e44; }
+.controls p { font-size: .75rem; line-height: 1.45; max-width: 32ch; }
+.controls button { flex: 0 0 auto; min-height: 44px; padding: .5rem .8rem; border: 1px solid #596367; background: #f1eee6; color: #171a1e; font: 650 .7rem/1.25 var(--cv-mono); cursor: pointer; }
+.controls button:hover { background: #d7d0c0; }
+.controls button:focus-visible { outline: 2px solid #9e3925; outline-offset: 3px; }
+@media not all and (min-width: 64.01rem) and (min-height: 40rem) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .controls { display: none; }
+  .still { opacity: 1 !important; transition: none; }
+  .webgl { opacity: 0 !important; transition: none; }
+}
