@@ -23,7 +23,7 @@
   border-bottom: 1px solid var(--night-rule);
 }
 
-.eyebrow {
+.opening .eyebrow {
   grid-column: 1 / span 2;
   align-self: start;
   color: var(--signal);

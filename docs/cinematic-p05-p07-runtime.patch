@@ -1,0 +1,42 @@
+--- a/src/components/motion/homepage-motion-runtime.tsx
++++ b/src/components/motion/homepage-motion-runtime.tsx
+@@ -21,20 +21,25 @@
+       const root = scope.current;
+       const hero = root.querySelector<HTMLElement>('[data-motion-section="hero"]');
+-      const heroCopy = hero?.querySelector<HTMLElement>("[data-hero-copy]");
+-      const heroEvidence = hero?.querySelector<HTMLElement>("[data-hero-evidence]");
++      const signature = hero?.querySelector<SVGSVGElement>("[data-signature-scene]");
++      const interfaceLayer = signature?.querySelector<SVGGElement>('[data-signature-layer="interface"]');
++      const logicLayer = signature?.querySelector<SVGGElement>('[data-signature-layer="logic"]');
++      const dataLayer = signature?.querySelector<SVGGElement>('[data-signature-layer="data"]');
+ 
+-      if (hero && heroCopy && heroEvidence) {
+-        gsap
+-          .timeline({
+-            scrollTrigger: {
+-              trigger: hero,
+-              start: "top top",
+-              end: "bottom top",
+-              scrub: scrollMotion.scrubSoft,
+-            },
+-          })
+-          .to(heroCopy, { y: -24, ease: gsapEase.linear }, 0)
+-          .to(heroEvidence, { y: 30, ease: gsapEase.linear }, 0);
++      if (hero && interfaceLayer && logicLayer && dataLayer) {
++        // The existing desktop-only GSAP runtime owns this scroll timeline.
++        // No second ticker, canvas, layout reads, or hidden initial content.
++        gsap.timeline({
++          defaults: { ease: gsapEase.linear },
++          scrollTrigger: {
++            trigger: hero,
++            start: "top top",
++            end: "bottom 35%",
++            scrub: 0.25,
++          },
++        })
++          .fromTo(interfaceLayer, { x: 0, y: 0 }, { x: 10, y: -39 }, 0)
++          .fromTo(logicLayer, { x: 0, y: 0 }, { x: -14, y: 0 }, 0)
++          .fromTo(dataLayer, { x: 0, y: 0 }, { x: 8, y: 30 }, 0);
+       }
+ 
+       const headings = gsap.utils.toArray<HTMLElement>(
