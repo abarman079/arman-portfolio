@@ -1,0 +1,37 @@
+/* V2 scoped foundation. Import only with the new cinematic components. */
+.cinematic-v2 {
+  --cv-paper: #f1eee6;
+  --cv-ink: #171a1e;
+  --cv-muted: #535b61;
+  --cv-rule: #c9c3b7;
+  --cv-graphite: #151a20;
+  --cv-night-surface: #202831;
+  --cv-night-text: #f5f1e8;
+  --cv-night-muted: #bdc4c8;
+  --cv-rust: #9e3925;
+  --cv-signal: #ff8665;
+  --cv-petrol: #233b46;
+  --cv-mineral: #d7d0c0;
+  --cv-sans: var(--font-interface, system-ui), Arial, sans-serif;
+  --cv-serif: var(--font-editorial, Georgia), Georgia, serif;
+  --cv-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+  --cv-gutter: clamp(1.25rem, 4.5vw, 4.5rem);
+  --cv-max: 94rem;
+  --cv-section: clamp(4.5rem, 9vw, 9rem);
+  --cv-gap: clamp(1rem, 2vw, 2rem);
+  --cv-display: clamp(2.5rem, 8.2vw, 8.25rem);
+  --cv-heading: clamp(2.25rem, 5vw, 5rem);
+  --cv-body: clamp(1rem, .96rem + .22vw, 1.125rem);
+  --cv-touch: 2.75rem;
+  --cv-micro: 160ms;
+  --cv-component: 320ms;
+  --cv-scene: 600ms;
+  --cv-ease: cubic-bezier(.22, 1, .36, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-v2 {
+    --cv-micro: 0ms;
+    --cv-component: 0ms;
+    --cv-scene: 0ms;
+  }
+}
