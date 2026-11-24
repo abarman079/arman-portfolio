@@ -71,7 +71,7 @@
     color: var(--signal);
   }
 
-  .root[data-cinematic="true"] [data-project-stage] {
+  .root[data-cinematic="true"][data-flagship-mode="index"] [data-project-stage] {
     position: relative;
     z-index: 1;
     background: var(--night);

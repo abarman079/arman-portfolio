@@ -9,7 +9,7 @@ export default function WorkNotFound() {
           <h1>This case study is not published.</h1>
           <p>
             The work index includes the broader project archive, while detailed
-            case studies are currently limited to the four flagship projects.
+            case studies are available for selected projects.
           </p>
           <div className="section-action">
             <Link className="action-link action-link--primary" href="/work">

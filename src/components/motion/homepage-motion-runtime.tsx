@@ -2,6 +2,7 @@
 
 import { useCallback, useRef } from "react";
 
+import { choreographPassages } from "./passage-choreography";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { gsapEase, scrollMotion } from "@/lib/motion";
 
@@ -18,6 +19,7 @@ export function HomepageMotionRuntime() {
       if (!scope.current) return;
 
       const root = scope.current;
+      choreographPassages(root);
       const hero = root.querySelector<HTMLElement>('[data-motion-section="hero"]');
       const signature = hero?.querySelector<SVGSVGElement>("[data-signature-scene]");
       const interfaceLayer = signature?.querySelector<SVGGElement>('[data-signature-layer="interface"]');

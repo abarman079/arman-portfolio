@@ -90,8 +90,8 @@ export function FlagshipScrollRuntime({
           if (evidence) {
             timeline.fromTo(
               evidence,
-              { y: 14, opacity: 0.74 },
-              { y: 0, opacity: 1, ease: gsapEase.linear },
+              { y: 14 },
+              { y: 0, ease: gsapEase.linear },
               0.18,
             );
           }

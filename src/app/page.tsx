@@ -1,3 +1,4 @@
+import { CinematicPassage } from "@/components/sections/cinematic-passage";
 import { AboutSection } from "@/components/sections/about-section";
 import { HomepageMotionShell } from "@/components/motion/homepage-motion-shell";
 import { ArchiveFoundation } from "@/components/sections/archive-foundation";
@@ -15,9 +16,11 @@ export default function Home() {
     <HomepageMotionShell>
       <JsonLd data={createPersonStructuredData()} />
       <HeroFoundation />
+      <CinematicPassage chapter="work" />
       <SelectedWorkFoundation />
       <CapabilityGallery />
       <InteractiveLabSection />
+      <CinematicPassage chapter="research" />
       <ResearchScenes />
       <ArchiveFoundation />
       <AboutSection />
