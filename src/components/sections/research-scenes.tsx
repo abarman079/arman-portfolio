@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { crackEvidence, phishingEvidence } from "@/content/research-comparisons";
 import { CrackComparison, PhishingComparison } from "./research-comparison-controls";
 import styles from "./research-scenes.module.css";
@@ -18,6 +19,7 @@ export function ResearchScenes() {
             <p>Does adding information from a webpage’s HTML improve phishing detection? The study compares URL-only features with a combined URL and HTML feature set, using logistic regression and random forests.</p>
             <dl className={styles.stat}><div><dt>Official test rows</dt><dd>{phishingEvidence.testCount.toLocaleString("en-US")}</dd></div><div><dt>Phishing rows</dt><dd>{phishingEvidence.phishingCount.toLocaleString("en-US")}</dd></div></dl>
             <p className={styles.note}>Frozen model predictions on the official holdout. The benign train and test sets share one calendar date; this is not a strictly date-separated evaluation. Offline research, not a live detection service.</p>
+            <Link className={styles.source} href="/work/phishing-website-detection">Read the full case study <span aria-hidden="true">→</span></Link>
             <a className={styles.source} href={phishingEvidence.source}>Read the result table <span aria-hidden="true">↗</span></a>
             <a className={styles.source} href={phishingEvidence.report}>Read the experimental report <span aria-hidden="true">↗</span></a>
           </div>
@@ -32,6 +34,7 @@ export function ResearchScenes() {
             <p>CrackSAFE-MRC compares U-Net, DeepLabV3+ and U-Net++ with EfficientNet-B3 encoders. A threshold that maximizes overlap is not necessarily the one that best avoids marking clean surfaces as cracked.</p>
             <dl className={styles.stat}><div><dt>Training images</dt><dd>{crackEvidence.trainCount.toLocaleString("en-US")}</dd></div><div><dt>Validation images</dt><dd>{crackEvidence.validationCount.toLocaleString("en-US")}</dd></div></dl>
             <p className={styles.note}>The clean-image policy selects the lowest false-positive rate among thresholds retaining at least 98% of each model’s best crack-only IoU. These are Phase 8 validation results, not independent test or structural-inspection certification.</p>
+            <Link className={styles.source} href="/work/wall-crack-detection">Read the full case study <span aria-hidden="true">→</span></Link>
             <a className={styles.source} href={crackEvidence.source}>Read the threshold policy <span aria-hidden="true">↗</span></a>
             <a className={styles.source} href={crackEvidence.repository}>Explore the research repository <span aria-hidden="true">↗</span></a>
           </div>

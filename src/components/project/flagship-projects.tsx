@@ -25,9 +25,11 @@ function DisplayProjectTitle({ name }: { name: string }) {
 function FlagshipProject({
   project,
   index,
+  isLast,
 }: {
   project: ProjectRecord;
   index: number;
+  isLast: boolean;
 }) {
   if (!project.presentation || !project.media) {
     return null;
@@ -85,8 +87,7 @@ function FlagshipProject({
                   {metric.label} · {metric.modelOrSubject}
                 </p>
                 <p className={styles.metricContext}>
-                  Documented 750-image frozen test split. Offline experiment,
-                  not a production CCTV result.
+                  {metric.splitOrEvaluationContext} {metric.limitations}
                 </p>
               </div>
             ) : (
@@ -146,7 +147,7 @@ function FlagshipProject({
         <div className={styles.handoff} data-project-handoff aria-hidden="true">
           <span>Signal / {String(index).padStart(2, "0")}</span>
           <i />
-          <span>{index < 4 ? "Continue" : "Sequence complete"}</span>
+          <span>{isLast ? "Sequence complete" : "Continue"}</span>
         </div>
       </article>
     </li>
@@ -166,6 +167,7 @@ export function FlagshipProjects({
         <FlagshipProject
           project={project}
           index={startIndex + projectIndex}
+          isLast={projectIndex === projects.length - 1}
           key={project.slug}
         />
       ))}

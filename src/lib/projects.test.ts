@@ -11,14 +11,16 @@ import { findProjectBySlug, parseProjectRecords } from "./projects";
 
 describe("verified project source", () => {
   it("preserves the approved hierarchy and flagship order", () => {
-    expect(projects).toHaveLength(12);
+    expect(projects).toHaveLength(13);
     expect(flagshipProjects.map((project) => project.canonicalName)).toEqual([
       "SlateDesk",
       "FrameSignal",
       "Arctic Daze",
       "CCTV Violence Anomaly Detection",
+      "Phishing Website Detection",
+      "CrackSAFE-MRC",
     ]);
-    expect(featuredArchiveProjects).toHaveLength(3);
+    expect(featuredArchiveProjects).toHaveLength(2);
     expect(additionalArchiveProjects).toHaveLength(5);
   });
 
@@ -84,7 +86,7 @@ describe("verified project source", () => {
     }
   });
 
-  it("keeps case studies exclusive to the four flagship projects", () => {
+  it("keeps case studies exclusive to the six flagship projects", () => {
     expect(
       projects.filter((project) => project.caseStudy).map((project) => project.slug),
     ).toEqual([
@@ -92,6 +94,8 @@ describe("verified project source", () => {
       "framesignal",
       "arctic-daze",
       "cctv-violence-detection",
+      "phishing-website-detection",
+      "wall-crack-detection",
     ]);
   });
 
@@ -102,6 +106,17 @@ describe("verified project source", () => {
         expect(project).toBeDefined();
       });
     }
+  });
+
+  it("keeps new research metrics linked to their actual evaluation conditions", () => {
+    const phishing = findProjectBySlug(projects, "phishing-website-detection");
+    const crack = findProjectBySlug(projects, "wall-crack-detection");
+    expect(phishing?.metrics?.map((metric) => metric.value)).toEqual([97.8, 91.31, 2.55]);
+    expect(phishing?.metrics?.every((metric) => metric.datasetContext.includes("168,060") && metric.limitations.includes("2025-09-08"))).toBe(true);
+    expect(crack?.metrics?.map((metric) => metric.value)).toEqual([58.07, 0.46]);
+    expect(crack?.metrics?.[0].splitOrEvaluationContext).toContain("0.40");
+    expect(crack?.metrics?.[1].splitOrEvaluationContext).toContain("0.50");
+    expect(crack?.metrics?.[0].modelOrSubject).not.toBe(crack?.metrics?.[1].modelOrSubject);
   });
 
   it("rejects duplicate slugs", () => {

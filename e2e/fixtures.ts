@@ -30,6 +30,8 @@ export const publicRoutes = [
   "/work/framesignal",
   "/work/arctic-daze",
   "/work/cctv-violence-detection",
+  "/work/phishing-website-detection",
+  "/work/wall-crack-detection",
 ] as const;
 
 export async function settlePage(page: Page) {

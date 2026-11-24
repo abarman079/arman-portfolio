@@ -64,6 +64,8 @@ test("sitemap, robots, social card, and baseline headers are production-shaped",
     "http://127.0.0.1:4173/",
     "http://127.0.0.1:4173/work",
     "http://127.0.0.1:4173/work/slatedesk",
+    "http://127.0.0.1:4173/work/phishing-website-detection",
+    "http://127.0.0.1:4173/work/wall-crack-detection",
     "http://127.0.0.1:4173/resume",
   ]) {
     expect(sitemapText).toContain(`<loc>${path}</loc>`);

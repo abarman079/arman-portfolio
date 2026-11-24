@@ -1,5 +1,6 @@
 import { parseProjectRecords } from "../lib/projects";
 import { flagshipCaseStudies } from "./case-studies";
+import { crackResearchProject, phishingResearchProject } from "./research-projects";
 
 const checkedAt = "2026-08-18";
 
@@ -589,66 +590,6 @@ const projectSource = [
     ],
   },
   {
-    slug: "wall-crack-detection",
-    canonicalName: "Wall Crack Detection",
-    tier: "archive",
-    archiveGroup: "featured",
-    projectTypes: ["ml-cv"],
-    repositoryUrl: "https://github.com/abarman079/wallCrackWith2datasets",
-    status: "research",
-    shortSummary:
-      "Multidataset wall-crack segmentation research comparing three encoder-based model families.",
-    technologies: [
-      "Python",
-      "U-Net",
-      "DeepLabV3+",
-      "U-Net++",
-      "EfficientNet-B3",
-    ],
-    functionality: [
-      "Semantic wall-crack segmentation",
-      "Empty-mask-aware and crack-only evaluation",
-      "False-positive diagnostics, threshold tuning, and overlay analysis",
-    ],
-    architectureFacts: [
-      "Compares U-Net, DeepLabV3+, and U-Net++ with EfficientNet-B3 encoders",
-      "Uses frozen-split evaluation and resolution/threshold sensitivity analysis",
-    ],
-    media: [
-      {
-        src: "/projects/wall-crack-detection/model-tradeoff.webp",
-        width: 1200,
-        height: 867,
-        alt: "Scatter plot comparing three wall-crack segmentation models by crack-only mean IoU and no-crack false-positive rate.",
-        kind: "chart",
-        source:
-          "wallCrackWith2datasets repository Phase-5 comapre/phase5_tradeoff_scatter.png at commit ece41b1.",
-        licenseOrPermission: "owned",
-        privacyReviewed: true,
-        caption:
-          "Model trade-off between crack-only IoU and false-positive rate",
-      },
-    ],
-    evidence: [
-      {
-        id: "wall-readme",
-        sourceType: "readme",
-        urlOrPath:
-          "https://github.com/abarman079/wallCrackWith2datasets#readme",
-        supports: "Research design, model families, and evaluation method",
-        checkedAt,
-      },
-      {
-        id: "wall-results",
-        sourceType: "result",
-        urlOrPath:
-          "https://github.com/abarman079/wallCrackWith2datasets/tree/main/Phase-5%20comapre",
-        supports: "Final comparison artifacts",
-        checkedAt,
-      },
-    ],
-  },
-  {
     slug: "travelease",
     canonicalName: "TravelEase",
     tier: "archive",
@@ -886,12 +827,20 @@ const projectSource = [
       },
     ],
   },
+  phishingResearchProject,
+  crackResearchProject,
 ] as const;
 
 export const projects = parseProjectRecords(projectSource);
 
 export const flagshipProjects = projects.filter(
   (project) => project.tier === "flagship",
+);
+
+// P09 will unify the four existing product stories and two research scenes.
+// Keep the existing homepage story renderer scoped to its supported layouts.
+export const homepageStoryProjects = flagshipProjects.filter(
+  (project) => project.slug !== "phishing-website-detection" && project.slug !== "wall-crack-detection",
 );
 
 export const featuredArchiveProjects = projects.filter(

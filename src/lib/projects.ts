@@ -302,7 +302,7 @@ export const projectSchema: z.ZodType<ProjectRecord> = z
 
 const projectCollectionSchema = z
   .array(projectSchema)
-  .length(12)
+  .length(13)
   .superRefine((projects, context) => {
     const slugs = new Set<string>();
     const evidenceIds = new Set<string>();
@@ -339,11 +339,11 @@ const projectCollectionSchema = z
       ).length,
     };
 
-    if (counts.flagship !== 4 || counts.featured !== 3 || counts.additional !== 5) {
+    if (counts.flagship !== 6 || counts.featured !== 2 || counts.additional !== 5) {
       context.addIssue({
         code: "custom",
         message:
-          "The portfolio hierarchy requires 4 flagship, 3 featured archive, and 5 additional archive projects.",
+          "The portfolio hierarchy requires 6 flagship, 2 featured archive, and 5 additional archive projects.",
       });
     }
   });

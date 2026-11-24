@@ -29,6 +29,7 @@ export const capabilityDefinitions: readonly CapabilityDefinition[] = [
       "cctv-violence-detection",
       "face-based-anomaly-detection",
       "wall-crack-detection",
+      "phishing-website-detection",
     ],
   },
   {

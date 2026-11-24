@@ -8,6 +8,7 @@ import { ProjectTransitionLink } from "@/components/motion/project-transition-pr
 
 import { ActionLink } from "../../ui/action-link";
 import { ArchitectureDiagram } from "./architecture-diagram";
+import { ResearchCaseComparison } from "./research-case-comparison";
 import styles from "./case-study-page.module.css";
 
 interface CaseStudyPageProps {
@@ -313,6 +314,8 @@ export function CaseStudyPage({
             <p>Project overview</p>
             <h2 id="overview-title">{caseStudy.overview}</h2>
           </section>
+
+          <ResearchCaseComparison slug={project.slug} />
 
           {caseStudy.blocks.map((block, blockIndex) => (
             <CaseStudyContentBlock

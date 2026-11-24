@@ -1,6 +1,7 @@
 import {
   additionalArchiveProjects,
   featuredArchiveProjects,
+  flagshipProjects,
 } from "@/content/projects";
 
 import { ActionLink } from "../ui/action-link";
@@ -18,23 +19,23 @@ export function ArchiveFoundation() {
       <div className="site-container">
         <div className={styles.intro}>
           <div>
-            <p className="eyebrow">More work / 08</p>
+            <p className="eyebrow">More work / {String(featuredArchiveProjects.length + additionalArchiveProjects.length).padStart(2, "0")}</p>
             <h2 id="archive-title">More work.</h2>
           </div>
           <p>
             Supporting research, data, and application work—kept secondary to
-            the four case studies above.
+            the case studies above.
           </p>
         </div>
 
         <div className={styles.group}>
           <div className={styles.groupHeader}>
             <h3>Featured studies</h3>
-            <p>Research and data systems / 03 projects</p>
+            <p>Research and data systems / {String(featuredArchiveProjects.length).padStart(2, "0")} projects</p>
           </div>
           <ProjectArchive
             projects={featuredArchiveProjects}
-            startIndex={5}
+            startIndex={flagshipProjects.length + 1}
             variant="featured"
           />
         </div>
@@ -46,7 +47,7 @@ export function ArchiveFoundation() {
           </div>
           <ProjectArchive
             projects={additionalArchiveProjects}
-            startIndex={8}
+            startIndex={flagshipProjects.length + featuredArchiveProjects.length + 1}
             variant="additional"
           />
         </div>

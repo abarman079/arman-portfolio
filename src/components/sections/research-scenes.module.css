@@ -44,3 +44,10 @@
 .ongoing > p { max-width:50ch; }
 @media(max-width:56rem) { .opening,.sceneInner,.ongoing { grid-template-columns:1fr; } .opening h2 { font-size:clamp(3rem,12vw,5.5rem); } .sceneInner { gap:2rem; } .ongoing { align-items:start; } }
 @media(prefers-reduced-motion:reduce) { .barTrack span { transition:none; } }
+
+/* Shared controls inside the two case studies. */
+.caseComparison { margin-block:clamp(2.5rem,6vw,5rem); padding:clamp(1rem,4vw,3.5rem); border:1px solid var(--research-rule); }
+.caseComparisonHeader { max-width:65ch; margin-bottom:2rem; }
+.caseComparisonHeader h2 { font-size:clamp(2rem,4.5vw,4rem); line-height:1.04; letter-spacing:-.045em; margin-block:.8rem; overflow-wrap:break-word; }
+.caseComparisonHeader > p:last-child { color:var(--research-muted); }
+.caseComparison .comparison { max-width:100%; }

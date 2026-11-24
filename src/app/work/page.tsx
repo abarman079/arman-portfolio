@@ -5,6 +5,7 @@ import {
   additionalArchiveProjects,
   featuredArchiveProjects,
   flagshipProjects,
+  projects,
 } from "@/content/projects";
 import { createPageMetadata } from "@/lib/seo";
 
@@ -19,11 +20,11 @@ export default function WorkPage() {
     <main id="main-content" className="work-page" tabIndex={-1}>
       <section className="page-intro" aria-labelledby="work-page-title">
         <div className="site-container page-intro__grid">
-          <p className="eyebrow">Work index / 12 projects</p>
+          <p className="eyebrow">Work index / {projects.length} projects</p>
           <div>
             <h1 id="work-page-title">Projects across product, backend, research, and data.</h1>
             <p>
-              Four flagship case studies lead the collection. Research and
+              Six case studies lead the collection. Research and
               supporting application work follow in a compact index.
             </p>
           </div>
@@ -54,7 +55,7 @@ export default function WorkPage() {
           />
           <ProjectArchive
             projects={featuredArchiveProjects}
-            startIndex={5}
+            startIndex={flagshipProjects.length + 1}
             variant="featured"
           />
         </div>
@@ -72,7 +73,7 @@ export default function WorkPage() {
           />
           <ProjectArchive
             projects={additionalArchiveProjects}
-            startIndex={8}
+            startIndex={flagshipProjects.length + featuredArchiveProjects.length + 1}
             variant="additional"
           />
         </div>

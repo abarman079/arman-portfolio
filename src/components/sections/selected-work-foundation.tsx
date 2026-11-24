@@ -1,4 +1,4 @@
-import { flagshipProjects } from "@/content/projects";
+import { homepageStoryProjects } from "@/content/projects";
 
 import { HomepageFlagshipStories } from "../project/homepage-flagship-stories";
 import { ActionLink } from "../ui/action-link";
@@ -18,7 +18,7 @@ export function SelectedWorkFoundation() {
         <span aria-hidden="true">01—04</span>
       </div>
 
-      <HomepageFlagshipStories projects={flagshipProjects} />
+      <HomepageFlagshipStories projects={homepageStoryProjects} />
 
       <div className={styles.outro}>
         <div className="site-container">
