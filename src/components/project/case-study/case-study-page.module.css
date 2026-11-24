@@ -111,33 +111,6 @@
   background: var(--night-surface);
 }
 
-.heroFigure {
-  display: grid;
-  margin: clamp(3rem, 7vw, 7rem) 0 0;
-  place-items: center;
-  overflow: hidden;
-  border: 1px solid var(--night-rule);
-  background:
-    linear-gradient(color-mix(in srgb, var(--case-accent) 17%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--case-accent) 17%, transparent) 1px, transparent 1px),
-    var(--case-stage);
-  background-size: 3.5rem 3.5rem;
-}
-
-.heroImage {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.commerce .heroImage {
-  width: auto;
-  max-width: 100%;
-  max-height: min(76svh, 58rem);
-  object-fit: contain;
-}
-
-.heroFigure figcaption,
 .figure figcaption {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -194,6 +167,10 @@
   gap: clamp(1rem, 1.8vw, 2rem);
   padding-block: clamp(5rem, 10vw, 10rem);
   border-bottom: 1px solid var(--rule);
+}
+
+.article :is(#overview-title, #case-research-comparison, [id^="case-chapter-"]) {
+  scroll-margin-top: 7rem;
 }
 
 .overview > p,

@@ -3,6 +3,7 @@
 import { useCallback, useRef } from "react";
 
 import { gsap, useGSAP } from "@/lib/gsap";
+import { choreographProjectWorld } from "../project/case-study/world-motion";
 import { gsapEase, scrollMotion } from "@/lib/motion";
 
 export function CaseStudyMotionRuntime() {
@@ -15,6 +16,7 @@ export function CaseStudyMotionRuntime() {
     () => {
       const root = scope.current;
       if (!root) return;
+      choreographProjectWorld(root);
 
       const hero = root.querySelector<HTMLElement>("[data-case-hero]");
       const title = hero?.querySelector<HTMLElement>("[data-case-title]");
@@ -28,17 +30,15 @@ export function CaseStudyMotionRuntime() {
           .timeline({ defaults: { ease: gsapEase.reveal } })
           .from(title, {
             y: 24,
-            clipPath: "inset(0 0 9% 0)",
             duration: 0.82,
-            clearProps: "transform,clipPath",
+            clearProps: "transform",
           })
           .from(
             figure,
             {
               y: 20,
-              clipPath: "inset(4% 0 0 0)",
               duration: 0.9,
-              clearProps: "transform,clipPath",
+              clearProps: "transform",
             },
             "-=0.48",
           );

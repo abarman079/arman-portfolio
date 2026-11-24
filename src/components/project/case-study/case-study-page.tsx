@@ -9,6 +9,7 @@ import { ProjectTransitionLink } from "@/components/motion/project-transition-pr
 import { ActionLink } from "../../ui/action-link";
 import { ArchitectureDiagram } from "./architecture-diagram";
 import { ResearchCaseComparison } from "./research-case-comparison";
+import { CaseChapterIndex, ProjectWorld } from "./project-world";
 import styles from "./case-study-page.module.css";
 
 interface CaseStudyPageProps {
@@ -45,7 +46,7 @@ function BlockHeading({
   return (
     <header className={styles.blockHeading}>
       <p>{String(index).padStart(2, "0")}</p>
-      <h2 data-case-heading>{heading}</h2>
+      <h2 id={`case-chapter-${index}`} data-case-heading tabIndex={-1}>{heading}</h2>
     </header>
   );
 }
@@ -272,21 +273,7 @@ export function CaseStudyPage({
               </div>
             </div>
 
-            <figure className={styles.heroFigure} data-case-hero-media>
-              <Image
-                className={styles.heroImage}
-                src={heroMedia.src}
-                width={heroMedia.width}
-                height={heroMedia.height}
-                alt={heroMedia.alt}
-                sizes="(max-width: 48rem) 92vw, (max-width: 96rem) 92vw, 88rem"
-                preload
-                data-project-transition-target={project.slug}
-              />
-              {heroMedia.caption ? (
-                <figcaption>{heroMedia.caption}</figcaption>
-              ) : null}
-            </figure>
+            <ProjectWorld project={project} />
 
             <dl className={styles.factStrip}>
               <div>
@@ -310,9 +297,10 @@ export function CaseStudyPage({
         </header>
 
         <div className="site-container">
+          <CaseChapterIndex project={project} />
           <section className={styles.overview} aria-labelledby="overview-title" data-case-block>
             <p>Project overview</p>
-            <h2 id="overview-title">{caseStudy.overview}</h2>
+            <h2 id="overview-title" tabIndex={-1}>{caseStudy.overview}</h2>
           </section>
 
           <ResearchCaseComparison slug={project.slug} />
